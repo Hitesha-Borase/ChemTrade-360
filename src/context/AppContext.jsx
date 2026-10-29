@@ -17,31 +17,81 @@ import {
 
 const AppContext = createContext();
 
+export const ROUTE_TO_NAV = {
+  dashboard: 'dashboard',
+  overview: 'dashboard',
+  customers: 'customers',
+  crm: 'customers',
+  chemicals: 'chemicals',
+  catalog: 'chemicals',
+  quotations: 'quotations',
+  'sales-orders': 'sales-orders',
+  sales: 'sales-orders',
+  orders: 'sales-orders',
+  inventory: 'inventory',
+  purchases: 'purchases',
+  procurement: 'purchases',
+  billing: 'billing',
+  finance: 'billing',
+  reports: 'reports',
+  settings: 'settings',
+  admin: 'settings'
+};
+
+const parseHash = () => {
+  if (typeof window === 'undefined') return { view: 'landing', route: 'dashboard' };
+  const raw = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase().trim();
+  if (raw === 'login') return { view: 'login', route: 'dashboard' };
+  if (!raw || raw === 'landing' || raw.startsWith('hero') || raw.startsWith('features') || raw.startsWith('calculator') || raw.startsWith('pricing') || raw.startsWith('contact')) {
+    return { view: 'landing', route: 'dashboard' };
+  }
+  const resolved = ROUTE_TO_NAV[raw];
+  if (resolved) {
+    return { view: 'app', route: resolved };
+  }
+  return { view: 'landing', route: 'dashboard' };
+};
+
 export function AppProvider({ children }) {
-  // Authentication & Session (starts on Login Page unless logged in)
+  // Authentication & Session
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return sessionStorage.getItem('ct360_auth') === 'true';
   });
 
-  // Perspective View: 'landing' (default) | 'login' | 'app'
+  // Perspective View: 'landing' | 'login' | 'app'
   const [currentView, setCurrentView] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const h = window.location.hash;
-      if (h === '#login') return 'login';
-      if (h === '#app' && sessionStorage.getItem('ct360_auth') === 'true') return 'app';
+    const isAuthed = typeof window !== 'undefined' && sessionStorage.getItem('ct360_auth') === 'true';
+    const parsed = parseHash();
+    if (parsed.view === 'login') return 'login';
+    if (parsed.view === 'app') {
+      return isAuthed ? 'app' : 'login';
     }
     return 'landing';
   });
+
+  const [activeNav, setActiveNavState] = useState(() => {
+    const parsed = parseHash();
+    return parsed.route || 'dashboard';
+  });
+
+  const setActiveNav = (navId) => {
+    const route = ROUTE_TO_NAV[navId] || navId;
+    setActiveNavState(route);
+    if (typeof window !== 'undefined') {
+      window.location.hash = '#/' + route;
+    }
+  };
 
   const navigateToView = (view) => {
     setCurrentView(view);
     if (typeof window !== 'undefined') {
       if (view === 'login') {
-        window.location.hash = '#login';
+        window.location.hash = '#/login';
+      } else if (view === 'landing') {
+        window.location.hash = '#/';
       } else if (view === 'app') {
-        window.location.hash = '#app';
-      } else {
-        window.location.hash = '';
+        const route = ROUTE_TO_NAV[activeNav] || activeNav || 'dashboard';
+        window.location.hash = '#/' + route;
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -49,17 +99,25 @@ export function AppProvider({ children }) {
 
   useEffect(() => {
     const handleHash = () => {
-      const h = window.location.hash;
-      if (h === '#login') {
+      const isAuthed = sessionStorage.getItem('ct360_auth') === 'true';
+      const parsed = parseHash();
+
+      if (parsed.view === 'login') {
         setCurrentView('login');
-      } else if (h === '#app') {
-        if (sessionStorage.getItem('ct360_auth') === 'true') {
+        return;
+      }
+      if (parsed.view === 'landing') {
+        setCurrentView('landing');
+        return;
+      }
+      if (parsed.view === 'app') {
+        if (isAuthed) {
           setCurrentView('app');
+          setActiveNavState(parsed.route);
         } else {
           setCurrentView('login');
+          window.location.hash = '#/login';
         }
-      } else if (h === '' || h.startsWith('#hero') || h.startsWith('#features') || h.startsWith('#showcase') || h.startsWith('#calculator') || h.startsWith('#pricing') || h.startsWith('#contact')) {
-        setCurrentView('login');
       }
     };
     window.addEventListener('hashchange', handleHash);
@@ -79,13 +137,12 @@ export function AppProvider({ children }) {
     return {
       name: 'Sunil Mehta',
       email: 'admin@chemtrade360.com',
-      designation: 'Managing Director',
+      designation: 'Managing Director & Partner',
       hub: 'Dahej Terminal & Corporate HQ',
       avatar: 'SM'
     };
   });
 
-  const [activeNav, setActiveNav] = useState('overview');
   const [searchQuery, setSearchQuery] = useState('');
   const [toasts, setToasts] = useState([]);
 
@@ -116,44 +173,38 @@ export function AppProvider({ children }) {
   ]);
 
   const login = (roleId = 'admin', customEmail = null) => {
-    const roleMetaObj = ROLE_DEFINITIONS.find(r => r.id === roleId) || ROLE_DEFINITIONS[1];
+    const roleMetaObj = ROLE_DEFINITIONS.find(r => r.id === roleId) || ROLE_DEFINITIONS[0];
     
-    // Role-specific persona
     const personas = {
       admin: { name: 'Sunil Mehta', email: 'admin@chemtrade360.com', designation: 'Managing Director & Partner', hub: 'Dahej Terminal & HQ', avatar: 'SM' },
       sales_staff: { name: 'Vikram Mehta', email: 'sales@chemtrade360.com', designation: 'Sales Head', hub: 'Mumbai Commercial Office', avatar: 'VM' },
       inventory_staff: { name: 'Dinesh Patel', email: 'inventory@chemtrade360.com', designation: 'Inventory & Warehouse Manager', hub: 'Dahej Bulk Storage Bay', avatar: 'DP' },
       super_admin: { name: 'Vikram Singhania', email: 'admin@chemtrade360.com', designation: 'Enterprise Administrator', hub: 'Corporate IT & Security', avatar: 'VS' },
-      business_owner: { name: 'Sunil Mehta', email: 's.mehta@chemtrade360.com', designation: 'Managing Director & Partner', hub: 'Dahej Terminal & HQ', avatar: 'SM' },
-      sales_manager: { name: 'Vikram Mehta', email: 'v.mehta@chemtrade360.com', designation: 'Head of Sales & Distribution', hub: 'Mumbai Commercial Office', avatar: 'VM' },
-      sales_executive: { name: 'Rahul Sen', email: 'r.sen@chemtrade360.com', designation: 'Sr. Chemical Sales Executive', hub: 'Dahej Terminal Hub', avatar: 'RS' },
-      purchase_manager: { name: 'Kavita Shah', email: 'k.shah@chemtrade360.com', designation: 'Head of Procurement & Sourcing', hub: 'Dahej Liquid Terminal', avatar: 'KS' },
-      warehouse_manager: { name: 'Dinesh Patel', email: 'd.patel@chemtrade360.com', designation: 'Terminal & Warehouse Manager', hub: 'Dahej Bulk Storage Bay', avatar: 'DP' },
-      accountant: { name: 'Pooja Iyer', email: 'p.iyer@chemtrade360.com', designation: 'Chief Financial Accountant', hub: 'Central Finance Division', avatar: 'PI' },
-      logistics_manager: { name: 'Harish Nair', email: 'h.nair@chemtrade360.com', designation: 'Logistics & Tanker Fleet Head', hub: 'Western Dispatch Depot', avatar: 'HN' },
-      customer_portal: { name: 'Rajesh Sharma', email: 'r.sharma@asianpaints.com', designation: 'Head of Sourcing (Asian Paints)', hub: 'Taloja Plant, Navi Mumbai', avatar: 'AP' },
-      supplier_portal: { name: 'Hiren Mehta', email: 'h.mehta@gacl.co.in', designation: 'Commercial Sales Head (GACL)', hub: 'Vadodara / Dahej Complex', avatar: 'GA' }
+      business_owner: { name: 'Sunil Mehta', email: 'admin@chemtrade360.com', designation: 'Managing Director & Partner', hub: 'Dahej Terminal & HQ', avatar: 'SM' },
+      sales_manager: { name: 'Vikram Mehta', email: 'sales@chemtrade360.com', designation: 'Head of Sales & Distribution', hub: 'Mumbai Commercial Office', avatar: 'VM' },
+      sales_executive: { name: 'Rahul Sen', email: 'sales@chemtrade360.com', designation: 'Sr. Chemical Sales Executive', hub: 'Dahej Terminal Hub', avatar: 'RS' },
+      purchase_manager: { name: 'Kavita Shah', email: 'inventory@chemtrade360.com', designation: 'Head of Procurement & Sourcing', hub: 'Dahej Liquid Terminal', avatar: 'KS' },
+      warehouse_manager: { name: 'Dinesh Patel', email: 'inventory@chemtrade360.com', designation: 'Terminal & Warehouse Manager', hub: 'Dahej Bulk Storage Bay', avatar: 'DP' },
+      accountant: { name: 'Pooja Iyer', email: 'admin@chemtrade360.com', designation: 'Chief Financial Accountant', hub: 'Central Finance Division', avatar: 'PI' },
+      logistics_manager: { name: 'Harish Nair', email: 'inventory@chemtrade360.com', designation: 'Logistics & Tanker Fleet Head', hub: 'Western Dispatch Depot', avatar: 'HN' }
     };
 
-    const userObj = personas[roleId] || personas.business_owner;
+    const userObj = personas[roleId] || personas.admin;
     if (customEmail) userObj.email = customEmail;
 
     setCurrentUser(userObj);
     setCurrentRole(roleId);
     setIsAuthenticated(true);
-
     setCurrentView('app');
+
     sessionStorage.setItem('ct360_auth', 'true');
     localStorage.setItem('ct360_auth', 'true');
     localStorage.setItem('ct360_role', roleId);
     localStorage.setItem('ct360_user', JSON.stringify(userObj));
 
-    if (roleId === 'customer_portal') {
-      setActiveNav('customer_portal');
-    } else if (roleId === 'supplier_portal') {
-      setActiveNav('supplier_portal');
-    } else {
-      setActiveNav('overview');
+    setActiveNavState('dashboard');
+    if (typeof window !== 'undefined') {
+      window.location.hash = '#/dashboard';
     }
 
     showToast(`Welcome back, ${userObj.name}! Logged in as ${roleMetaObj.name}.`, 'success');
@@ -161,10 +212,12 @@ export function AppProvider({ children }) {
 
   const logout = () => {
     setIsAuthenticated(false);
-
-    setCurrentView('landing');
     sessionStorage.removeItem('ct360_auth');
     localStorage.removeItem('ct360_auth');
+    setCurrentView('login');
+    if (typeof window !== 'undefined') {
+      window.location.hash = '#/login';
+    }
     showToast('You have been securely logged out of ChemTrade 360.', 'info');
   };
 

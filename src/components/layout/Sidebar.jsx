@@ -20,28 +20,34 @@ import {
 export default function Sidebar({ collapsed, setCollapsed }) {
   const { activeNav, setActiveNav, currentRole, roleMeta, logout } = useApp();
 
-  // Simple 10 Core Business Modules
+  // Simple 10 Core Business Modules with Exact Matching Routes
   const navItems = [
-    { id: 'overview', label: 'Dashboard', icon: LayoutDashboard, badge: null },
-    { id: 'crm', label: 'Customers', icon: Users, badge: '4 Leads' },
-    { id: 'catalog', label: 'Chemicals', icon: FlaskConical, badge: null },
-    { id: 'quotations', label: 'Quotations', icon: FileSpreadsheet, badge: '1 Approval' },
-    { id: 'sales', label: 'Sales Orders', icon: ShoppingBag, badge: null },
-    { id: 'inventory', label: 'Inventory', icon: Boxes, badge: '1 Alert' },
-    { id: 'procurement', label: 'Purchases', icon: PackageCheck, badge: null },
-    { id: 'finance', label: 'Billing', icon: Receipt, badge: 'Overdue' },
-    { id: 'reports', label: 'Reports', icon: BarChart3, badge: null },
-    { id: 'admin', label: 'Settings', icon: Settings, badge: null }
+    { id: 'dashboard', legacyId: 'overview', label: 'Dashboard', icon: LayoutDashboard, badge: null },
+    { id: 'customers', legacyId: 'crm', label: 'Customers', icon: Users, badge: '4 Leads' },
+    { id: 'chemicals', legacyId: 'catalog', label: 'Chemicals', icon: FlaskConical, badge: null },
+    { id: 'quotations', legacyId: 'quotations', label: 'Quotations', icon: FileSpreadsheet, badge: '1 Approval' },
+    { id: 'sales-orders', legacyId: 'sales', label: 'Sales Orders', icon: ShoppingBag, badge: null },
+    { id: 'inventory', legacyId: 'inventory', label: 'Inventory', icon: Boxes, badge: '1 Alert' },
+    { id: 'purchases', legacyId: 'procurement', label: 'Purchases', icon: PackageCheck, badge: null },
+    { id: 'billing', legacyId: 'finance', label: 'Billing', icon: Receipt, badge: 'Overdue' },
+    { id: 'reports', legacyId: 'reports', label: 'Reports', icon: BarChart3, badge: null },
+    { id: 'settings', legacyId: 'admin', label: 'Settings', icon: Settings, badge: null }
   ];
 
   // Role-based navigation: ONLY show menus that this role is permitted to access!
   const visibleNavList = navItems.filter((item) => {
-    return roleMeta?.allowedNav ? roleMeta.allowedNav.includes(item.id) : true;
+    if (!roleMeta?.allowedNav) return true;
+    return roleMeta.allowedNav.includes(item.id) || roleMeta.allowedNav.includes(item.legacyId);
   });
 
   useEffect(() => {
-    if (visibleNavList.length > 0 && !visibleNavList.some((item) => item.id === activeNav)) {
-      setActiveNav(visibleNavList[0].id);
+    if (visibleNavList.length > 0) {
+      const isCurrentVisible = visibleNavList.some(
+        (item) => item.id === activeNav || item.legacyId === activeNav
+      );
+      if (!isCurrentVisible) {
+        setActiveNav(visibleNavList[0].id);
+      }
     }
   }, [currentRole, visibleNavList, activeNav, setActiveNav]);
 
@@ -74,7 +80,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       <div className="flex-1 overflow-y-auto py-3 px-2 space-y-1">
         {visibleNavList.map((item) => {
           const Icon = item.icon;
-          const isActive = activeNav === item.id;
+          const isActive = activeNav === item.id || activeNav === item.legacyId;
 
           return (
             <button

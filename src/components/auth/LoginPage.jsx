@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { ROLE_DEFINITIONS } from '../../data/mockData';
 import {
   Mail,
   Key,
@@ -25,9 +24,6 @@ export default function LoginPage({ onBackToLanding }) {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
-  // Simple 3 Roles as per specification
-  const simpleRoles = ROLE_DEFINITIONS.filter(r => ['admin', 'sales_staff', 'inventory_staff'].includes(r.id));
 
   const demoAccounts = [
     {
@@ -73,8 +69,17 @@ export default function LoginPage({ onBackToLanding }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
+    let role = selectedRole || 'admin';
+    const lowerEmail = email.toLowerCase();
+    if (lowerEmail.includes('sales')) {
+      role = 'sales_staff';
+    } else if (lowerEmail.includes('inventory') || lowerEmail.includes('warehouse') || lowerEmail.includes('stock')) {
+      role = 'inventory_staff';
+    } else if (lowerEmail.includes('admin') || lowerEmail.includes('owner')) {
+      role = 'admin';
+    }
     setTimeout(() => {
-      login(selectedRole, email);
+      login(role, email);
       setIsLoading(false);
     }, 350);
   };
@@ -144,7 +149,7 @@ export default function LoginPage({ onBackToLanding }) {
             </span>
             <h1 className="text-2xl font-bold tracking-tight text-white">Sign In to ChemTrade 360</h1>
             <p className="text-xs text-slate-300 mt-1">
-              Select your role to access customers, chemicals, quotations, orders, inventory and billing.
+              Enter your corporate credentials or use fast login to access your trade dashboard.
             </p>
           </div>
 
@@ -152,21 +157,6 @@ export default function LoginPage({ onBackToLanding }) {
             {/* Left Column: Form (7 cols) */}
             <div className="lg:col-span-7 space-y-5">
               <form onSubmit={handleFormSubmit} className="space-y-4 text-xs">
-                <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
-                    Select Your Role
-                  </label>
-                  <select
-                    value={selectedRole}
-                    onChange={(e) => handleRoleSelect(e.target.value)}
-                    className="w-full p-2.5 bg-[#F7F5EC] border border-[#E3E8DF] rounded-xl text-xs font-bold text-[#17372F] focus:outline-none focus:ring-2 focus:ring-[#075C46]/20"
-                  >
-                    {simpleRoles.map(r => (
-                      <option key={r.id} value={r.id}>{r.name} — {r.description}</option>
-                    ))}
-                  </select>
-                </div>
-
                 <div>
                   <label className="block font-semibold text-slate-700 mb-1">
                     Corporate Email ID
@@ -234,7 +224,7 @@ export default function LoginPage({ onBackToLanding }) {
                     <span>Authenticating Credentials...</span>
                   ) : (
                     <>
-                      <span>Sign In as {simpleRoles.find(r => r.id === selectedRole)?.name || 'User'}</span>
+                      <span>Sign In to ChemTrade 360</span>
                       <ArrowRight className="w-4 h-4 text-[#C6A66A] group-hover:translate-x-1 transition-transform" />
                     </>
                   )}

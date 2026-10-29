@@ -1041,90 +1041,122 @@ export const ROLE_DEFINITIONS = [
     id: 'admin',
     name: 'Admin',
     type: 'internal',
-    defaultPath: 'overview',
+    defaultPath: 'dashboard',
     description: 'Full system management, users, settings, chemicals, orders, inventory and billing',
-    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'inventory', 'procurement', 'finance', 'reports', 'admin']
+    allowedNav: [
+      'dashboard', 'customers', 'chemicals', 'quotations', 'sales-orders', 'inventory', 'purchases', 'billing', 'reports', 'settings',
+      'overview', 'crm', 'catalog', 'sales', 'procurement', 'finance', 'admin'
+    ]
   },
   {
     id: 'sales_staff',
     name: 'Sales Staff',
     type: 'internal',
-    defaultPath: 'overview',
+    defaultPath: 'dashboard',
     description: 'Customer inquiries, quotations, sales orders and sales reports',
-    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'reports']
+    allowedNav: [
+      'dashboard', 'customers', 'chemicals', 'quotations', 'sales-orders', 'reports',
+      'overview', 'crm', 'catalog', 'sales'
+    ]
   },
   {
     id: 'inventory_staff',
     name: 'Inventory Staff',
     type: 'internal',
-    defaultPath: 'overview',
+    defaultPath: 'dashboard',
     description: 'Chemical stock, batch tracking, stock in/out, purchases and stock alerts',
-    allowedNav: ['overview', 'catalog', 'inventory', 'procurement', 'reports']
+    allowedNav: [
+      'dashboard', 'chemicals', 'inventory', 'purchases', 'reports',
+      'overview', 'catalog', 'procurement'
+    ]
   },
   // Compatibility aliases for previously saved sessions
   {
     id: 'business_owner',
     name: 'Admin',
     type: 'internal',
-    defaultPath: 'overview',
+    defaultPath: 'dashboard',
     description: 'Full system management, users, settings, chemicals, orders, inventory and billing',
-    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'inventory', 'procurement', 'finance', 'reports', 'admin']
+    allowedNav: [
+      'dashboard', 'customers', 'chemicals', 'quotations', 'sales-orders', 'inventory', 'purchases', 'billing', 'reports', 'settings',
+      'overview', 'crm', 'catalog', 'sales', 'procurement', 'finance', 'admin'
+    ]
   },
   {
     id: 'super_admin',
     name: 'Admin',
     type: 'internal',
-    defaultPath: 'overview',
+    defaultPath: 'dashboard',
     description: 'Full system management, users, settings, chemicals, orders, inventory and billing',
-    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'inventory', 'procurement', 'finance', 'reports', 'admin']
+    allowedNav: [
+      'dashboard', 'customers', 'chemicals', 'quotations', 'sales-orders', 'inventory', 'purchases', 'billing', 'reports', 'settings',
+      'overview', 'crm', 'catalog', 'sales', 'procurement', 'finance', 'admin'
+    ]
   },
   {
     id: 'sales_manager',
     name: 'Sales Staff',
     type: 'internal',
-    defaultPath: 'overview',
+    defaultPath: 'dashboard',
     description: 'Customer inquiries, quotations, sales orders and sales reports',
-    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'reports']
+    allowedNav: [
+      'dashboard', 'customers', 'chemicals', 'quotations', 'sales-orders', 'reports',
+      'overview', 'crm', 'catalog', 'sales'
+    ]
   },
   {
     id: 'sales_executive',
     name: 'Sales Staff',
     type: 'internal',
-    defaultPath: 'overview',
+    defaultPath: 'dashboard',
     description: 'Customer inquiries, quotations, sales orders and sales reports',
-    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'reports']
+    allowedNav: [
+      'dashboard', 'customers', 'chemicals', 'quotations', 'sales-orders', 'reports',
+      'overview', 'crm', 'catalog', 'sales'
+    ]
   },
   {
     id: 'purchase_manager',
     name: 'Inventory Staff',
     type: 'internal',
-    defaultPath: 'overview',
+    defaultPath: 'dashboard',
     description: 'Chemical stock, batch tracking, stock in/out, purchases and stock alerts',
-    allowedNav: ['overview', 'catalog', 'inventory', 'procurement', 'reports']
+    allowedNav: [
+      'dashboard', 'chemicals', 'inventory', 'purchases', 'reports',
+      'overview', 'catalog', 'procurement'
+    ]
   },
   {
     id: 'warehouse_manager',
     name: 'Inventory Staff',
     type: 'internal',
-    defaultPath: 'overview',
+    defaultPath: 'dashboard',
     description: 'Chemical stock, batch tracking, stock in/out, purchases and stock alerts',
-    allowedNav: ['overview', 'catalog', 'inventory', 'procurement', 'reports']
+    allowedNav: [
+      'dashboard', 'chemicals', 'inventory', 'purchases', 'reports',
+      'overview', 'catalog', 'procurement'
+    ]
   },
   {
     id: 'accountant',
     name: 'Admin',
     type: 'internal',
-    defaultPath: 'overview',
+    defaultPath: 'dashboard',
     description: 'Full system management, users, settings, chemicals, orders, inventory and billing',
-    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'inventory', 'procurement', 'finance', 'reports', 'admin']
+    allowedNav: [
+      'dashboard', 'customers', 'chemicals', 'quotations', 'sales-orders', 'inventory', 'purchases', 'billing', 'reports', 'settings',
+      'overview', 'crm', 'catalog', 'sales', 'procurement', 'finance', 'admin'
+    ]
   },
   {
     id: 'logistics_manager',
     name: 'Inventory Staff',
     type: 'internal',
-    defaultPath: 'overview',
+    defaultPath: 'dashboard',
     description: 'Chemical stock, batch tracking, stock in/out, purchases and stock alerts',
-    allowedNav: ['overview', 'catalog', 'inventory', 'procurement', 'reports']
+    allowedNav: [
+      'dashboard', 'chemicals', 'inventory', 'purchases', 'reports',
+      'overview', 'catalog', 'procurement'
+    ]
   }
 ];
-

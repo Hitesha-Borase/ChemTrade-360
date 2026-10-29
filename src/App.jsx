@@ -29,24 +29,31 @@ function MainLayout() {
 
   const renderActiveModule = () => {
     switch (activeNav) {
+      case 'dashboard':
       case 'overview':
         return <OverviewModule />;
+      case 'customers':
       case 'crm':
         return <CRMModule />;
+      case 'chemicals':
       case 'catalog':
         return <ChemicalCatalogModule />;
       case 'quotations':
         return <QuotationsModule />;
+      case 'sales-orders':
       case 'sales':
         return <SalesModule />;
       case 'inventory':
         return <InventoryModule />;
+      case 'purchases':
       case 'procurement':
         return <ProcurementModule />;
+      case 'billing':
       case 'finance':
         return <FinanceModule />;
       case 'reports':
         return <ReportsModule />;
+      case 'settings':
       case 'admin':
         return <AdminModule />;
       default:
