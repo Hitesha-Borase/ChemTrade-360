@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { X, Printer, Download, CheckCircle2 } from 'lucide-react';
+import { X, Printer, Download, CheckCircle2, MessageSquare } from 'lucide-react';
 
 export default function ViewPDFQuotationModal() {
   const { closeModal, modalData, showToast } = useApp();
@@ -25,8 +25,19 @@ export default function ViewPDFQuotationModal() {
           </div>
           <div className="flex items-center gap-2">
             <button
+              onClick={() => {
+                const text = encodeURIComponent(`Chemical Quotation ${q.id} for ${q.customerName}:\nTotal Amount: ₹${q.grandTotal?.toLocaleString('en-IN')}\nValid Until: ${q.validUntil}\nPayment Terms: ${q.paymentTerms}\nGenerated via ChemTrade 360.`);
+                window.open(`https://wa.me/?text=${text}`, '_blank');
+              }}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-sm"
+              title="Share quotation offer on WhatsApp"
+            >
+              <MessageSquare className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">WhatsApp</span>
+            </button>
+            <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors shadow-sm"
             >
               <Printer className="w-3.5 h-3.5 text-[#C6A66A]" />
               <span>Print / Save PDF</span>

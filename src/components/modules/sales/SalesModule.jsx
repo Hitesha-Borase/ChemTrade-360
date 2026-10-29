@@ -9,11 +9,12 @@ import {
   CheckCircle2,
   FileText,
   Clock,
-  Warehouse
+  Warehouse,
+  Receipt
 } from 'lucide-react';
 
 export default function SalesModule() {
-  const { salesOrders, openModal, showToast } = useApp();
+  const { salesOrders, updateSalesOrderStatus, openModal, showToast } = useApp();
   const [statusFilter, setStatusFilter] = useState('all');
 
   const filteredOrders = salesOrders.filter(so => {
@@ -85,32 +86,75 @@ export default function SalesModule() {
     {
       header: 'Status',
       accessor: 'status',
-      cell: (row) => <Badge status={row.status} />
+      cell: (row) => {
+        const nextStatus = {
+          'Confirmed': 'Ready to Dispatch',
+          'Ready to Dispatch': 'In Transit',
+          'In Transit': 'Delivered',
+          'Delivered': 'Confirmed'
+        };
+        return (
+          <Badge
+            status={row.status}
+            onClick={() => updateSalesOrderStatus && updateSalesOrderStatus(row.id, nextStatus[row.status] || 'Ready to Dispatch')}
+            title="Click to advance order status"
+          />
+        );
+      }
     },
     {
       header: 'Logistics Action',
       sortable: false,
       cell: (row) => (
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 whitespace-nowrap">
           {row.status === 'Confirmed' && (
             <button
               onClick={() => openModal('schedule_dispatch', row)}
-              className="px-2.5 py-1 text-xs bg-[#075C46] text-white rounded font-medium hover:bg-[#063F32]"
+              className="px-2.5 py-1 text-xs bg-[#075C46] text-white rounded-lg font-semibold hover:bg-[#063F32] shadow-xs active:scale-95 transition-all"
             >
               Allocate Tanker
             </button>
           )}
           {row.status === 'Ready to Dispatch' && (
             <button
-              onClick={() => showToast(`Dispatched order ${row.id}`, 'success')}
-              className="px-2.5 py-1 text-xs bg-[#0F795C] text-white rounded font-medium hover:bg-[#0F795C]/90"
+              onClick={() => {
+                if (updateSalesOrderStatus) {
+                  updateSalesOrderStatus(row.id, 'In Transit');
+                } else {
+                  showToast(`Dispatched order ${row.id}`, 'success');
+                }
+              }}
+              className="px-2.5 py-1 text-xs bg-[#0F795C] text-white rounded-lg font-semibold hover:bg-[#063F32] shadow-xs active:scale-95 transition-all"
             >
               Mark Dispatched
             </button>
           )}
           {row.status === 'In Transit' && (
-            <span className="text-[11px] text-blue-700 font-mono font-semibold">GPS Active</span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[10px] text-blue-700 font-mono font-bold bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">
+                GPS Live
+              </span>
+              <button
+                onClick={() => updateSalesOrderStatus && updateSalesOrderStatus(row.id, 'Delivered')}
+                className="px-2 py-1 text-xs bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 shadow-xs active:scale-95 transition-all"
+                title="Confirm delivery & sign POD"
+              >
+                Mark Delivered
+              </button>
+            </div>
           )}
+          {row.status === 'Delivered' && (
+            <span className="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+              Fulfilled
+            </span>
+          )}
+          <button
+            onClick={() => openModal('create_invoice', row)}
+            className="p-1 rounded-lg border border-[#E3E8DF] hover:bg-slate-50 text-slate-600 hover:text-[#075C46] transition-colors"
+            title="Generate GST Tax Invoice"
+          >
+            <Receipt className="w-3.5 h-3.5" />
+          </button>
         </div>
       )
     }
@@ -128,10 +172,10 @@ export default function SalesModule() {
         </div>
         <div className="flex items-center gap-2">
           <button
-            onClick={() => showToast('Opening Proforma Invoice generator', 'info')}
-            className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white border border-[#E3E8DF] hover:bg-[#F7F5EC] text-[#17372F] transition-colors"
+            onClick={() => openModal('create_invoice', salesOrders[0] || null)}
+            className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white border border-[#E3E8DF] hover:bg-[#F7F5EC] text-[#17372F] transition-colors shadow-2xs active:scale-95"
           >
-            Create Proforma
+            Create Proforma / Invoice
           </button>
         </div>
       </div>

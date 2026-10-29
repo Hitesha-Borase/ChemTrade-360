@@ -3,7 +3,7 @@ import { useApp } from '../../context/AppContext';
 import { X, ArrowDownToLine, CheckCircle2 } from 'lucide-react';
 
 export default function CreateGRNModal() {
-  const { closeModal, chemicals, batches, purchaseOrders, updateBatchStatus, logAudit, showToast } = useApp();
+  const { closeModal, chemicals, batches, purchaseOrders, addBatch, updateBatchStatus, logAudit, showToast } = useApp();
 
   const [poId, setPoId] = useState(purchaseOrders[0]?.id || 'PO-2026-0312');
   const [chemicalName, setChemicalName] = useState('Caustic Soda Lye (48%)');
@@ -19,8 +19,31 @@ export default function CreateGRNModal() {
     e.preventDefault();
     const grnId = `GRN-2026-0${Math.floor(190 + Math.random() * 80)}`;
 
-    logAudit(`Inwarded ${receivedQty} MT ${chemicalName} under GRN ${grnId} (Batch: ${batchNo}) at ${warehouse}. QC Status: ${qcStatus}`);
-    showToast(`GRN ${grnId} generated! Batch ${batchNo} created in inventory.`, 'success');
+    const newBatch = {
+      batchNo,
+      chemicalName,
+      supplier: purchaseOrders.find(p => p.id === poId)?.supplierName || 'Gujarat Alkalies & Chemicals',
+      receivedDate: new Date().toISOString().split('T')[0],
+      expiryDate,
+      initialQty: Number(receivedQty),
+      availableQty: qcStatus === 'Quarantined' ? 0 : Number(receivedQty),
+      reservedQty: 0,
+      quarantinedQty: qcStatus === 'Quarantined' ? Number(receivedQty) : 0,
+      uom: 'MT',
+      warehouse,
+      qualityStatus: qcStatus,
+      feFoPriority: 2,
+      coaVerified: true,
+      coaDocUrl: coaDoc,
+      notes: `Received via PO ${poId}`
+    };
+
+    if (addBatch) {
+      addBatch(newBatch);
+    } else {
+      logAudit(`Inwarded ${receivedQty} MT ${chemicalName} under GRN ${grnId} (Batch: ${batchNo}) at ${warehouse}. QC Status: ${qcStatus}`);
+      showToast(`GRN ${grnId} generated! Batch ${batchNo} created in inventory.`, 'success');
+    }
     closeModal();
   };
 

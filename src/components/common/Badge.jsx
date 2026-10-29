@@ -1,14 +1,14 @@
 import React from 'react';
 
-export default function Badge({ children, status, variant, size = 'sm', className = '' }) {
+export default function Badge({ children, status, variant, size = 'sm', className = '', onClick, title }) {
   // Determine variant based on status text or explicit variant
   let styleVariant = variant;
 
   if (!styleVariant && status) {
     const s = String(status).toLowerCase();
-    if (s.includes('approved') || s.includes('active') || s.includes('delivered') || s.includes('won') || s.includes('success') || s.includes('verified') || s.includes('paid')) {
+    if (s.includes('approved') || s.includes('active') || s.includes('delivered') || s.includes('won') || s.includes('success') || s.includes('verified') || s.includes('paid') || s.includes('confirmed')) {
       styleVariant = 'success';
-    } else if (s.includes('pending') || s.includes('review') || s.includes('warning') || s.includes('due') || s.includes('transit') || s.includes('quote')) {
+    } else if (s.includes('pending') || s.includes('review') || s.includes('warning') || s.includes('due') || s.includes('transit') || s.includes('quote') || s.includes('ready')) {
       styleVariant = 'warning';
     } else if (s.includes('quarantined') || s.includes('expired') || s.includes('danger') || s.includes('overdue') || s.includes('lost') || s.includes('rejected') || s.includes('cancelled')) {
       styleVariant = 'danger';
@@ -48,11 +48,17 @@ export default function Badge({ children, status, variant, size = 'sm', classNam
   const chosenStyle = variantStyles[styleVariant] || variantStyles.neutral;
   const dotColor = dotColors[styleVariant] || dotColors.neutral;
 
+  const Component = onClick ? 'button' : 'span';
+
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full border ${chosenStyle} ${sizeStyles[size]} ${className}`}>
-      <span className={`w-1.5 h-1.5 rounded-full ${dotColor}`} />
-      <span>{children || status}</span>
-    </span>
+    <Component
+      type={onClick ? 'button' : undefined}
+      onClick={onClick}
+      title={title}
+      className={`inline-flex items-center gap-1.5 rounded-full border whitespace-nowrap flex-shrink-0 select-none ${chosenStyle} ${sizeStyles[size]} ${onClick ? 'cursor-pointer hover:opacity-85 active:scale-95 transition-all' : ''} ${className}`}
+    >
+      <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${dotColor}`} />
+      <span className="truncate">{children || status}</span>
+    </Component>
   );
 }
-

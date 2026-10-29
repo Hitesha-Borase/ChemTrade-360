@@ -161,8 +161,9 @@ export default function WarehouseManagerDashboard() {
                         </button>
                       ) : (
                         <button
-                          onClick={() => showToast(`Viewing COA document for ${batch.batchNo}`, 'info')}
-                          className="px-2 py-1 border border-[#E3E8DF] rounded text-xs font-medium hover:bg-white"
+                          onClick={() => openModal('view_coa', batch)}
+                          className="px-2 py-1 border border-[#E3E8DF] rounded-lg text-xs font-semibold hover:bg-white text-slate-700 shadow-2xs active:scale-95 transition-all"
+                          title="View Certified COA Document"
                         >
                           COA Doc
                         </button>

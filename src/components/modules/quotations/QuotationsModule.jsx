@@ -32,7 +32,7 @@ export default function QuotationsModule() {
   });
 
   const isExternalCustomer = currentRole === 'customer_portal';
-  const isManagerOrAdmin = ['super_admin', 'business_owner', 'sales_manager'].includes(currentRole);
+  const isManagerOrAdmin = ['admin', 'super_admin', 'business_owner', 'sales_manager'].includes(currentRole);
 
   const columns = [
     {
@@ -97,16 +97,26 @@ export default function QuotationsModule() {
     {
       header: 'Approval Status',
       accessor: 'status',
-      cell: (row) => <Badge status={row.status} />
+      cell: (row) => (
+        <Badge
+          status={row.status}
+          onClick={() => {
+            if (row.status === 'Pending Approval' && isManagerOrAdmin) {
+              approveQuotation(row.id);
+            }
+          }}
+          title={row.status === 'Pending Approval' && isManagerOrAdmin ? 'Click to Approve quotation' : undefined}
+        />
+      )
     },
     {
       header: 'Actions',
       sortable: false,
       cell: (row) => (
-        <div className="flex items-center gap-1.5 flex-wrap">
+        <div className="flex items-center gap-1.5 flex-nowrap whitespace-nowrap">
           <button
             onClick={() => openModal('view_quote_pdf', row)}
-            className="p-1.5 rounded border border-[#E3E8DF] hover:bg-[#F7F5EC] text-slate-700"
+            className="p-1.5 rounded-lg border border-[#E3E8DF] hover:bg-emerald-50 hover:border-emerald-300 text-slate-700 shadow-2xs active:scale-95 transition-all"
             title="Preview Printable PDF Quotation"
           >
             <Download className="w-3.5 h-3.5 text-[#C6A66A]" />
@@ -115,7 +125,7 @@ export default function QuotationsModule() {
           {row.status === 'Pending Approval' && isManagerOrAdmin && (
             <button
               onClick={() => approveQuotation(row.id)}
-              className="px-2.5 py-1 text-xs bg-[#0F795C] text-white rounded font-semibold hover:bg-[#0F795C]/90"
+              className="px-2.5 py-1 text-xs bg-[#0F795C] text-white rounded-lg font-bold hover:bg-[#063F32] shadow-xs active:scale-95 transition-all"
             >
               Approve
             </button>
@@ -124,10 +134,16 @@ export default function QuotationsModule() {
           {row.status === 'Approved' && (
             <button
               onClick={() => convertQuoteToSalesOrder(row.id)}
-              className="px-2.5 py-1 text-xs bg-[#075C46] text-white rounded font-medium hover:bg-[#063F32]"
+              className="px-2.5 py-1 text-xs bg-[#075C46] text-white rounded-lg font-semibold hover:bg-[#063F32] shadow-xs active:scale-95 transition-all"
             >
               Convert to Order
             </button>
+          )}
+
+          {row.status === 'Accepted' && (
+            <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+              Order Active
+            </span>
           )}
         </div>
       )

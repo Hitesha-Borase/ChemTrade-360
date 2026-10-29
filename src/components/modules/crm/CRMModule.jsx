@@ -12,7 +12,8 @@ import {
   Clock,
   CheckCircle2,
   Calendar,
-  DollarSign
+  DollarSign,
+  MessageSquare
 } from 'lucide-react';
 
 export default function CRMModule() {
@@ -58,18 +59,33 @@ export default function CRMModule() {
     {
       header: 'Pipeline Stage',
       accessor: 'stage',
-      cell: (row) => <Badge status={row.stage} />
+      cell: (row) => {
+        const nextStages = {
+          'New Inquiry': 'Technical Review',
+          'Technical Review': 'Quotation Sent',
+          'Quotation Sent': 'Price Negotiation',
+          'Price Negotiation': 'Won',
+          'Won': 'New Inquiry'
+        };
+        return (
+          <Badge
+            status={row.stage}
+            onClick={() => updateLeadStage(row.id, nextStages[row.stage] || 'Technical Review')}
+            title="Click to progress lead stage"
+          />
+        );
+      }
     },
     {
       header: 'Assigned Exec',
       accessor: 'assignedTo',
-      cell: (row) => <span className="text-xs text-slate-700 font-medium">{row.assignedTo}</span>
+      cell: (row) => <span className="text-xs text-slate-700 font-medium whitespace-nowrap">{row.assignedTo}</span>
     },
     {
       header: 'Next Follow-up',
       accessor: 'nextFollowUp',
       cell: (row) => (
-        <span className="text-xs font-mono text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+        <span className="text-xs font-mono text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 whitespace-nowrap">
           {row.nextFollowUp}
         </span>
       )
@@ -78,13 +94,32 @@ export default function CRMModule() {
       header: 'Action',
       sortable: false,
       cell: (row) => (
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 whitespace-nowrap">
           <button
-            onClick={() => openModal('create_quote', { customerName: row.companyName, chemicalNeeded: row.chemicalNeeded })}
-            className="px-2.5 py-1 text-xs bg-[#075C46] text-white rounded font-medium hover:bg-[#063F32]"
+            onClick={() => openModal('create_quote', { customerName: row.companyName, chemicalNeeded: row.chemicalNeeded, qty: row.estimatedQty })}
+            className="px-2.5 py-1 text-xs bg-[#075C46] text-white rounded-lg font-semibold hover:bg-[#063F32] shadow-xs active:scale-95 transition-all"
+            title="Create formal quotation for this inquiry"
           >
             Draft Quote
           </button>
+          <button
+            onClick={() => {
+              const cleanPhone = (row.phone || '').replace(/[^0-9]/g, '');
+              const msg = encodeURIComponent(`Hello ${row.contactPerson}, following up regarding your chemical inquiry for ${row.chemicalNeeded} (${row.estimatedQty} ${row.uom || 'MT'}) with ChemTrade.`);
+              window.open(`https://wa.me/${cleanPhone}?text=${msg}`, '_blank');
+            }}
+            className="p-1 rounded-lg border border-[#E3E8DF] hover:bg-emerald-50 text-emerald-700 hover:border-emerald-300 transition-colors"
+            title={`WhatsApp ${row.contactPerson} (${row.phone})`}
+          >
+            <MessageSquare className="w-3.5 h-3.5" />
+          </button>
+          <a
+            href={`tel:${row.phone}`}
+            className="p-1 rounded-lg border border-[#E3E8DF] hover:bg-blue-50 text-blue-700 hover:border-blue-300 transition-colors"
+            title={`Call ${row.contactPerson} (${row.phone})`}
+          >
+            <Phone className="w-3.5 h-3.5" />
+          </a>
         </div>
       )
     }
@@ -142,6 +177,32 @@ export default function CRMModule() {
       header: 'Status',
       accessor: 'status',
       cell: (row) => <Badge status={row.status} />
+    },
+    {
+      header: 'Actions',
+      sortable: false,
+      cell: (row) => (
+        <div className="flex items-center gap-1.5 whitespace-nowrap">
+          <button
+            onClick={() => openModal('create_quote', { customerName: row.companyName })}
+            className="px-2.5 py-1 text-xs bg-[#075C46] text-white rounded-lg font-semibold hover:bg-[#063F32] shadow-xs active:scale-95 transition-all"
+            title="Create formal quote for customer"
+          >
+            Create Quote
+          </button>
+          <button
+            onClick={() => {
+              const cleanPhone = (row.phone || '').replace(/[^0-9]/g, '');
+              const msg = encodeURIComponent(`Hello ${row.contactPerson}, reaching out from ChemTrade regarding your industrial chemical orders.`);
+              window.open(`https://wa.me/${cleanPhone}?text=${msg}`, '_blank');
+            }}
+            className="p-1 rounded-lg border border-[#E3E8DF] hover:bg-emerald-50 text-emerald-700 hover:border-emerald-300 transition-colors"
+            title={`WhatsApp ${row.contactPerson}`}
+          >
+            <MessageSquare className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      )
     }
   ];
 

@@ -97,22 +97,22 @@ export default function ChemicalCatalogModule() {
       header: 'Documents & Compliance',
       sortable: false,
       cell: (row) => (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 whitespace-nowrap">
           <button
-            onClick={() => showToast(`Opening SDS (16-Section) for ${row.name}`, 'info')}
-            className="p-1.5 rounded border border-[#E3E8DF] hover:bg-slate-50 text-slate-700 text-xs flex items-center gap-1"
-            title="Safety Data Sheet"
+            onClick={() => openModal('view_sds', row)}
+            className="px-2 py-1 rounded-lg border border-[#E3E8DF] hover:bg-emerald-50 hover:border-emerald-300 text-slate-700 text-xs flex items-center gap-1 shadow-2xs active:scale-95 transition-all"
+            title="View & Download 16-Section GHS Safety Data Sheet (SDS PDF)"
           >
             <FileText className="w-3.5 h-3.5 text-[#C6A66A]" />
-            <span className="text-[11px]">SDS</span>
+            <span className="text-[11px] font-semibold">SDS</span>
           </button>
           <button
-            onClick={() => showToast(`Opening Certificate of Analysis for ${row.name}`, 'info')}
-            className="p-1.5 rounded border border-[#E3E8DF] hover:bg-slate-50 text-slate-700 text-xs flex items-center gap-1"
-            title="Certificate of Analysis"
+            onClick={() => openModal('view_coa', row)}
+            className="px-2 py-1 rounded-lg border border-[#E3E8DF] hover:bg-blue-50 hover:border-blue-300 text-slate-700 text-xs flex items-center gap-1 shadow-2xs active:scale-95 transition-all"
+            title="View & Download Certified Certificate of Analysis (COA PDF)"
           >
             <Download className="w-3.5 h-3.5 text-blue-600" />
-            <span className="text-[11px]">COA</span>
+            <span className="text-[11px] font-semibold">COA</span>
           </button>
         </div>
       )

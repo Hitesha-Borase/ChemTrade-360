@@ -5,9 +5,11 @@ import { X, Plus, Trash2, Calculator, AlertTriangle, ShieldCheck } from 'lucide-
 export default function CreateQuotationModal() {
   const { closeModal, addQuotation, chemicals, batches, customers, modalData } = useApp();
 
-  const [selectedCustomerId, setSelectedCustomerId] = useState(
-    modalData?.customerName ? (customers.find(c => c.companyName.includes(modalData.customerName))?.id || customers[0].id) : customers[0].id
-  );
+  const matchedCustomer = modalData?.customerName 
+    ? customers.find(c => c.companyName.toLowerCase().includes(modalData.customerName.toLowerCase()) || modalData.customerName.toLowerCase().includes(c.companyName.toLowerCase()))
+    : null;
+
+  const [selectedCustomerId, setSelectedCustomerId] = useState(matchedCustomer?.id || customers[0]?.id || 'CUST-001');
   const [rfqRef, setRfqRef] = useState(`RFQ-${Math.floor(1000 + Math.random() * 9000)}`);
   const [validUntil, setValidUntil] = useState(
     new Date(Date.now() + 15 * 86400000).toISOString().split('T')[0]
@@ -16,17 +18,22 @@ export default function CreateQuotationModal() {
   const [deliveryTerms, setDeliveryTerms] = useState('FOR Customer Plant (Freight Paid)');
   const [freightCharges, setFreightCharges] = useState(25000);
 
+  const matchedChem = modalData?.chemicalNeeded
+    ? chemicals.find(c => c.name.toLowerCase().includes(modalData.chemicalNeeded.toLowerCase()) || modalData.chemicalNeeded.toLowerCase().includes(c.name.toLowerCase()))
+    : null;
+  const initialChem = matchedChem || chemicals[0] || {};
+
   // Line items state
   const [items, setItems] = useState([
     {
-      chemicalId: modalData?.chemicalNeeded ? (chemicals.find(c => c.name.includes(modalData.chemicalNeeded))?.id || chemicals[0].id) : chemicals[0].id,
-      name: modalData?.chemicalNeeded || chemicals[0].name,
-      cas: chemicals[0].casNumber,
-      grade: chemicals[0].grade,
+      chemicalId: initialChem.id || 'CHEM-001',
+      name: initialChem.name || modalData?.chemicalNeeded || 'Industrial Chemical',
+      cas: initialChem.casNumber || '1310-73-2',
+      grade: initialChem.grade || 'Technical Grade',
       qty: modalData?.qty || 20.0,
-      uom: chemicals[0].uom,
-      internalCostRate: Math.round(chemicals[0].basePricePerUnit * 0.9),
-      quotedRate: chemicals[0].basePricePerUnit,
+      uom: initialChem.uom || 'MT',
+      internalCostRate: Math.round((initialChem.basePricePerUnit || 30000) * 0.9),
+      quotedRate: initialChem.basePricePerUnit || 34500,
       discountPercent: 0,
       taxPercent: 18,
       allocatedBatch: batches[0]?.batchNo || 'Auto-FEFO'
@@ -126,7 +133,7 @@ export default function CreateQuotationModal() {
       freightCharges: Number(freightCharges),
       taxTotal: totalTax,
       grandTotal,
-      internalTotalCost,
+      internalTotalCost: totalInternalCost,
       grossMarginAmount: overallMargin,
       grossMarginPercent: overallMarginPercent,
       status: requiresApproval ? 'Pending Approval' : 'Approved',

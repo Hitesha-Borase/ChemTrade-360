@@ -186,7 +186,7 @@ export default function DataTable({
                 <th
                   key={col.accessor || col.header}
                   onClick={() => col.sortable !== false && col.accessor && handleSort(col.accessor)}
-                  className={`py-3 px-4 ${col.sortable !== false ? 'cursor-pointer hover:bg-slate-100/60' : ''} ${col.className || ''}`}
+                  className={`py-3 px-4 whitespace-nowrap ${col.sortable !== false ? 'cursor-pointer hover:bg-slate-100/60' : ''} ${col.className || ''}`}
                 >
                   <div className="flex items-center gap-1">
                     <span>{col.header}</span>

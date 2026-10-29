@@ -74,19 +74,39 @@ export default function InventoryModule() {
     {
       header: 'Status',
       accessor: 'qualityStatus',
-      cell: (row) => <Badge status={row.qualityStatus} />
+      cell: (row) => (
+        <Badge
+          status={row.qualityStatus}
+          onClick={() => {
+            if (row.qualityStatus === 'Quarantined') {
+              openModal('quarantine_review', row);
+            }
+          }}
+          title={row.qualityStatus === 'Quarantined' ? 'Click to Review & Release QC Hold' : 'Certified Batch Status'}
+        />
+      )
     },
     {
       header: 'Actions',
       sortable: false,
       cell: (row) => (
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 whitespace-nowrap">
           <button
-            onClick={() => showToast(`COA document verified for lot ${row.batchNo}`, 'info')}
-            className="px-2 py-1 border border-[#E3E8DF] rounded hover:bg-[#F7F5EC] text-xs font-medium text-slate-700"
+            onClick={() => openModal('view_coa', row)}
+            className="px-2.5 py-1 border border-[#E3E8DF] rounded-lg hover:bg-blue-50 hover:border-blue-300 text-xs font-semibold text-slate-700 shadow-2xs active:scale-95 transition-all"
+            title={`View and Download Certified COA for Lot ${row.batchNo}`}
           >
             View COA
           </button>
+          {row.qualityStatus === 'Quarantined' && (
+            <button
+              onClick={() => openModal('quarantine_review', row)}
+              className="px-2 py-1 text-xs bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 shadow-xs active:scale-95 transition-all"
+              title="Review Quarantine Hold & Lab Report"
+            >
+              Review QC
+            </button>
+          )}
         </div>
       )
     }

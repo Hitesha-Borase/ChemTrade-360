@@ -8,6 +8,8 @@ import CreateChemicalModal from './CreateChemicalModal';
 import DispatchScheduleModal from './DispatchScheduleModal';
 import QuarantineReviewModal from './QuarantineReviewModal';
 import InvoiceModal from './InvoiceModal';
+import ViewCOAModal from './ViewCOAModal';
+import ViewSDSModal from './ViewSDSModal';
 
 export default function ModalManager() {
   const { activeModal } = useApp();
@@ -31,8 +33,11 @@ export default function ModalManager() {
       return <QuarantineReviewModal />;
     case 'create_invoice':
       return <InvoiceModal />;
+    case 'view_coa':
+      return <ViewCOAModal />;
+    case 'view_sds':
+      return <ViewSDSModal />;
     default:
       return null;
   }
 }
-
