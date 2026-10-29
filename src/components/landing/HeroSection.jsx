@@ -94,29 +94,6 @@ export default function HeroSection({ onLaunchApp, onOpenDemo, onSelectFeature }
               All-in-one CRM + ERP platform for chemical traders, distributors, suppliers and exporters. Manage your leads, orders, inventory, compliance and more — in one place.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <button
-                type="button"
-                onClick={onLaunchApp}
-                className="group flex items-center gap-2.5 px-7 py-3.5 text-sm font-bold text-white bg-gradient-to-r from-[#063F32] via-[#075C46] to-[#063F32] hover:from-[#042a22] hover:to-[#063F32] rounded-full shadow-[0_8px_25px_rgba(6,63,50,0.3)] hover:shadow-[0_12px_30px_rgba(6,63,50,0.4)] transition-all hover:scale-105 active:scale-95"
-              >
-                <span>Get Started Free</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </button>
-
-              <button
-                type="button"
-                onClick={onOpenDemo}
-                className="flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-[#063F32] bg-white/80 hover:bg-white rounded-full border border-[#E3E8DF] shadow-sm backdrop-blur-md transition-all hover:scale-105 active:scale-95 hover:border-[#075C46]/40"
-              >
-                <div className="w-6 h-6 rounded-full bg-[#DDE9D9]/50 flex items-center justify-center">
-                  <Play className="w-3 h-3 fill-[#075C46] text-[#075C46] ml-0.5" />
-                </div>
-                <span>Watch Demo</span>
-              </button>
-            </div>
-
             {/* Quick Feature Badges (5 Cards Row from screenshot) */}
             <div className="mt-10 pt-8 border-t border-[#E3E8DF]/70">
               <p className="text-xs font-semibold text-[#7A8980] uppercase tracking-wider mb-3">

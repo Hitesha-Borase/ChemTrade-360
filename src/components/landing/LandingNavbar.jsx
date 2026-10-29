@@ -101,13 +101,13 @@ export default function LandingNavbar({ onLaunchApp, onOpenDemo }) {
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 bg-white/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/80 shadow-sm">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-4">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="px-3.5 py-1.5 text-xs font-semibold text-[#17372F] hover:text-[#075C46] hover:bg-[#DDE9D9]/30 rounded-full transition-all"
+                className="px-3 py-1.5 text-xs font-semibold text-[#17372F] hover:text-[#075C46] transition-colors"
               >
                 {link.name}
               </a>
