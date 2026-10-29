@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
-import { ROLE_DEFINITIONS } from '../../data/mockData';
 import {
   Search,
   Bell,
@@ -9,15 +8,18 @@ import {
   Plus,
   Shield,
   User,
-  ExternalLink,
   Layers,
   FileText,
   AlertTriangle,
   CheckCircle2,
   HelpCircle,
+<<<<<<< HEAD
   LogOut,
   Building2,
   Globe
+=======
+  Building2
+>>>>>>> 293b7a5b0d0f5299d772aa2e4d9269060c59c308
 } from 'lucide-react';
 
 export default function Topbar() {
@@ -25,8 +27,6 @@ export default function Topbar() {
     currentRole,
     roleMeta,
     currentUser,
-    logout,
-    switchRole,
     searchQuery,
     setSearchQuery,
     notifications,
@@ -34,12 +34,10 @@ export default function Topbar() {
     navigateToView
   } = useApp();
 
-  const [roleMenuOpen, setRoleMenuOpen] = useState(false);
   const [notifMenuOpen, setNotifMenuOpen] = useState(false);
   const [createMenuOpen, setCreateMenuOpen] = useState(false);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
 
-  const roleMenuRef = useRef(null);
   const notifMenuRef = useRef(null);
   const createMenuRef = useRef(null);
   const profileMenuRef = useRef(null);
@@ -47,9 +45,6 @@ export default function Topbar() {
   // Close menus on outside click
   useEffect(() => {
     function handleClickOutside(event) {
-      if (roleMenuRef.current && !roleMenuRef.current.contains(event.target)) {
-        setRoleMenuOpen(false);
-      }
       if (notifMenuRef.current && !notifMenuRef.current.contains(event.target)) {
         setNotifMenuOpen(false);
       }
@@ -65,9 +60,6 @@ export default function Topbar() {
   }, []);
 
   const unreadCount = notifications.filter(n => n.unread).length;
-
-  const internalRoles = ROLE_DEFINITIONS.filter(r => r.type === 'internal');
-  const externalPortals = ROLE_DEFINITIONS.filter(r => r.type === 'external');
 
   return (
     <header className="sticky top-0 z-40 glass-header px-4 sm:px-6 py-2.5 transition-all">
@@ -85,81 +77,6 @@ export default function Topbar() {
               </div>
               <p className="text-[10px] text-[#7A8980] hidden sm:block font-medium">B2B Chemical Trading CRM + ERP</p>
             </div>
-          </div>
-
-          <div className="h-6 w-px bg-[#E3E8DF] hidden md:block mx-1" />
-
-          {/* Role Perspective Dropdown */}
-          <div className="relative" ref={roleMenuRef}>
-            <button
-              onClick={() => setRoleMenuOpen(!roleMenuOpen)}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-[#E3E8DF] hover:border-[#C6A66A] text-xs transition-all shadow-subtle group"
-            >
-              <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#C6A66A] animate-pulse" />
-                <span className="text-[#7A8980] hidden lg:inline">Active Role:</span>
-                <span className="font-bold text-[#17372F]">{roleMeta.name}</span>
-              </div>
-              <ChevronDown className="w-3.5 h-3.5 text-[#7A8980] group-hover:text-[#17372F] transition-transform" />
-            </button>
-
-            {roleMenuOpen && (
-              <div className="absolute left-0 mt-2 w-72 glass-dropdown rounded-xl py-2 z-50 animate-in fade-in slide-in-from-top-2">
-                <div className="px-3 py-1.5 border-b border-[#E3E8DF]">
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-[#7A8980]">
-                    Switch Perspective (10 Roles)
-                  </p>
-                  <p className="text-[10px] text-slate-500">Live preview of all wireframe experiences</p>
-                </div>
-
-                <div className="max-h-80 overflow-y-auto py-1">
-                  <div className="px-3 py-1 text-[10px] font-bold text-[#7A8980] uppercase">Internal Dashboards (8)</div>
-                  {internalRoles.map((role) => (
-                    <button
-                      key={role.id}
-                      onClick={() => {
-                        switchRole(role.id);
-                        setRoleMenuOpen(false);
-                      }}
-                      className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between hover:bg-[#F7F5EC] transition-colors ${
-                        currentRole === role.id ? 'bg-[#DDE9D9] text-[#17372F] font-bold border-l-2 border-[#C6A66A]' : 'text-slate-700'
-                      }`}
-                    >
-                      <div>
-                        <div>{role.name}</div>
-                        <div className="text-[10px] text-slate-400 font-normal truncate max-w-[210px]">{role.description}</div>
-                      </div>
-                      {currentRole === role.id && <span className="text-[10px] text-[#C6A66A] font-semibold">Active</span>}
-                    </button>
-                  ))}
-
-                  <div className="px-3 pt-2 pb-1 text-[10px] font-bold text-[#7A8980] uppercase border-t border-[#E3E8DF] mt-1">
-                    External Portals (2)
-                  </div>
-                  {externalPortals.map((role) => (
-                    <button
-                      key={role.id}
-                      onClick={() => {
-                        switchRole(role.id);
-                        setRoleMenuOpen(false);
-                      }}
-                      className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between hover:bg-[#F7F5EC] transition-colors ${
-                        currentRole === role.id ? 'bg-[#DDE9D9] text-[#17372F] font-bold border-l-2 border-[#C6A66A]' : 'text-slate-700'
-                      }`}
-                    >
-                      <div className="flex items-center gap-1.5">
-                        <ExternalLink className="w-3 h-3 text-[#2E6FBB]" />
-                        <div>
-                          <div>{role.name}</div>
-                          <div className="text-[10px] text-slate-400 font-normal truncate max-w-[200px]">{role.description}</div>
-                        </div>
-                      </div>
-                      {currentRole === role.id && <span className="text-[10px] text-[#C6A66A] font-semibold">Active</span>}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </div>
 
@@ -297,7 +214,7 @@ export default function Topbar() {
               className="flex items-center gap-2 pl-1 pr-1.5 py-1 rounded-xl hover:bg-white/80 transition-all border border-transparent hover:border-[#E3E8DF]"
               title="User Account & Security"
             >
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#101828] to-[#1e293b] text-[#C6A66A] flex items-center justify-center font-bold text-xs border border-[#C6A66A]/40 shadow-sm">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#063F32] to-[#075C46] text-[#C6A66A] flex items-center justify-center font-bold text-xs border border-[#C6A66A]/40 shadow-sm">
                 {currentUser?.avatar || 'CT'}
               </div>
               <div className="hidden xl:block text-left">
@@ -327,55 +244,20 @@ export default function Topbar() {
                       </span>
                     </div>
                   </div>
-                  <div className="mt-2 pt-2 border-t border-slate-200 text-[10px] text-slate-500">
+                  <div className="mt-2 pt-2 border-t border-[#E3E8DF] text-[10px] text-slate-500">
                     <div>Role: <strong className="text-[#17372F]">{roleMeta.name}</strong></div>
                     <div>Terminal: <span className="text-slate-700">{currentUser?.hub || 'Dahej Hub'}</span></div>
                   </div>
                 </div>
 
-                {/* Profile Actions */}
-                <div className="space-y-1 text-xs">
-                  <button
-                    onClick={() => {
-                      setProfileMenuOpen(false);
-                      setRoleMenuOpen(true);
-                    }}
-                    className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#F7F5EC] text-slate-700 flex items-center gap-2 transition-colors"
-                  >
-                    <User className="w-3.5 h-3.5 text-[#C6A66A]" />
-                    <span>Switch Role Perspective</span>
-                  </button>
-
-                  <div className="h-px bg-[#E4E7EC] my-1" />
-
-                  {/* Prominent Red Logout Button */}
-                  <button
-                    onClick={() => {
-                      setProfileMenuOpen(false);
-                      logout();
-                    }}
-                    className="w-full text-left px-3 py-2.5 rounded-lg bg-red-50 hover:bg-red-100 text-[#C43232] font-bold flex items-center justify-between transition-colors border border-red-200"
-                  >
-                    <div className="flex items-center gap-2">
-                      <LogOut className="w-4 h-4 text-[#C43232]" />
-                      <span>Log Out of Session</span>
-                    </div>
-                    <span className="text-[10px] text-red-500 font-normal">Sign out</span>
-                  </button>
+                {/* Account Details */}
+                <div className="pt-1 text-[11px] text-[#7A8980] flex items-center justify-between">
+                  <span>Dahej Central Node</span>
+                  <span className="text-[#075C46] font-semibold">Active Session</span>
                 </div>
               </div>
             )}
           </div>
-
-          {/* Direct One-Click Logout Header Button */}
-          <button
-            onClick={logout}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 hover:bg-red-100 border border-red-200 text-[#C43232] text-xs font-bold transition-all shadow-subtle group"
-            title="Sign Out of ChemTrade 360"
-          >
-            <LogOut className="w-3.5 h-3.5 text-[#C43232] group-hover:-translate-x-0.5 transition-transform" />
-            <span className="hidden sm:inline">Logout</span>
-          </button>
         </div>
       </div>
     </header>

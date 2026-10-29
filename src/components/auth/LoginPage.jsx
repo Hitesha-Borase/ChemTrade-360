@@ -119,6 +119,28 @@ export default function LoginPage({ onBackToLanding }) {
 
       {/* Main Authentication Box */}
       <main className="relative z-10 px-4 py-8 max-w-4xl mx-auto w-full flex flex-col items-center">
+        {/* Back navigation pill above card */}
+        <div className="w-full flex items-center justify-between mb-3 px-1">
+          <a
+            href="/"
+            onClick={(e) => {
+              if (window.history.length > 1) {
+                e.preventDefault();
+                window.history.back();
+              }
+            }}
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-[#DDE9D9]/80 hover:text-white transition-colors group cursor-pointer"
+            title="Back to Landing Page"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 text-[#C6A66A] group-hover:-translate-x-1 transition-transform" />
+            <span>Back to Landing Page</span>
+          </a>
+          <span className="text-[11px] text-[#C6A66A] font-semibold flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C6A66A] animate-pulse" />
+            Enterprise Node Dahej
+          </span>
+        </div>
+
         <div className="w-full bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#E3E8DF] overflow-hidden">
           {/* Top Banner inside card */}
           <div className="bg-[#063F32] text-white p-6 sm:p-8 border-b border-[#042a22] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -140,11 +162,10 @@ export default function LoginPage({ onBackToLanding }) {
                   setActiveTab('internal');
                   handleRoleSelect('business_owner');
                 }}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                  activeTab === 'internal'
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${activeTab === 'internal'
                     ? 'bg-[#075C46] text-white shadow-sm border border-[#0F795C]'
                     : 'text-slate-400 hover:text-white'
-                }`}
+                  }`}
               >
                 Internal ERP (8 Roles)
               </button>
@@ -154,11 +175,10 @@ export default function LoginPage({ onBackToLanding }) {
                   setActiveTab('external');
                   handleRoleSelect('customer_portal');
                 }}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1 ${
-                  activeTab === 'external'
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1 ${activeTab === 'external'
                     ? 'bg-[#C6A66A] text-[#17372F] shadow-sm font-bold'
                     : 'text-slate-400 hover:text-white'
-                }`}
+                  }`}
               >
                 <ExternalLink className="w-3 h-3" />
                 <span>External Portals</span>
@@ -293,11 +313,10 @@ export default function LoginPage({ onBackToLanding }) {
                       key={acc.roleId}
                       type="button"
                       onClick={() => handleQuickLogin(acc.roleId)}
-                      className={`w-full text-left p-2.5 rounded-lg border transition-all text-xs flex items-center justify-between group ${
-                        selectedRole === acc.roleId
+                      className={`w-full text-left p-2.5 rounded-lg border transition-all text-xs flex items-center justify-between group ${selectedRole === acc.roleId
                           ? 'bg-[#075C46] text-white border-[#075C46] shadow-sm'
                           : 'bg-white border-[#E3E8DF] hover:border-[#C6A66A] text-slate-800'
-                      }`}
+                        }`}
                     >
                       <div>
                         <div className="font-bold flex items-center gap-1.5">
@@ -310,9 +329,8 @@ export default function LoginPage({ onBackToLanding }) {
                           {acc.desc}
                         </div>
                       </div>
-                      <ArrowRight className={`w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity ${
-                        selectedRole === acc.roleId ? 'text-[#C6A66A] opacity-100' : 'text-slate-400'
-                      }`} />
+                      <ArrowRight className={`w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity ${selectedRole === acc.roleId ? 'text-[#C6A66A] opacity-100' : 'text-slate-400'
+                        }`} />
                     </button>
                   ))}
                 </div>
