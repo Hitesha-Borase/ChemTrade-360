@@ -75,13 +75,13 @@ export default function LoginPage({ onBackToLanding }) {
   };
 
   return (
-    <div className="h-screen w-screen max-h-screen overflow-hidden bg-[#F7F5EC] flex flex-col items-center justify-center p-4 relative select-none">
+    <div className="min-h-screen w-full bg-[#F7F5EC] flex flex-col items-center justify-start sm:justify-center p-3 sm:p-4 md:h-screen md:max-h-screen md:overflow-hidden overflow-y-auto relative select-none">
       {/* Background Decorative Gradient Orbs */}
       <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#075C46]/15 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#C6A66A]/15 blur-3xl pointer-events-none" />
 
       {/* Top Left Back Navigation Link */}
-      <div className="w-full max-w-4xl mb-3 flex items-center justify-between px-1 flex-shrink-0">
+      <div className="w-full max-w-md md:max-w-4xl mb-2 sm:mb-3 flex items-center justify-between px-1 flex-shrink-0">
         <button
           type="button"
           onClick={() => navigateToView ? navigateToView('landing') : onBackToLanding?.()}
@@ -97,16 +97,16 @@ export default function LoginPage({ onBackToLanding }) {
       </div>
 
       {/* Main 2-Column Split Card (Matches Reference Wireframe Image) */}
-      <div className="w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-slate-200/80 overflow-hidden grid grid-cols-1 md:grid-cols-12 flex-shrink-0">
+      <div className="w-full max-w-md md:max-w-4xl bg-white rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl border border-slate-200/80 overflow-hidden grid grid-cols-1 md:grid-cols-12 flex-shrink-0 my-auto">
         {/* Left Column: Dark Emerald Brand Experience (5 cols) */}
-        <div className="md:col-span-5 bg-gradient-to-br from-[#042a22] via-[#063F32] to-[#075C46] text-white p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden">
+        <div className="md:col-span-5 bg-gradient-to-br from-[#042a22] via-[#063F32] to-[#075C46] text-white p-5 sm:p-6 md:p-8 flex flex-col justify-between relative overflow-hidden">
           {/* Subtle Glows inside left container */}
           <div className="absolute top-0 right-0 w-56 h-56 bg-[#0F795C]/30 rounded-full blur-2xl pointer-events-none" />
           <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-[#C6A66A]/20 rounded-full blur-2xl pointer-events-none" />
 
           {/* Brand Header */}
           <div className="relative z-10">
-            <div className="flex items-center gap-2.5 mb-7">
+            <div className="flex items-center gap-2.5 mb-3 sm:mb-4 md:mb-7">
               <div className="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xs">
                 <FlaskConical className="w-5 h-5 text-[#C6A66A]" />
               </div>
@@ -121,16 +121,16 @@ export default function LoginPage({ onBackToLanding }) {
             </div>
 
             {/* Greeting */}
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight">
               Welcome Back!
             </h1>
-            <p className="text-xs text-[#DDE9D9]/80 mt-2 leading-relaxed max-w-xs">
+            <p className="text-xs text-[#DDE9D9]/80 mt-1 md:mt-2 leading-relaxed max-w-xs">
               Sign in to your account to continue your chemical trading journey.
             </p>
           </div>
 
           {/* 3 Core Value Features with Circular Icons */}
-          <div className="relative z-10 space-y-4 my-6">
+          <div className="relative z-10 hidden md:block space-y-4 my-6">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center flex-shrink-0 text-emerald-300">
                 <ShieldCheck className="w-4 h-4" />
@@ -163,7 +163,7 @@ export default function LoginPage({ onBackToLanding }) {
           </div>
 
           {/* Bottom Decorative Molecule Graphic */}
-          <div className="relative z-10 flex items-center justify-between text-[10px] text-emerald-200/50 pt-2 border-t border-white/10">
+          <div className="relative z-10 hidden md:flex items-center justify-between text-[10px] text-emerald-200/50 pt-2 border-t border-white/10">
             <span>Dahej Central Node</span>
             <span className="flex items-center gap-1 text-[#C6A66A]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C6A66A] animate-pulse" />
@@ -173,15 +173,15 @@ export default function LoginPage({ onBackToLanding }) {
         </div>
 
         {/* Right Column: Clean White Sign-In Card (7 cols) */}
-        <div className="md:col-span-7 bg-white p-7 sm:p-8 flex flex-col justify-between">
+        <div className="md:col-span-7 bg-white p-5 sm:p-6 md:p-8 flex flex-col justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-[#17372F] tracking-tight">Sign In</h2>
-            <p className="text-xs text-slate-500 mt-1 mb-5">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#17372F] tracking-tight">Sign In</h2>
+            <p className="text-xs text-slate-500 mt-0.5 mb-3 md:mb-5">
               Enter your credentials to access your account
             </p>
 
             {/* Login Form */}
-            <form onSubmit={handleFormSubmit} className="space-y-3.5 text-xs">
+            <form onSubmit={handleFormSubmit} className="space-y-3 md:space-y-3.5 text-xs">
               <div>
                 <label className="block font-semibold text-slate-700 mb-1">
                   Email Address
@@ -244,7 +244,7 @@ export default function LoginPage({ onBackToLanding }) {
             </form>
 
             {/* Divider: Demo Credentials (1-Click Login) */}
-            <div className="relative my-4 text-center">
+            <div className="relative my-3 md:my-4 text-center">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-slate-200" />
               </div>
@@ -254,7 +254,7 @@ export default function LoginPage({ onBackToLanding }) {
             </div>
 
             {/* 3 Fast Login Demo Cards */}
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
               {demoAccounts.map((acc) => {
                 const isSelected = email === acc.email;
                 return (
@@ -262,17 +262,17 @@ export default function LoginPage({ onBackToLanding }) {
                     key={acc.roleId}
                     type="button"
                     onClick={() => handleQuickLogin(acc.roleId)}
-                    className={`p-2.5 rounded-xl border text-center transition-all group flex flex-col items-center justify-center ${
+                    className={`p-2 sm:p-2.5 rounded-xl border text-center transition-all group flex flex-col items-center justify-center ${
                       isSelected
                         ? 'border-[#075C46] bg-[#DDE9D9]/30 text-[#075C46] shadow-xs'
                         : 'border-slate-200 hover:border-[#075C46] bg-slate-50/70 hover:bg-slate-50 text-slate-700'
                     }`}
                     title={`Click to log in as ${acc.label} (${acc.name})`}
                   >
-                    <span className="text-[11px] font-bold block leading-tight group-hover:text-[#075C46]">
+                    <span className="text-[10px] sm:text-[11px] font-bold block leading-tight group-hover:text-[#075C46]">
                       {acc.label}
                     </span>
-                    <span className="text-[9px] text-slate-400 block mt-0.5 truncate max-w-full">
+                    <span className="text-[8px] sm:text-[9px] text-slate-400 block mt-0.5 truncate max-w-full">
                       {acc.name}
                     </span>
                   </button>
@@ -282,7 +282,7 @@ export default function LoginPage({ onBackToLanding }) {
           </div>
 
           {/* Footer note */}
-          <p className="text-[10px] text-slate-400 text-center mt-3 pt-2 border-t border-slate-100">
+          <p className="text-[10px] text-slate-400 text-center mt-2.5 sm:mt-3 pt-2 border-t border-slate-100">
             Don't have an account? <span className="font-semibold text-slate-600">Contact Admin</span>
           </p>
         </div>
