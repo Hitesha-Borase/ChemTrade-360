@@ -120,7 +120,7 @@ export default function AdminModule() {
           <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
             <div>
               <h2 className="text-sm font-bold text-[#17372F]">10-Role Permission Matrix & Isolation Guardrails</h2>
-              <p className="text-xs text-[#7A8980]">Least privilege security model (Wireframe Section 11)</p>
+              <p className="text-xs text-[#7A8980]">Least privilege enterprise security model</p>
             </div>
             <span className="text-xs bg-[#DDE9D9] text-[#075C46] font-bold px-2.5 py-1 rounded border border-[#C6A66A]/30">
               RBAC Verified

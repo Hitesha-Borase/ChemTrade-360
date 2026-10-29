@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import {
   LayoutDashboard,
@@ -18,7 +18,6 @@ import {
   ShieldCheck,
   Building2,
   PackageCheck,
-  Lock,
   Compass,
   LogOut
 } from 'lucide-react';
@@ -67,6 +66,19 @@ export default function Sidebar({ collapsed, setCollapsed }) {
   if (isCustomerPortal) currentNavList = customerPortalItems;
   if (isSupplierPortal) currentNavList = supplierPortalItems;
 
+  // Role-based navigation: ONLY show menus that this role is permitted to access!
+  // Disallowed menus are completely hidden (never rendered as blurred or dimmed).
+  const visibleNavList = currentNavList.filter((item) => {
+    if (isCustomerPortal || isSupplierPortal) return true;
+    return roleMeta?.allowedNav ? roleMeta.allowedNav.includes(item.id) : true;
+  });
+
+  useEffect(() => {
+    if (visibleNavList.length > 0 && !visibleNavList.some((item) => item.id === activeNav)) {
+      setActiveNav(visibleNavList[0].id);
+    }
+  }, [currentRole, visibleNavList, activeNav, setActiveNav]);
+
   return (
     <aside
       className={`relative z-30 flex flex-col h-full flex-shrink-0 bg-[#063F32] text-white transition-all duration-300 ease-in-out border-r border-[#042a22] select-none ${
@@ -79,7 +91,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
           <div className="flex items-center gap-2 overflow-hidden">
             <span className="w-2 h-2 rounded-full bg-[#0F795C]" />
             <span className="text-[11px] font-semibold text-[#DDE9D9] tracking-wider uppercase">
-              {isCustomerPortal ? 'Customer Portal' : isSupplierPortal ? 'Supplier Portal' : 'Enterprise ERP'}
+              {isCustomerPortal ? 'Customer Portal' : isSupplierPortal ? 'Supplier Portal' : roleMeta.name}
             </span>
           </div>
         )}
@@ -94,39 +106,30 @@ export default function Sidebar({ collapsed, setCollapsed }) {
 
       {/* Navigation List */}
       <div className="flex-1 overflow-y-auto py-3 px-2 space-y-1">
-        {currentNavList.map((item) => {
+        {visibleNavList.map((item) => {
           const Icon = item.icon;
           const isActive = activeNav === item.id;
-          const isPermitted = roleMeta.allowedNav.includes(item.id) || isCustomerPortal || isSupplierPortal;
 
           return (
             <button
               key={item.id}
-              onClick={() => {
-                if (isPermitted) setActiveNav(item.id);
-              }}
-              disabled={!isPermitted}
+              onClick={() => setActiveNav(item.id)}
               title={collapsed ? item.label : undefined}
               className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-all group relative ${
                 isActive
                   ? 'bg-[#0F795C] text-white shadow-sm font-semibold border border-[#0F795C]'
-                  : isPermitted
-                  ? 'text-[#DDE9D9] hover:bg-[#075C46]/60 hover:text-white'
-                  : 'text-[#7A8980]/60 cursor-not-allowed opacity-50'
+                  : 'text-[#DDE9D9] hover:bg-[#075C46]/60 hover:text-white'
               }`}
             >
-              <Icon className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-white' : isPermitted ? 'text-[#DDE9D9] group-hover:text-white' : 'text-[#7A8980]/60'}`} />
+              <Icon className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-white' : 'text-[#DDE9D9] group-hover:text-white'}`} />
 
               {!collapsed && (
                 <div className="flex-1 flex items-center justify-between overflow-hidden">
                   <span className="truncate text-left">{item.label}</span>
-                  {item.badge && isPermitted && (
+                  {item.badge && (
                     <span className="text-[10px] px-1.5 py-0.5 rounded font-semibold bg-[#DDE9D9]/20 text-[#DDE9D9] border border-[#DDE9D9]/30">
                       {item.badge}
                     </span>
-                  )}
-                  {!isPermitted && (
-                    <Lock className="w-3 h-3 text-[#7A8980]/60 flex-shrink-0" />
                   )}
                 </div>
               )}

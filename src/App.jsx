@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import Topbar from './components/layout/Topbar';
 import Sidebar from './components/layout/Sidebar';
-import RoleBanner from './components/layout/RoleBanner';
 import Toast from './components/common/Toast';
 import ModalManager from './components/modals/ModalManager';
 
@@ -82,11 +81,6 @@ function MainLayout() {
       {/* Top Application Bar */}
       <div className="flex-shrink-0">
         <Topbar />
-      </div>
-
-      {/* Role & Access Perspective Ribbon */}
-      <div className="flex-shrink-0">
-        <RoleBanner />
       </div>
 
       {/* Main Workspace Body */}

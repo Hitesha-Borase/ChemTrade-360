@@ -146,7 +146,7 @@ export default function CreateQuotationModal() {
         <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
           <div>
             <h2 className="text-lg font-bold text-[#17372F]">Commercial Chemical Quotation Builder</h2>
-            <p className="text-xs text-[#7A8980]">Wireframe Section 6.4: Interactive pricing, margin controls & FEFO lot allocation</p>
+            <p className="text-xs text-[#7A8980]">Interactive pricing, margin controls & FEFO lot allocation</p>
           </div>
           <button onClick={closeModal} className="p-1 rounded-lg text-slate-400 hover:text-slate-600">
             <X className="w-5 h-5" />
