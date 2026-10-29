@@ -18,9 +18,9 @@ import {
 const AppContext = createContext();
 
 export function AppProvider({ children }) {
-  // Authentication & Session
+  // Authentication & Session (starts on Login Page unless logged in)
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    return localStorage.getItem('ct360_auth') !== 'false';
+    return sessionStorage.getItem('ct360_auth') === 'true';
   });
 
   // Roles & Navigation
@@ -95,6 +95,7 @@ export function AppProvider({ children }) {
     setCurrentUser(userObj);
     setCurrentRole(roleId);
     setIsAuthenticated(true);
+    sessionStorage.setItem('ct360_auth', 'true');
     localStorage.setItem('ct360_auth', 'true');
     localStorage.setItem('ct360_role', roleId);
     localStorage.setItem('ct360_user', JSON.stringify(userObj));
@@ -112,7 +113,8 @@ export function AppProvider({ children }) {
 
   const logout = () => {
     setIsAuthenticated(false);
-    localStorage.setItem('ct360_auth', 'false');
+    sessionStorage.removeItem('ct360_auth');
+    localStorage.removeItem('ct360_auth');
     showToast('You have been securely logged out of ChemTrade 360.', 'info');
   };
 

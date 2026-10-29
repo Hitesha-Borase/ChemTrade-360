@@ -1,10 +1,10 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { ROLE_DEFINITIONS } from '../../data/mockData';
-import { Shield, Eye, Lock, ArrowRight, UserCheck } from 'lucide-react';
+import { Shield, Eye, Lock, ArrowRight, UserCheck, LogOut } from 'lucide-react';
 
 export default function RoleBanner() {
-  const { currentRole, switchRole, roleMeta } = useApp();
+  const { currentRole, switchRole, roleMeta, logout } = useApp();
 
   const isExternal = roleMeta.type === 'external';
 
@@ -75,6 +75,14 @@ export default function RoleBanner() {
             }`}
           >
             Supplier Portal
+          </button>
+          <button
+            onClick={logout}
+            className="px-2 py-0.5 rounded text-[11px] font-bold bg-red-100 border border-red-300 text-red-700 hover:bg-red-200 transition-colors flex items-center gap-1 shadow-xs"
+            title="Go to Login Screen"
+          >
+            <LogOut className="w-3 h-3 text-red-600" />
+            <span>Sign Out</span>
           </button>
         </div>
       </div>
