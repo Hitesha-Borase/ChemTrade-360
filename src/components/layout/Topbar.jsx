@@ -7,6 +7,7 @@ import {
   Sparkles,
   Plus,
   Shield,
+  User,
   Layers,
   FileText,
   AlertTriangle,
@@ -69,15 +70,6 @@ export default function Topbar() {
               </div>
               <p className="text-[10px] text-[#7A8980] hidden sm:block font-medium">B2B Chemical Trading CRM + ERP</p>
             </div>
-          </div>
-
-          <div className="h-6 w-px bg-[#E3E8DF] hidden md:block mx-1" />
-
-          {/* Static Active Role Indicator */}
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-[#E3E8DF] text-xs shadow-subtle">
-            <span className="w-2 h-2 rounded-full bg-[#0F795C]" />
-            <span className="text-[#7A8980]">Role:</span>
-            <span className="font-bold text-[#17372F]">{roleMeta.name}</span>
           </div>
         </div>
 
