@@ -13,13 +13,8 @@ import {
   AlertTriangle,
   CheckCircle2,
   HelpCircle,
-<<<<<<< HEAD
-  LogOut,
   Building2,
   Globe
-=======
-  Building2
->>>>>>> 293b7a5b0d0f5299d772aa2e4d9269060c59c308
 } from 'lucide-react';
 
 export default function Topbar() {
