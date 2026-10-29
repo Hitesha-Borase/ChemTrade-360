@@ -19,11 +19,12 @@ import {
   Building2,
   PackageCheck,
   Lock,
-  Compass
+  Compass,
+  LogOut
 } from 'lucide-react';
 
 export default function Sidebar({ collapsed, setCollapsed }) {
-  const { activeNav, setActiveNav, currentRole, roleMeta } = useApp();
+  const { activeNav, setActiveNav, currentRole, roleMeta, logout } = useApp();
 
   // Internal Navigation Items (Section 3 of wireframe)
   const internalNavItems = [
@@ -137,6 +138,18 @@ export default function Sidebar({ collapsed, setCollapsed }) {
             </button>
           );
         })}
+      </div>
+
+      {/* Logout Action in Sidebar */}
+      <div className="p-2 border-t border-[#1e293b]">
+        <button
+          onClick={logout}
+          title="Sign Out"
+          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors"
+        >
+          <LogOut className="w-4 h-4 flex-shrink-0 text-red-400" />
+          {!collapsed && <span>Log Out Session</span>}
+        </button>
       </div>
 
       {/* Sidebar Footer with Division / Branch */}

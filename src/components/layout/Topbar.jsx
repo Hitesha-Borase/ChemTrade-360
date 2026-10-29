@@ -282,4 +282,90 @@ export default function Topbar() {
             <button
               onClick={() => setProfileMenuOpen(!profileMenuOpen)}
               className="flex items-center gap-2 pl-1 pr-1.5 py-1 rounded-xl hover:bg-white/80 transition-all border border-transparent hover:border-[#E4E7EC]"
-              t
+              title="User Account & Security"
+            >
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#101828] to-[#1e293b] text-[#C6A66B] flex items-center justify-center font-bold text-xs border border-[#C6A66B]/40 shadow-sm">
+                {currentUser?.avatar || 'CT'}
+              </div>
+              <div className="hidden xl:block text-left">
+                <p className="text-xs font-semibold text-[#101828] leading-tight truncate max-w-[130px]">
+                  {currentUser?.name || 'Authorized Staff'}
+                </p>
+                <p className="text-[10px] text-[#667085] truncate max-w-[130px]">
+                  {roleMeta.name}
+                </p>
+              </div>
+              <ChevronDown className="w-3.5 h-3.5 text-[#667085] hidden xl:block" />
+            </button>
+
+            {profileMenuOpen && (
+              <div className="absolute right-0 mt-2 w-72 glass-dropdown rounded-2xl p-3 z-50 animate-in fade-in shadow-2xl">
+                {/* Profile Header */}
+                <div className="p-3 bg-[#FAF9F6] rounded-xl border border-[#E4E7EC] mb-2">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#101828] text-[#C6A66B] font-bold text-sm flex items-center justify-center border border-[#C6A66B]/40 shadow-sm">
+                      {currentUser?.avatar || 'CT'}
+                    </div>
+                    <div className="overflow-hidden">
+                      <p className="text-xs font-bold text-[#101828] truncate">{currentUser?.name}</p>
+                      <p className="text-[11px] text-slate-500 font-mono truncate">{currentUser?.email}</p>
+                      <span className="inline-block text-[10px] bg-emerald-50 text-emerald-800 font-semibold px-2 py-0.2 rounded-full border border-emerald-200 mt-1">
+                        Active Terminal Session
+                      </span>
+                    </div>
+                  </div>
+                  <div className="mt-2 pt-2 border-t border-slate-200 text-[10px] text-slate-500">
+                    <div>Role: <strong className="text-[#101828]">{roleMeta.name}</strong></div>
+                    <div>Terminal: <span className="text-slate-700">{currentUser?.hub || 'Dahej Hub'}</span></div>
+                  </div>
+                </div>
+
+                {/* Profile Actions */}
+                <div className="space-y-1 text-xs">
+                  <button
+                    onClick={() => {
+                      setProfileMenuOpen(false);
+                      setRoleMenuOpen(true);
+                    }}
+                    className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#FAF9F6] text-slate-700 flex items-center gap-2 transition-colors"
+                  >
+                    <User className="w-3.5 h-3.5 text-[#C6A66B]" />
+                    <span>Switch Role Perspective</span>
+                  </button>
+
+                  <div className="h-px bg-[#E4E7EC] my-1" />
+
+                  {/* Prominent Red Logout Button */}
+                  <button
+                    onClick={() => {
+                      setProfileMenuOpen(false);
+                      logout();
+                    }}
+                    className="w-full text-left px-3 py-2.5 rounded-lg bg-red-50 hover:bg-red-100 text-[#C43232] font-bold flex items-center justify-between transition-colors border border-red-200"
+                  >
+                    <div className="flex items-center gap-2">
+                      <LogOut className="w-4 h-4 text-[#C43232]" />
+                      <span>Log Out of Session</span>
+                    </div>
+                    <span className="text-[10px] text-red-500 font-normal">Sign out</span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Direct One-Click Logout Header Button */}
+          <button
+            onClick={logout}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 hover:bg-red-100 border border-red-200 text-[#C43232] text-xs font-bold transition-all shadow-subtle group"
+            title="Sign Out of ChemTrade 360"
+          >
+            <LogOut className="w-3.5 h-3.5 text-[#C43232] group-hover:-translate-x-0.5 transition-transform" />
+            <span className="hidden sm:inline">Logout</span>
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+}
+

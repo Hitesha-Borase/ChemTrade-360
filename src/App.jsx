@@ -25,6 +25,9 @@ import AdminModule from './components/modules/admin/AdminModule';
 import CustomerPortal from './components/portals/CustomerPortal';
 import SupplierPortal from './components/portals/SupplierPortal';
 
+// Authentication
+import LoginPage from './components/auth/LoginPage';
+
 function MainLayout() {
   const { activeNav, currentRole } = useApp();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -100,10 +103,25 @@ function MainLayout() {
   );
 }
 
+function AppContent() {
+  const { isAuthenticated } = useApp();
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-[#F7F6F2]">
+        <LoginPage />
+        <Toast />
+      </div>
+    );
+  }
+
+  return <MainLayout />;
+}
+
 export default function App() {
   return (
     <AppProvider>
-      <MainLayout />
+      <AppContent />
     </AppProvider>
   );
 }
