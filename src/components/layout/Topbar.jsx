@@ -14,7 +14,6 @@ import {
   CheckCircle2,
   HelpCircle,
   Building2,
-  Globe
 } from 'lucide-react';
 
 export default function Topbar() {
@@ -66,11 +65,7 @@ export default function Topbar() {
               <span className="font-bold text-[#C6A66A] text-lg leading-none">⚗</span>
             </div>
             <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-[#17372F] text-base tracking-tight">ChemTrade</span>
-                <span className="text-[#C6A66A] font-bold text-xs px-1.5 py-0.2 rounded bg-[#DDE9D9] border border-[#C6A66A]/40">360</span>
-              </div>
-              <p className="text-[10px] text-[#7A8980] hidden sm:block font-medium">B2B Chemical Trading CRM + ERP</p>
+              <span className="font-extrabold text-[#17372F] text-base tracking-tight">ChemTrade</span>
             </div>
           </div>
         </div>
@@ -92,16 +87,6 @@ export default function Topbar() {
         {/* Action Controls & Notifications */}
         <div className="flex items-center gap-2.5">
           {/* Quick Create Dropdown */}
-          {/* View Public Website / Landing Page */}
-          <button
-            type="button"
-            onClick={() => navigateToView && navigateToView('landing')}
-            className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/80 hover:bg-white text-xs font-semibold text-[#075C46] border border-[#E3E8DF] shadow-xs transition-all hover:border-[#075C46]/40"
-            title="View Public Landing Page"
-          >
-            <Globe className="w-3.5 h-3.5 text-[#C6A66A]" />
-            <span className="hidden xl:inline">Public Website</span>
-          </button>
 
           <div className="relative" ref={createMenuRef}>
             <button

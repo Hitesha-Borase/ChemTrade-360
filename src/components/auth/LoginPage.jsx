@@ -98,11 +98,7 @@ export default function LoginPage({ onBackToLanding }) {
             <span className="font-bold text-[#C6A66A] text-lg leading-none">⚗</span>
           </div>
           <div>
-            <div className="flex items-center gap-1.5">
-              <span className="font-extrabold text-white text-base tracking-tight">ChemTrade</span>
-              <span className="text-[#C6A66A] font-bold text-xs px-1.5 py-0.2 rounded bg-[#DDE9D9]/10 border border-[#C6A66A]/40">360</span>
-            </div>
-            <p className="text-[10px] text-slate-300">Chemical Trading CRM + ERP Platform</p>
+            <span className="font-extrabold text-white text-base tracking-tight">ChemTrade</span>
           </div>
         </div>
 
