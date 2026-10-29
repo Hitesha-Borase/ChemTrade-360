@@ -11,6 +11,7 @@ import {
   Eye,
   EyeOff,
   ArrowRight,
+  ArrowLeft,
   Sparkles,
   CheckCircle2,
   FlaskConical
@@ -100,14 +101,53 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <div className="hidden sm:flex items-center gap-2 text-xs text-slate-300">
-          <ShieldCheck className="w-4 h-4 text-[#C6A66A]" />
-          <span>AES-256 Bit Encrypted Industrial Portal</span>
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2 text-xs text-slate-300">
+            <ShieldCheck className="w-4 h-4 text-[#C6A66A]" />
+            <span>AES-256 Bit Encrypted Industrial Portal</span>
+          </div>
+
+          <a
+            href="/"
+            onClick={(e) => {
+              if (window.history.length > 1) {
+                e.preventDefault();
+                window.history.back();
+              }
+            }}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold border border-white/20 transition-all backdrop-blur-md shadow-sm group cursor-pointer"
+            title="Back to Landing Page"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 text-[#C6A66A] group-hover:-translate-x-0.5 transition-transform" />
+            <span>Back to Home</span>
+          </a>
         </div>
       </header>
 
       {/* Main Authentication Box */}
       <main className="relative z-10 px-4 py-8 max-w-4xl mx-auto w-full flex flex-col items-center">
+        {/* Back navigation pill above card */}
+        <div className="w-full flex items-center justify-between mb-3 px-1">
+          <a
+            href="/"
+            onClick={(e) => {
+              if (window.history.length > 1) {
+                e.preventDefault();
+                window.history.back();
+              }
+            }}
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-[#DDE9D9]/80 hover:text-white transition-colors group cursor-pointer"
+            title="Back to Landing Page"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 text-[#C6A66A] group-hover:-translate-x-1 transition-transform" />
+            <span>Back to Landing Page</span>
+          </a>
+          <span className="text-[11px] text-[#C6A66A] font-semibold flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C6A66A] animate-pulse" />
+            Enterprise Node Dahej
+          </span>
+        </div>
+
         <div className="w-full bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#E3E8DF] overflow-hidden">
           {/* Top Banner inside card */}
           <div className="bg-[#063F32] text-white p-6 sm:p-8 border-b border-[#042a22] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
