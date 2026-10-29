@@ -16,7 +16,8 @@ import {
   CheckCircle2,
   HelpCircle,
   LogOut,
-  Building2
+  Building2,
+  Globe
 } from 'lucide-react';
 
 export default function Topbar() {
@@ -29,7 +30,8 @@ export default function Topbar() {
     searchQuery,
     setSearchQuery,
     notifications,
-    openModal
+    openModal,
+    navigateToView
   } = useApp();
 
   const [roleMenuOpen, setRoleMenuOpen] = useState(false);
@@ -178,6 +180,17 @@ export default function Topbar() {
         {/* Action Controls & Notifications */}
         <div className="flex items-center gap-2.5">
           {/* Quick Create Dropdown */}
+          {/* View Public Website / Landing Page */}
+          <button
+            type="button"
+            onClick={() => navigateToView && navigateToView('landing')}
+            className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/80 hover:bg-white text-xs font-semibold text-[#075C46] border border-[#E3E8DF] shadow-xs transition-all hover:border-[#075C46]/40"
+            title="View Public Landing Page"
+          >
+            <Globe className="w-3.5 h-3.5 text-[#C6A66A]" />
+            <span className="hidden xl:inline">Public Website</span>
+          </button>
+
           <div className="relative" ref={createMenuRef}>
             <button
               onClick={() => setCreateMenuOpen(!createMenuOpen)}

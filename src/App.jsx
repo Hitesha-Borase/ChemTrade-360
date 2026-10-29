@@ -6,6 +6,9 @@ import RoleBanner from './components/layout/RoleBanner';
 import Toast from './components/common/Toast';
 import ModalManager from './components/modals/ModalManager';
 
+// Landing Page
+import LandingPage from './components/landing/LandingPage';
+
 // Modules
 import OverviewModule from './components/modules/overview/OverviewModule';
 import CRMModule from './components/modules/crm/CRMModule';
@@ -104,17 +107,28 @@ function MainLayout() {
 }
 
 function AppContent() {
-  const { isAuthenticated } = useApp();
+  const { isAuthenticated, currentView, navigateToView } = useApp();
 
-  if (!isAuthenticated) {
+  // If user requested to view the public landing page (or default unauthenticated)
+  if (currentView === 'landing') {
+    return (
+      <LandingPage
+        onLaunchApp={() => navigateToView(isAuthenticated ? 'app' : 'login')}
+      />
+    );
+  }
+
+  // If user requested login or not authenticated
+  if (!isAuthenticated || currentView === 'login') {
     return (
       <div className="min-h-screen bg-[#F7F5EC]">
-        <LoginPage />
+        <LoginPage onBackToLanding={() => navigateToView('landing')} />
         <Toast />
       </div>
     );
   }
 
+  // Otherwise, user is in the active ERP workspace
   return <MainLayout />;
 }
 
@@ -125,4 +139,3 @@ export default function App() {
     </AppProvider>
   );
 }
-

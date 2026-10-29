@@ -23,6 +23,49 @@ export function AppProvider({ children }) {
     return sessionStorage.getItem('ct360_auth') === 'true';
   });
 
+  // Perspective View: 'landing' (default) | 'login' | 'app'
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const h = window.location.hash;
+      if (h === '#login') return 'login';
+      if (h === '#app' && sessionStorage.getItem('ct360_auth') === 'true') return 'app';
+    }
+    return 'landing';
+  });
+
+  const navigateToView = (view) => {
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      if (view === 'login') {
+        window.location.hash = '#login';
+      } else if (view === 'app') {
+        window.location.hash = '#app';
+      } else {
+        window.location.hash = '';
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const h = window.location.hash;
+      if (h === '#login') {
+        setCurrentView('login');
+      } else if (h === '#app') {
+        if (sessionStorage.getItem('ct360_auth') === 'true') {
+          setCurrentView('app');
+        } else {
+          setCurrentView('login');
+        }
+      } else if (h === '' || h.startsWith('#hero') || h.startsWith('#features') || h.startsWith('#showcase') || h.startsWith('#calculator') || h.startsWith('#pricing') || h.startsWith('#contact')) {
+        setCurrentView('landing');
+      }
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
   // Roles & Navigation
   const [currentRole, setCurrentRole] = useState(() => {
     return localStorage.getItem('ct360_role') || 'business_owner';
@@ -95,6 +138,8 @@ export function AppProvider({ children }) {
     setCurrentUser(userObj);
     setCurrentRole(roleId);
     setIsAuthenticated(true);
+
+    setCurrentView('app');
     sessionStorage.setItem('ct360_auth', 'true');
     localStorage.setItem('ct360_auth', 'true');
     localStorage.setItem('ct360_role', roleId);
@@ -113,6 +158,8 @@ export function AppProvider({ children }) {
 
   const logout = () => {
     setIsAuthenticated(false);
+
+    setCurrentView('landing');
     sessionStorage.removeItem('ct360_auth');
     localStorage.removeItem('ct360_auth');
     showToast('You have been securely logged out of ChemTrade 360.', 'info');
@@ -328,7 +375,11 @@ export function AppProvider({ children }) {
       scheduleDispatch,
       addInvoice,
       markDelivered,
-      logAudit
+      logAudit,
+      // View Navigation
+      currentView,
+      setCurrentView,
+      navigateToView
     }}>
       {children}
     </AppContext.Provider>

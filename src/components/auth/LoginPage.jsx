@@ -11,13 +11,14 @@ import {
   Eye,
   EyeOff,
   ArrowRight,
+  ArrowLeft,
   Sparkles,
   CheckCircle2,
   FlaskConical
 } from 'lucide-react';
 
-export default function LoginPage() {
-  const { login } = useApp();
+export default function LoginPage({ onBackToLanding }) {
+  const { login, navigateToView } = useApp();
 
   const [selectedRole, setSelectedRole] = useState('business_owner');
   const [email, setEmail] = useState('s.mehta@chemtrade360.com');
@@ -100,9 +101,19 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <div className="hidden sm:flex items-center gap-2 text-xs text-slate-300">
-          <ShieldCheck className="w-4 h-4 text-[#C6A66A]" />
-          <span>AES-256 Bit Encrypted Industrial Portal</span>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => navigateToView ? navigateToView('landing') : onBackToLanding?.()}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold border border-white/25 transition-all shadow-sm"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 text-[#C6A66A]" />
+            <span>Back to Website</span>
+          </button>
+          <div className="hidden sm:flex items-center gap-2 text-xs text-slate-300">
+            <ShieldCheck className="w-4 h-4 text-[#C6A66A]" />
+            <span>AES-256 Bit Encrypted Industrial Portal</span>
+          </div>
         </div>
       </header>
 
