@@ -143,38 +143,41 @@ export default function Sidebar({ collapsed, setCollapsed }) {
         })}
       </div>
 
-      {/* Logout Action in Sidebar */}
-      <div className="p-2 border-t border-[#042a22] flex-shrink-0">
-        <button
-          onClick={logout}
-          title="Sign Out of ChemTrade 360"
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-red-300 hover:text-white hover:bg-red-950/60 border border-transparent hover:border-red-900/40 transition-all group"
-        >
-          <LogOut className="w-4 h-4 flex-shrink-0 text-red-400 group-hover:text-red-300 transition-colors" />
-          {!collapsed && (
-            <div className="flex-1 flex items-center justify-between">
-              <span>Sign Out</span>
-              <span className="text-[10px] text-red-400/80 uppercase tracking-wider font-semibold">Exit</span>
-            </div>
-          )}
-        </button>
-      </div>
-
-      {/* Sidebar Footer with Division / Branch */}
+      {/* Sidebar Footer with Division / Branch & Inline Logout Arrow */}
       <div className="p-3 border-t border-[#042a22] bg-[#042a22]/80 flex-shrink-0">
         {!collapsed ? (
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#075C46] flex items-center justify-center text-[#C6A66A] text-xs font-bold">
-              <Building2 className="w-4 h-4" />
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2.5 overflow-hidden">
+              <div className="w-8 h-8 rounded-lg bg-[#075C46] flex items-center justify-center text-[#C6A66A] text-xs font-bold flex-shrink-0">
+                <Building2 className="w-4 h-4" />
+              </div>
+              <div className="overflow-hidden">
+                <p className="text-[11px] font-semibold text-white truncate">Dahej Chemicals Hub</p>
+                <p className="text-[9px] text-[#DDE9D9]/70 truncate">GSTIN: 24AAACD4490M1Z2</p>
+              </div>
             </div>
-            <div className="overflow-hidden">
-              <p className="text-[11px] font-semibold text-white truncate">Dahej Chemicals Hub</p>
-              <p className="text-[9px] text-[#DDE9D9]/70 truncate">GSTIN: 24AAACD4490M1Z2</p>
-            </div>
+
+            {/* Small Logout Arrow Button */}
+            <button
+              onClick={logout}
+              title="Sign Out to Login Page"
+              className="p-1.5 rounded-lg text-[#DDE9D9]/70 hover:text-red-300 hover:bg-red-950/40 transition-colors flex-shrink-0 group"
+            >
+              <LogOut className="w-4 h-4 group-hover:scale-110 group-hover:-translate-x-0.5 transition-transform" />
+            </button>
           </div>
         ) : (
-          <div className="flex justify-center" title="Dahej Chemicals Hub">
-            <Building2 className="w-4 h-4 text-[#C6A66A]" />
+          <div className="flex flex-col items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-[#075C46] flex items-center justify-center text-[#C6A66A]" title="Dahej Chemicals Hub">
+              <Building2 className="w-4 h-4" />
+            </div>
+            <button
+              onClick={logout}
+              title="Sign Out to Login Page"
+              className="p-1.5 rounded-lg text-[#DDE9D9]/70 hover:text-red-300 hover:bg-red-950/40 transition-colors"
+            >
+              <LogOut className="w-4 h-4" />
+            </button>
           </div>
         )}
       </div>
