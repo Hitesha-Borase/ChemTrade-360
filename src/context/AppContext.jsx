@@ -127,7 +127,7 @@ export function AppProvider({ children }) {
   // Responsive Sidebar Open/Closed State (3-line hamburger menu toggle)
   const [sidebarOpen, setSidebarOpen] = useState(() => {
     if (typeof window !== 'undefined') {
-      return window.innerWidth >= 1024;
+      return window.innerWidth >= 768;
     }
     return true;
   });
@@ -447,7 +447,12 @@ export function AppProvider({ children }) {
       // View Navigation
       currentView,
       setCurrentView,
-      navigateToView
+      navigateToView,
+      sidebarOpen,
+      setSidebarOpen,
+      toggleSidebar,
+      closeSidebar,
+      openSidebar
     }}>
       {children}
     </AppContext.Provider>

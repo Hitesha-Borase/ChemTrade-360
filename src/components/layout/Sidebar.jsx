@@ -79,10 +79,10 @@ export default function Sidebar() {
 
       {/* Sidebar Container: Drawer on Mobile (< md), Collapsible Panel on Desktop (>= md) */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 md:static md:z-30 flex flex-col h-full flex-shrink-0 bg-[#063F32] text-white border-r border-[#042a22] select-none transition-all duration-300 ease-in-out ${
+        className={`fixed inset-y-0 left-0 z-50 h-full w-64 bg-[#063F32] text-white flex flex-col select-none transition-all duration-300 ease-in-out md:static md:z-30 md:h-full flex-shrink-0 border-r border-[#042a22] ${
           sidebarOpen
-            ? 'w-64 translate-x-0 shadow-2xl md:shadow-none'
-            : '-translate-x-full md:translate-x-0 md:w-0 md:border-r-0 md:overflow-hidden md:opacity-0 pointer-events-none'
+            ? 'translate-x-0 shadow-2xl md:shadow-none md:flex md:w-64'
+            : '-translate-x-full pointer-events-none md:pointer-events-auto md:hidden md:w-0'
         }`}
       >
         {/* Sidebar Header: Role Badge + Mobile Close Button */}
