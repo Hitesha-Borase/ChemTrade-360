@@ -101,7 +101,7 @@ function AppContent() {
   // If user requested login or not authenticated
   if (!isAuthenticated || currentView === 'login') {
     return (
-      <div className="min-h-screen bg-[#F7F5EC]">
+      <div className="h-screen overflow-hidden bg-[#F7F5EC]">
         <LoginPage onBackToLanding={() => navigateToView('landing')} />
         <Toast />
       </div>
