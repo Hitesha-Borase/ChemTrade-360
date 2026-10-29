@@ -42,14 +42,14 @@ export default function OverviewModule() {
   return (
     <div className="space-y-5">
       {/* Perspective Quick-Switcher Ribbon */}
-      <div className="bg-white/90 backdrop-blur-md border border-[#E4E7EC] rounded-xl p-2.5 shadow-subtle flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div className="bg-white/90 backdrop-blur-md border border-[#E3E8DF] rounded-xl p-2.5 shadow-subtle flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 rounded-lg bg-[#101828] text-[#C6A66B]">
+          <div className="p-1.5 rounded-lg bg-[#075C46] text-[#C6A66A]">
             <Eye className="w-4 h-4" />
           </div>
           <div>
-            <p className="text-xs font-bold text-[#101828]">Role Dashboards (Wireframe Section 5)</p>
-            <p className="text-[10px] text-[#667085]">Switch live between all 8 internal operational roles</p>
+            <p className="text-xs font-bold text-[#17372F]">Role Dashboards (Wireframe Section 5)</p>
+            <p className="text-[10px] text-[#7A8980]">Switch live between all 8 internal operational roles</p>
           </div>
         </div>
 
@@ -60,8 +60,8 @@ export default function OverviewModule() {
               onClick={() => switchRole(role.id)}
               className={`px-2.5 py-1 text-xs rounded-lg font-medium whitespace-nowrap transition-all border ${
                 currentRole === role.id
-                  ? 'bg-[#101828] text-white border-[#101828] shadow-sm font-semibold'
-                  : 'bg-[#FAF9F6] text-[#667085] border-[#E4E7EC] hover:bg-white hover:text-[#101828]'
+                  ? 'bg-[#075C46] text-white border-[#075C46] shadow-sm font-semibold'
+                  : 'bg-[#F7F5EC] text-[#7A8980] border-[#E3E8DF] hover:bg-white hover:text-[#17372F]'
               }`}
             >
               {role.name}

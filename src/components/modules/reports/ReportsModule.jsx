@@ -26,10 +26,10 @@ export default function ReportsModule() {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">Executive Trading Analytics & Profitability</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">Executive Trading Analytics & Profitability</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             Operational Gross Margin definitions, product-line profitability, trade volume turnover, and inventory valuation.
           </p>
         </div>
@@ -37,7 +37,7 @@ export default function ReportsModule() {
           <select
             value={reportPeriod}
             onChange={(e) => setReportPeriod(e.target.value)}
-            className="text-xs bg-white border border-[#E4E7EC] rounded-lg px-3 py-1.5 font-medium text-[#101828]"
+            className="text-xs bg-white border border-[#E3E8DF] rounded-lg px-3 py-1.5 font-medium text-[#17372F]"
           >
             <option value="q3">Q3 FY 2026-27 (Current)</option>
             <option value="oct">October 2026</option>
@@ -45,9 +45,9 @@ export default function ReportsModule() {
           </select>
           <button
             onClick={() => showToast('Exported Executive MIS Financial Report (Excel / PDF)', 'success')}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors shadow-sm"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors shadow-sm"
           >
-            <Download className="w-3.5 h-3.5 text-[#C6A66B]" />
+            <Download className="w-3.5 h-3.5 text-[#C6A66A]" />
             <span>Export Report</span>
           </button>
         </div>
@@ -92,11 +92,11 @@ export default function ReportsModule() {
       </div>
 
       {/* Chemical Product-Wise Profitability Breakdown */}
-      <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+      <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm space-y-4">
+        <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
           <div>
-            <h2 className="text-sm font-bold text-[#101828]">Chemical Commodity Line-Wise Profitability</h2>
-            <p className="text-xs text-[#667085]">
+            <h2 className="text-sm font-bold text-[#17372F]">Chemical Commodity Line-Wise Profitability</h2>
+            <p className="text-xs text-[#7A8980]">
               Strict Accounting Rule 379: Gross Margin = Revenue minus Direct Sourcing Landed Cost (Ex-works + Freight + Terminal Handling).
             </p>
           </div>
@@ -108,7 +108,7 @@ export default function ReportsModule() {
         <div className="overflow-x-auto">
           <table className="w-full text-xs text-left">
             <thead>
-              <tr className="bg-[#FAF9F6] border-b border-[#E4E7EC] text-slate-600 font-semibold uppercase">
+              <tr className="bg-[#F7F5EC] border-b border-[#E3E8DF] text-slate-600 font-semibold uppercase">
                 <th className="py-2.5 px-3">Chemical Commodity</th>
                 <th className="py-2.5 px-3">Sales Volume</th>
                 <th className="py-2.5 px-3">Billed Revenue</th>
@@ -117,14 +117,14 @@ export default function ReportsModule() {
                 <th className="py-2.5 px-3 text-right">Margin %</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E4E7EC]">
+            <tbody className="divide-y divide-[#E3E8DF]">
               {productProfitability.map((p, idx) => (
-                <tr key={idx} className="hover:bg-[#FAF9F6]">
-                  <td className="py-3 px-3 font-bold text-[#101828]">{p.chemical}</td>
+                <tr key={idx} className="hover:bg-[#F7F5EC]">
+                  <td className="py-3 px-3 font-bold text-[#17372F]">{p.chemical}</td>
                   <td className="py-3 px-3 font-mono font-medium">{p.volume}</td>
                   <td className="py-3 px-3 font-mono font-semibold">{p.revenue}</td>
                   <td className="py-3 px-3 font-mono text-slate-600">{p.cogs}</td>
-                  <td className="py-3 px-3 font-mono font-bold text-[#16805D]">{p.grossMargin}</td>
+                  <td className="py-3 px-3 font-mono font-bold text-[#0F795C]">{p.grossMargin}</td>
                   <td className="py-3 px-3 font-mono font-bold text-right text-emerald-800">
                     <span className="bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                       {p.marginPct}

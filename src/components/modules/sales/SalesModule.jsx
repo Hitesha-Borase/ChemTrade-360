@@ -27,7 +27,7 @@ export default function SalesModule() {
       accessor: 'id',
       cell: (row) => (
         <div>
-          <div className="font-bold text-[#101828] text-sm flex items-center gap-1.5">
+          <div className="font-bold text-[#17372F] text-sm flex items-center gap-1.5">
             <span>{row.id}</span>
             <span className="text-[10px] text-slate-400 font-mono">({row.quotationRef})</span>
           </div>
@@ -53,7 +53,7 @@ export default function SalesModule() {
         <div className="text-xs space-y-1">
           {row.items.map((it, idx) => (
             <div key={idx}>
-              <span className="font-bold text-[#101828]">{it.chemicalName}</span>
+              <span className="font-bold text-[#17372F]">{it.chemicalName}</span>
               <span className="text-slate-600 font-mono ml-1">({it.qty} {it.uom})</span>
               <div className="text-[10px] text-emerald-800 font-mono">Batch: {it.batchNo}</div>
             </div>
@@ -66,7 +66,7 @@ export default function SalesModule() {
       accessor: 'totalValue',
       cell: (row) => (
         <div>
-          <span className="font-mono font-bold text-sm text-[#101828]">
+          <span className="font-mono font-bold text-sm text-[#17372F]">
             ₹{row.totalValue.toLocaleString('en-IN')}
           </span>
           <span className="block text-[10px] text-slate-500">{row.paymentStatus}</span>
@@ -95,7 +95,7 @@ export default function SalesModule() {
           {row.status === 'Confirmed' && (
             <button
               onClick={() => openModal('schedule_dispatch', row)}
-              className="px-2.5 py-1 text-xs bg-[#101828] text-white rounded font-medium hover:bg-[#101828]/90"
+              className="px-2.5 py-1 text-xs bg-[#075C46] text-white rounded font-medium hover:bg-[#063F32]"
             >
               Allocate Tanker
             </button>
@@ -103,7 +103,7 @@ export default function SalesModule() {
           {row.status === 'Ready to Dispatch' && (
             <button
               onClick={() => showToast(`Dispatched order ${row.id}`, 'success')}
-              className="px-2.5 py-1 text-xs bg-[#16805D] text-white rounded font-medium hover:bg-[#16805D]/90"
+              className="px-2.5 py-1 text-xs bg-[#0F795C] text-white rounded font-medium hover:bg-[#0F795C]/90"
             >
               Mark Dispatched
             </button>
@@ -119,17 +119,17 @@ export default function SalesModule() {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">Sales Orders & Fulfilment</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">Sales Orders & Fulfilment</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             Confirmed customer purchase orders, batch reservation, dispatch scheduling, and delivery handoffs.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => showToast('Opening Proforma Invoice generator', 'info')}
-            className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white border border-[#E4E7EC] hover:bg-[#FAF9F6] text-[#101828] transition-colors"
+            className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white border border-[#E3E8DF] hover:bg-[#F7F5EC] text-[#17372F] transition-colors"
           >
             Create Proforma
           </button>

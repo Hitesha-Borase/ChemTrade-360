@@ -24,7 +24,7 @@ export default function ProcurementModule() {
       accessor: 'id',
       cell: (row) => (
         <div>
-          <div className="font-bold text-[#101828] text-sm font-mono">{row.id}</div>
+          <div className="font-bold text-[#17372F] text-sm font-mono">{row.id}</div>
           <div className="text-xs text-slate-700 font-semibold">{row.supplierName}</div>
           <div className="text-[10px] text-slate-400">Order Date: {row.orderDate}</div>
         </div>
@@ -37,7 +37,7 @@ export default function ProcurementModule() {
         <div className="text-xs space-y-0.5">
           {row.items.map((it, idx) => (
             <div key={idx}>
-              <span className="font-semibold text-[#101828]">{it.chemicalName}</span>
+              <span className="font-semibold text-[#17372F]">{it.chemicalName}</span>
               <span className="text-slate-500 font-mono ml-1">
                 ({it.orderedQty} {it.uom} @ ₹{it.rate.toLocaleString('en-IN')})
               </span>
@@ -51,7 +51,7 @@ export default function ProcurementModule() {
       accessor: 'totalAmount',
       cell: (row) => (
         <div>
-          <span className="font-mono font-bold text-sm text-[#101828]">
+          <span className="font-mono font-bold text-sm text-[#17372F]">
             ₹{row.totalAmount.toLocaleString('en-IN')}
           </span>
           <span className="block text-[10px] text-slate-500">{row.paymentStatus}</span>
@@ -84,7 +84,7 @@ export default function ProcurementModule() {
         <div className="flex items-center gap-1.5">
           <button
             onClick={() => openModal('create_grn', row)}
-            className="px-2.5 py-1 text-xs bg-[#101828] text-white rounded font-medium hover:bg-[#101828]/90"
+            className="px-2.5 py-1 text-xs bg-[#075C46] text-white rounded font-medium hover:bg-[#063F32]"
           >
             Create GRN
           </button>
@@ -99,8 +99,8 @@ export default function ProcurementModule() {
       accessor: 'companyName',
       cell: (row) => (
         <div>
-          <div className="font-bold text-[#101828]">{row.companyName}</div>
-          <div className="text-[11px] text-[#667085] font-mono">{row.id} • {row.city}</div>
+          <div className="font-bold text-[#17372F]">{row.companyName}</div>
+          <div className="text-[11px] text-[#7A8980] font-mono">{row.id} • {row.city}</div>
         </div>
       )
     },
@@ -145,30 +145,30 @@ export default function ProcurementModule() {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">Procurement & Inbound Logistics</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">Procurement & Inbound Logistics</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             Manage chemical suppliers, compare landed purchase costs, issue purchase orders, and verify goods receipts (GRN).
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => showToast('Opening Supplier RFQ creator', 'info')}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors shadow-sm"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors shadow-sm"
           >
-            <Plus className="w-3.5 h-3.5 text-[#C6A66B]" />
+            <Plus className="w-3.5 h-3.5 text-[#C6A66A]" />
             <span>Create Supplier RFQ</span>
           </button>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#E4E7EC] pb-2">
+      <div className="flex items-center gap-2 border-b border-[#E3E8DF] pb-2">
         <button
           onClick={() => setActiveTab('pos')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'pos' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'pos' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Purchase Orders ({purchaseOrders.length})
@@ -176,7 +176,7 @@ export default function ProcurementModule() {
         <button
           onClick={() => setActiveTab('comparisons')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'comparisons' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'comparisons' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Quote Comparison Matrix (1)
@@ -184,7 +184,7 @@ export default function ProcurementModule() {
         <button
           onClick={() => setActiveTab('suppliers')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'suppliers' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'suppliers' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Supplier Directory ({suppliers.length})
@@ -201,15 +201,15 @@ export default function ProcurementModule() {
       )}
 
       {activeTab === 'comparisons' && (
-        <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+        <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
             <div>
-              <h2 className="text-sm font-bold text-[#101828]">RFQ-PR-2026-092 Supplier Evaluation</h2>
-              <p className="text-xs text-[#667085]">
+              <h2 className="text-sm font-bold text-[#17372F]">RFQ-PR-2026-092 Supplier Evaluation</h2>
+              <p className="text-xs text-[#7A8980]">
                 Commodity: <strong>{comparison.chemical}</strong> ({comparison.requiredQty} {comparison.uom})
               </p>
             </div>
-            <span className="text-xs font-bold text-[#8C6F3B] bg-[#FAF7F0] px-2.5 py-1 rounded-full border border-[#C6A66B]/30">
+            <span className="text-xs font-bold text-[#075C46] bg-[#DDE9D9] px-2.5 py-1 rounded-full border border-[#C6A66A]/30">
               Landed Cost Evaluation
             </span>
           </div>
@@ -217,7 +217,7 @@ export default function ProcurementModule() {
           <div className="overflow-x-auto">
             <table className="w-full text-xs text-left">
               <thead>
-                <tr className="bg-[#FAF9F6] border-b border-[#E4E7EC] text-slate-600 font-semibold uppercase">
+                <tr className="bg-[#F7F5EC] border-b border-[#E3E8DF] text-slate-600 font-semibold uppercase">
                   <th className="py-2.5 px-3">Supplier Name</th>
                   <th className="py-2.5 px-3">Base Price</th>
                   <th className="py-2.5 px-3">Freight to Dahej</th>
@@ -227,13 +227,13 @@ export default function ProcurementModule() {
                   <th className="py-2.5 px-3 text-right">Recommendation</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E4E7EC]">
+              <tbody className="divide-y divide-[#E3E8DF]">
                 {comparison.quotes.map((q, idx) => (
-                  <tr key={idx} className={q.recommended ? 'bg-[#FAF7F0]/60' : 'hover:bg-[#FAF9F6]'}>
-                    <td className="py-3 px-3 font-bold text-[#101828]">{q.supplierName}</td>
+                  <tr key={idx} className={q.recommended ? 'bg-[#DDE9D9]/60' : 'hover:bg-[#F7F5EC]'}>
+                    <td className="py-3 px-3 font-bold text-[#17372F]">{q.supplierName}</td>
                     <td className="py-3 px-3 font-mono font-semibold">₹{q.baseRate.toLocaleString('en-IN')}/MT</td>
                     <td className="py-3 px-3 font-mono text-slate-600">₹{q.freightRate}/MT</td>
-                    <td className="py-3 px-3 font-mono font-bold text-sm text-[#101828]">
+                    <td className="py-3 px-3 font-mono font-bold text-sm text-[#17372F]">
                       ₹{q.totalLandedCost.toLocaleString('en-IN')}/MT
                     </td>
                     <td className="py-3 px-3">{q.creditDays} Days</td>

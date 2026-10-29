@@ -4,39 +4,39 @@
 
 @layer base {
   body {
-    background-color: #F7F6F2;
-    color: #101828;
+    background-color: #F7F5EC;
+    color: #17372F;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
 }
 
-/* Subtle frosted glass styles */
+/* Reference visual theme: Deep Forest Green, Dark Emerald, Soft Sage, Warm Ivory */
 .glass-header {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.90);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(228, 231, 236, 0.8);
+  border-bottom: 1px solid rgba(227, 232, 223, 0.9);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(228, 231, 236, 0.9);
+  border: 1px solid rgba(227, 232, 223, 0.9);
 }
 
 .glass-card-accent {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(244, 237, 224, 0.4) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(221, 233, 217, 0.4) 100%);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(198, 166, 107, 0.35);
+  border: 1px solid rgba(15, 121, 92, 0.25);
 }
 
 .glass-dropdown {
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid #E4E7EC;
-  box-shadow: 0 10px 25px -5px rgba(16, 24, 40, 0.1), 0 8px 10px -6px rgba(16, 24, 40, 0.05);
+  border: 1px solid #E3E8DF;
+  box-shadow: 0 10px 25px -5px rgba(6, 63, 50, 0.1), 0 8px 10px -6px rgba(6, 63, 50, 0.05);
 }
 
 /* Custom industrial scrollbars */
@@ -46,16 +46,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #F7F6F2;
+  background: #F7F5EC;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D1D5DB;
+  background: #C7D9C2;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9CA3AF;
+  background: #7A8980;
 }
 
 /* Print styling for quotation/invoice generation */
@@ -70,4 +70,3 @@
     display: block !important;
   }
 }
-

@@ -110,12 +110,12 @@ export default function DataTable({
   };
 
   return (
-    <div className="bg-white rounded-xl border border-[#E4E7EC] shadow-sm overflow-hidden flex flex-col">
+    <div className="bg-white rounded-xl border border-[#E3E8DF] shadow-sm overflow-hidden flex flex-col">
       {/* Table Toolbar */}
-      <div className="p-4 border-b border-[#E4E7EC] flex flex-col md:flex-row items-center justify-between gap-3 bg-white">
+      <div className="p-4 border-b border-[#E3E8DF] flex flex-col md:flex-row items-center justify-between gap-3 bg-white">
         <div className="flex items-center gap-3 w-full md:w-auto flex-1 max-w-md">
           <div className="relative w-full">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#667085]" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#7A8980]" />
             <input
               type="text"
               value={searchTerm}
@@ -124,7 +124,7 @@ export default function DataTable({
                 setCurrentPage(1);
               }}
               placeholder={searchPlaceholder}
-              className="w-full pl-9 pr-4 py-2 text-sm bg-[#FAF9F6] border border-[#E4E7EC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C6A66B]/30 focus:border-[#C6A66B] text-[#101828]"
+              className="w-full pl-9 pr-4 py-2 text-sm bg-[#F7F5EC] border border-[#E3E8DF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#075C46]/20 focus:border-[#075C46] text-[#17372F]"
             />
           </div>
         </div>
@@ -141,8 +141,8 @@ export default function DataTable({
                   }}
                   className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors border ${
                     activeFilter === opt.value
-                      ? 'bg-[#101828] text-white border-[#101828]'
-                      : 'bg-white text-[#667085] border-[#E4E7EC] hover:bg-[#FAF9F6]'
+                      ? 'bg-[#075C46] text-white border-[#075C46]'
+                      : 'bg-white text-[#7A8980] border-[#E3E8DF] hover:bg-[#F7F5EC]'
                   }`}
                 >
                   {opt.label}
@@ -159,9 +159,9 @@ export default function DataTable({
           <button
             onClick={exportCSV}
             title="Export CSV"
-            className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-[#101828] bg-white border border-[#E4E7EC] hover:bg-[#FAF9F6] rounded-lg transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-[#17372F] bg-white border border-[#E3E8DF] hover:bg-[#F7F5EC] rounded-lg transition-colors"
           >
-            <Download className="w-3.5 h-3.5 text-[#667085]" />
+            <Download className="w-3.5 h-3.5 text-[#7A8980]" />
             <span className="hidden sm:inline">Export</span>
           </button>
 
@@ -173,13 +173,13 @@ export default function DataTable({
       <div className="overflow-x-auto w-full min-h-[300px]">
         <table className="w-full text-left text-sm border-collapse">
           <thead>
-            <tr className="bg-[#FAF9F6] border-b border-[#E4E7EC] text-xs font-semibold text-[#667085] uppercase tracking-wider">
+            <tr className="bg-[#F7F5EC] border-b border-[#E3E8DF] text-xs font-semibold text-[#7A8980] uppercase tracking-wider">
               <th className="py-3 px-4 w-10 text-center">
                 <input
                   type="checkbox"
                   checked={paginatedData.length > 0 && selectedRows.size === paginatedData.length}
                   onChange={handleSelectAll}
-                  className="rounded border-[#E4E7EC] text-[#101828] focus:ring-[#C6A66B]"
+                  className="rounded border-[#E3E8DF] text-[#17372F] focus:ring-[#C6A66A]"
                 />
               </th>
               {columns.map((col) => (
@@ -195,8 +195,8 @@ export default function DataTable({
                         className={`w-3.5 h-3.5 transition-transform ${
                           sortColumn === col.accessor
                             ? sortDirection === 'desc'
-                              ? 'rotate-180 text-[#101828]'
-                              : 'text-[#101828]'
+                              ? 'rotate-180 text-[#17372F]'
+                              : 'text-[#17372F]'
                             : 'text-[#98A2B3] opacity-40'
                         }`}
                       />
@@ -206,7 +206,7 @@ export default function DataTable({
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#E4E7EC]">
+          <tbody className="divide-y divide-[#E3E8DF]">
             {paginatedData.length > 0 ? (
               paginatedData.map((row, idx) => {
                 const isSelected = selectedRows.has(idx);
@@ -215,7 +215,7 @@ export default function DataTable({
                     key={row.id || row.batchNo || row.invoiceNumber || row.challanNo || idx}
                     onClick={() => onRowClick && onRowClick(row)}
                     className={`transition-colors ${
-                      isSelected ? 'bg-[#FAF7F0]' : 'hover:bg-[#FAF9F6]/80'
+                      isSelected ? 'bg-[#DDE9D9]' : 'hover:bg-[#F7F5EC]/80'
                     } ${onRowClick ? 'cursor-pointer' : ''}`}
                   >
                     <td className="py-3 px-4 text-center" onClick={(e) => e.stopPropagation()}>
@@ -223,11 +223,11 @@ export default function DataTable({
                         type="checkbox"
                         checked={isSelected}
                         onChange={() => handleSelectRow(idx)}
-                        className="rounded border-[#E4E7EC] text-[#101828] focus:ring-[#C6A66B]"
+                        className="rounded border-[#E3E8DF] text-[#17372F] focus:ring-[#C6A66A]"
                       />
                     </td>
                     {columns.map((col) => (
-                      <td key={col.accessor || col.header} className={`py-3 px-4 text-sm text-[#101828] ${col.cellClassName || ''}`}>
+                      <td key={col.accessor || col.header} className={`py-3 px-4 text-sm text-[#17372F] ${col.cellClassName || ''}`}>
                         {col.cell ? col.cell(row) : row[col.accessor]}
                       </td>
                     ))}
@@ -236,11 +236,11 @@ export default function DataTable({
               })
             ) : (
               <tr>
-                <td colSpan={columns.length + 1} className="py-12 text-center text-[#667085]">
+                <td colSpan={columns.length + 1} className="py-12 text-center text-[#7A8980]">
                   <div className="max-w-xs mx-auto flex flex-col items-center">
                     <Filter className="w-8 h-8 text-[#98A2B3] mb-2" />
-                    <p className="font-medium text-sm text-[#101828]">{emptyMessage}</p>
-                    <p className="text-xs text-[#667085] mt-1">Try resetting search filters or keywords</p>
+                    <p className="font-medium text-sm text-[#17372F]">{emptyMessage}</p>
+                    <p className="text-xs text-[#7A8980] mt-1">Try resetting search filters or keywords</p>
                   </div>
                 </td>
               </tr>
@@ -250,7 +250,7 @@ export default function DataTable({
       </div>
 
       {/* Pagination Footer */}
-      <div className="p-4 border-t border-[#E4E7EC] bg-[#FAF9F6] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#667085]">
+      <div className="p-4 border-t border-[#E3E8DF] bg-[#F7F5EC] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#7A8980]">
         <div className="flex items-center gap-2">
           <span>Rows per page:</span>
           <select
@@ -259,7 +259,7 @@ export default function DataTable({
               setPageSize(Number(e.target.value));
               setCurrentPage(1);
             }}
-            className="bg-white border border-[#E4E7EC] rounded px-2 py-1 text-xs text-[#101828] focus:outline-none"
+            className="bg-white border border-[#E3E8DF] rounded px-2 py-1 text-xs text-[#17372F] focus:outline-none"
           >
             <option value={5}>5</option>
             <option value={10}>10</option>
@@ -275,19 +275,19 @@ export default function DataTable({
           <button
             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
             disabled={currentPage === 1}
-            className="p-1.5 rounded border border-[#E4E7EC] bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="p-1.5 rounded border border-[#E3E8DF] bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            <ChevronLeft className="w-4 h-4 text-[#101828]" />
+            <ChevronLeft className="w-4 h-4 text-[#17372F]" />
           </button>
-          <span className="px-2 font-medium text-[#101828]">
+          <span className="px-2 font-medium text-[#17372F]">
             Page {currentPage} of {totalPages}
           </span>
           <button
             onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
-            className="p-1.5 rounded border border-[#E4E7EC] bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="p-1.5 rounded border border-[#E3E8DF] bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            <ChevronRight className="w-4 h-4 text-[#101828]" />
+            <ChevronRight className="w-4 h-4 text-[#17372F]" />
           </button>
         </div>
       </div>

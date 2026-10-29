@@ -28,26 +28,26 @@ export default function WarehouseManagerDashboard() {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">Warehouse & Chemical Inventory Hub</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">Warehouse & Chemical Inventory Hub</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             Real-time stock valuation, lot genealogy, FEFO allocation priorities, quality quarantine holds, and storage segregation.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => showToast('Opening Stock Transfer Inter-Hub form', 'info')}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-[#E4E7EC] hover:bg-[#FAF9F6] text-[#101828] transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-[#E3E8DF] hover:bg-[#F7F5EC] text-[#17372F] transition-colors"
           >
-            <ArrowLeftRight className="w-3.5 h-3.5 text-[#667085]" />
+            <ArrowLeftRight className="w-3.5 h-3.5 text-[#7A8980]" />
             <span>Inter-Warehouse Transfer</span>
           </button>
           <button
             onClick={() => openModal('create_grn')}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors"
           >
-            <ArrowDownToLine className="w-3.5 h-3.5 text-[#C6A66B]" />
+            <ArrowDownToLine className="w-3.5 h-3.5 text-[#C6A66A]" />
             <span>Receive Stock (GRN)</span>
           </button>
         </div>
@@ -86,15 +86,15 @@ export default function WarehouseManagerDashboard() {
       </div>
 
       {/* Batch Register & FEFO Matrix */}
-      <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#E4E7EC]">
+      <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#E3E8DF]">
           <div>
-            <h2 className="text-sm font-bold text-[#101828]">Active Batch & Lot Register (FEFO Priority)</h2>
-            <p className="text-xs text-[#667085] mt-0.5">
+            <h2 className="text-sm font-bold text-[#17372F]">Active Batch & Lot Register (FEFO Priority)</h2>
+            <p className="text-xs text-[#7A8980] mt-0.5">
               Stock Rule: Quarantined batches are locked from allocation. Sales orders auto-allocate lowest shelf-life first.
             </p>
           </div>
-          <span className="text-xs text-[#8C6F3B] bg-[#FAF7F0] px-2.5 py-1 rounded-full font-semibold border border-[#C6A66B]/40">
+          <span className="text-xs text-[#075C46] bg-[#DDE9D9] px-2.5 py-1 rounded-full font-semibold border border-[#C6A66A]/40">
             First-Expiry First-Out Enforced
           </span>
         </div>
@@ -102,7 +102,7 @@ export default function WarehouseManagerDashboard() {
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-xs text-left">
             <thead>
-              <tr className="bg-[#FAF9F6] border-b border-[#E4E7EC] text-slate-600 font-semibold uppercase">
+              <tr className="bg-[#F7F5EC] border-b border-[#E3E8DF] text-slate-600 font-semibold uppercase">
                 <th className="py-2.5 px-3">Batch / Lot No</th>
                 <th className="py-2.5 px-3">Chemical Commodity</th>
                 <th className="py-2.5 px-3">Warehouse & Bay</th>
@@ -114,22 +114,22 @@ export default function WarehouseManagerDashboard() {
                 <th className="py-2.5 px-3 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E4E7EC]">
+            <tbody className="divide-y divide-[#E3E8DF]">
               {batches.map((batch) => {
                 const isQuarantined = batch.qualityStatus === 'Quarantined';
                 return (
-                  <tr key={batch.batchNo} className={isQuarantined ? 'bg-red-50/40' : 'hover:bg-[#FAF9F6]'}>
+                  <tr key={batch.batchNo} className={isQuarantined ? 'bg-red-50/40' : 'hover:bg-[#F7F5EC]'}>
                     <td className="py-3 px-3">
-                      <div className="font-bold text-[#101828] font-mono">{batch.batchNo}</div>
+                      <div className="font-bold text-[#17372F] font-mono">{batch.batchNo}</div>
                       <div className="text-[10px] text-slate-500">Recvd: {batch.receivedDate}</div>
                     </td>
                     <td className="py-3 px-3">
-                      <div className="font-semibold text-[#101828]">{batch.chemicalName}</div>
+                      <div className="font-semibold text-[#17372F]">{batch.chemicalName}</div>
                       <div className="text-[10px] text-slate-500 font-mono">Mfg: {batch.mfgDate}</div>
                     </td>
                     <td className="py-3 px-3 text-slate-700">
                       <div className="flex items-center gap-1">
-                        <Warehouse className="w-3 h-3 text-[#C6A66B]" />
+                        <Warehouse className="w-3 h-3 text-[#C6A66A]" />
                         <span>{batch.warehouse}</span>
                       </div>
                     </td>
@@ -139,10 +139,10 @@ export default function WarehouseManagerDashboard() {
                         <span className="block text-[10px] text-amber-700 font-bold">FEFO 1st Pick</span>
                       )}
                     </td>
-                    <td className="py-3 px-3 font-mono font-bold text-[#101828]">
+                    <td className="py-3 px-3 font-mono font-bold text-[#17372F]">
                       {batch.initialQty} {batch.uom}
                     </td>
-                    <td className="py-3 px-3 font-mono font-semibold text-[#16805D]">
+                    <td className="py-3 px-3 font-mono font-semibold text-[#0F795C]">
                       {batch.availableQty} {batch.uom}
                     </td>
                     <td className="py-3 px-3 font-mono text-slate-600">
@@ -162,7 +162,7 @@ export default function WarehouseManagerDashboard() {
                       ) : (
                         <button
                           onClick={() => showToast(`Viewing COA document for ${batch.batchNo}`, 'info')}
-                          className="px-2 py-1 border border-[#E4E7EC] rounded text-xs font-medium hover:bg-white"
+                          className="px-2 py-1 border border-[#E3E8DF] rounded text-xs font-medium hover:bg-white"
                         >
                           COA Doc
                         </button>

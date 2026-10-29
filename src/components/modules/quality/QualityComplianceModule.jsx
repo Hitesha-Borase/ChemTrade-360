@@ -23,7 +23,7 @@ export default function QualityComplianceModule() {
       accessor: 'title',
       cell: (row) => (
         <div>
-          <div className="font-bold text-[#101828] text-sm">{row.title}</div>
+          <div className="font-bold text-[#17372F] text-sm">{row.title}</div>
           <div className="text-[11px] text-slate-500 font-mono">Reg No: {row.licenseNumber}</div>
         </div>
       )
@@ -44,7 +44,7 @@ export default function QualityComplianceModule() {
       cell: (row) => (
         <div className="text-xs font-mono">
           <span className="text-slate-500">From: {row.validFrom}</span>
-          <span className="block font-bold text-[#101828]">Until: {row.validUntil}</span>
+          <span className="block font-bold text-[#17372F]">Until: {row.validUntil}</span>
         </div>
       )
     },
@@ -59,9 +59,9 @@ export default function QualityComplianceModule() {
       cell: (row) => (
         <button
           onClick={() => showToast(`Opening certified license document for ${row.title}`, 'info')}
-          className="flex items-center gap-1 px-2.5 py-1 text-xs border border-[#E4E7EC] rounded-lg hover:bg-[#FAF9F6] text-slate-700 font-medium"
+          className="flex items-center gap-1 px-2.5 py-1 text-xs border border-[#E3E8DF] rounded-lg hover:bg-[#F7F5EC] text-slate-700 font-medium"
         >
-          <Download className="w-3.5 h-3.5 text-[#C6A66B]" />
+          <Download className="w-3.5 h-3.5 text-[#C6A66A]" />
           <span>View PDF</span>
         </button>
       )
@@ -71,17 +71,17 @@ export default function QualityComplianceModule() {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">Quality, Safety & Regulatory Compliance</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">Quality, Safety & Regulatory Compliance</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             PESO bulk chemical storage licenses, NCB precursor quota authorizations, batch-wise COA verification, and laboratory quality releases.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => showToast('Opening compliance document upload dialog', 'info')}
-            className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors shadow-sm"
+            className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors shadow-sm"
           >
             + Upload Compliance Doc
           </button>
@@ -89,11 +89,11 @@ export default function QualityComplianceModule() {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#E4E7EC] pb-2">
+      <div className="flex items-center gap-2 border-b border-[#E3E8DF] pb-2">
         <button
           onClick={() => setActiveTab('regulatory')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'regulatory' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'regulatory' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Statutory Licenses & Clearances ({complianceDocs.length})
@@ -101,7 +101,7 @@ export default function QualityComplianceModule() {
         <button
           onClick={() => setActiveTab('batches')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'batches' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'batches' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Batch QC & Laboratory COA Validation ({batches.length})
@@ -117,20 +117,20 @@ export default function QualityComplianceModule() {
       )}
 
       {activeTab === 'batches' && (
-        <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+        <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
             <div>
-              <h2 className="text-sm font-bold text-[#101828]">Batch Inspection & COA Document Status</h2>
-              <p className="text-xs text-[#667085]">Every chemical lot received must possess an authorized manufacturer COA before commercial sale.</p>
+              <h2 className="text-sm font-bold text-[#17372F]">Batch Inspection & COA Document Status</h2>
+              <p className="text-xs text-[#7A8980]">Every chemical lot received must possess an authorized manufacturer COA before commercial sale.</p>
             </div>
           </div>
 
-          <div className="divide-y divide-[#E4E7EC]">
+          <div className="divide-y divide-[#E3E8DF]">
             {batches.map(b => (
               <div key={b.batchNo} className="py-3 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#101828] font-mono">{b.batchNo}</span>
+                    <span className="font-bold text-[#17372F] font-mono">{b.batchNo}</span>
                     <span className="text-slate-700 font-semibold">• {b.chemicalName}</span>
                     <Badge status={b.qualityStatus} size="xs" />
                   </div>
@@ -143,9 +143,9 @@ export default function QualityComplianceModule() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => showToast(`Downloading ${b.coaDocument}`, 'success')}
-                    className="flex items-center gap-1 px-2.5 py-1 border border-[#E4E7EC] rounded hover:bg-[#FAF9F6] text-xs font-medium text-slate-700"
+                    className="flex items-center gap-1 px-2.5 py-1 border border-[#E3E8DF] rounded hover:bg-[#F7F5EC] text-xs font-medium text-slate-700"
                   >
-                    <Download className="w-3.5 h-3.5 text-[#C6A66B]" />
+                    <Download className="w-3.5 h-3.5 text-[#C6A66A]" />
                     <span>Download COA</span>
                   </button>
                   {b.qualityStatus === 'Quarantined' && (

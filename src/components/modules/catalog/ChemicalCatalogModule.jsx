@@ -28,8 +28,8 @@ export default function ChemicalCatalogModule() {
       accessor: 'name',
       cell: (row) => (
         <div>
-          <div className="font-bold text-[#101828] text-sm">{row.name}</div>
-          <div className="text-[11px] text-[#667085] font-mono">{row.chemicalFormula} • {row.category}</div>
+          <div className="font-bold text-[#17372F] text-sm">{row.name}</div>
+          <div className="text-[11px] text-[#7A8980] font-mono">{row.chemicalFormula} • {row.category}</div>
           <div className="mt-1">
             <HazardBadge cas={row.casNumber} hsn={row.hsnCode} compact={true} />
           </div>
@@ -42,7 +42,7 @@ export default function ChemicalCatalogModule() {
       cell: (row) => (
         <div>
           <span className="font-semibold text-slate-800">{row.grade}</span>
-          <span className="block text-xs font-mono text-[#16805D] font-bold">{row.purity}</span>
+          <span className="block text-xs font-mono text-[#0F795C] font-bold">{row.purity}</span>
         </div>
       )
     },
@@ -75,7 +75,7 @@ export default function ChemicalCatalogModule() {
       accessor: 'currentStock',
       cell: (row) => (
         <div>
-          <span className="font-mono font-bold text-sm text-[#101828]">{row.currentStock} {row.uom}</span>
+          <span className="font-mono font-bold text-sm text-[#17372F]">{row.currentStock} {row.uom}</span>
           {row.currentStock <= row.reorderLevel ? (
             <span className="block text-[10px] text-amber-700 font-semibold">Low Stock Alert (&lt;{row.reorderLevel})</span>
           ) : (
@@ -88,7 +88,7 @@ export default function ChemicalCatalogModule() {
       header: 'Base Benchmark Price',
       accessor: 'basePricePerUnit',
       cell: (row) => (
-        <span className="font-mono font-bold text-[#101828]">
+        <span className="font-mono font-bold text-[#17372F]">
           ₹{row.basePricePerUnit.toLocaleString('en-IN')}/{row.uom}
         </span>
       )
@@ -100,15 +100,15 @@ export default function ChemicalCatalogModule() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => showToast(`Opening SDS (16-Section) for ${row.name}`, 'info')}
-            className="p-1.5 rounded border border-[#E4E7EC] hover:bg-slate-50 text-slate-700 text-xs flex items-center gap-1"
+            className="p-1.5 rounded border border-[#E3E8DF] hover:bg-slate-50 text-slate-700 text-xs flex items-center gap-1"
             title="Safety Data Sheet"
           >
-            <FileText className="w-3.5 h-3.5 text-[#C6A66B]" />
+            <FileText className="w-3.5 h-3.5 text-[#C6A66A]" />
             <span className="text-[11px]">SDS</span>
           </button>
           <button
             onClick={() => showToast(`Opening Certificate of Analysis for ${row.name}`, 'info')}
-            className="p-1.5 rounded border border-[#E4E7EC] hover:bg-slate-50 text-slate-700 text-xs flex items-center gap-1"
+            className="p-1.5 rounded border border-[#E3E8DF] hover:bg-slate-50 text-slate-700 text-xs flex items-center gap-1"
             title="Certificate of Analysis"
           >
             <Download className="w-3.5 h-3.5 text-blue-600" />
@@ -122,19 +122,19 @@ export default function ChemicalCatalogModule() {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">Chemical Master Catalog</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">Chemical Master Catalog</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             Verified chemical specifications, CAS numbers, HS/HSN codes, GHS hazard pictograms, and certified SDS/COA links.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => openModal('create_chemical')}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors shadow-sm"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors shadow-sm"
           >
-            <Plus className="w-3.5 h-3.5 text-[#C6A66B]" />
+            <Plus className="w-3.5 h-3.5 text-[#C6A66A]" />
             <span>Add Chemical Master</span>
           </button>
         </div>

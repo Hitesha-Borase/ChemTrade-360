@@ -26,11 +26,11 @@ export default function CreateGRNModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#E4E7EC]">
-        <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#E3E8DF]">
+        <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
           <div className="flex items-center gap-2">
-            <ArrowDownToLine className="w-5 h-5 text-[#C6A66B]" />
-            <h2 className="text-base font-bold text-[#101828]">Goods Receipt Note (GRN) & Lot Inward</h2>
+            <ArrowDownToLine className="w-5 h-5 text-[#C6A66A]" />
+            <h2 className="text-base font-bold text-[#17372F]">Goods Receipt Note (GRN) & Lot Inward</h2>
           </div>
           <button onClick={closeModal} className="p-1 rounded-lg text-slate-400 hover:text-slate-600">
             <X className="w-5 h-5" />
@@ -43,7 +43,7 @@ export default function CreateGRNModal() {
             <select
               value={poId}
               onChange={(e) => setPoId(e.target.value)}
-              className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono"
+              className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono"
             >
               {purchaseOrders.map(po => (
                 <option key={po.id} value={po.id}>{po.id} — {po.supplierName}</option>
@@ -58,7 +58,7 @@ export default function CreateGRNModal() {
                 type="text"
                 value={batchNo}
                 onChange={(e) => setBatchNo(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono font-bold"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono font-bold"
                 required
               />
             </div>
@@ -69,7 +69,7 @@ export default function CreateGRNModal() {
                 step="0.1"
                 value={receivedQty}
                 onChange={(e) => setReceivedQty(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono font-bold"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono font-bold"
                 required
               />
             </div>
@@ -80,7 +80,7 @@ export default function CreateGRNModal() {
             <select
               value={warehouse}
               onChange={(e) => setWarehouse(e.target.value)}
-              className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-medium"
+              className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-medium"
             >
               <option value="Dahej Liquid Terminal (Tank T-104)">Dahej Liquid Terminal (Tank T-104)</option>
               <option value="Bhiwandi Central Depot (Shed B2)">Bhiwandi Central Depot (Shed B2)</option>
@@ -96,7 +96,7 @@ export default function CreateGRNModal() {
                 type="date"
                 value={mfgDate}
                 onChange={(e) => setMfgDate(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono"
                 required
               />
             </div>
@@ -106,7 +106,7 @@ export default function CreateGRNModal() {
                 type="date"
                 value={expiryDate}
                 onChange={(e) => setExpiryDate(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono"
                 required
               />
             </div>
@@ -118,7 +118,7 @@ export default function CreateGRNModal() {
               <select
                 value={qcStatus}
                 onChange={(e) => setQcStatus(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-bold"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-bold"
               >
                 <option value="Approved">Approved (Ready for Sale)</option>
                 <option value="Quarantined">Quarantined (Under Lab Review)</option>
@@ -130,22 +130,22 @@ export default function CreateGRNModal() {
                 type="text"
                 value={coaDoc}
                 onChange={(e) => setCoaDoc(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono"
               />
             </div>
           </div>
 
-          <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E4E7EC]">
+          <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E3E8DF]">
             <button
               type="button"
               onClick={closeModal}
-              className="px-4 py-2 border border-[#E4E7EC] rounded-lg text-slate-600 hover:bg-slate-50"
+              className="px-4 py-2 border border-[#E3E8DF] rounded-lg text-slate-600 hover:bg-slate-50"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-[#101828] text-white rounded-lg font-bold hover:bg-[#101828]/90"
+              className="px-4 py-2 bg-[#075C46] text-white rounded-lg font-bold hover:bg-[#063F32]"
             >
               Confirm Goods Receipt (GRN)
             </button>

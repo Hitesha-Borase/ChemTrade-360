@@ -22,20 +22,20 @@ export default function Badge({ children, status, variant, size = 'sm', classNam
   }
 
   const variantStyles = {
-    success: 'bg-[#16805D]/10 text-[#16805D] border-[#16805D]/25',
+    success: 'bg-[#0F795C]/10 text-[#0F795C] border-[#0F795C]/25',
     warning: 'bg-[#B7791F]/10 text-[#B7791F] border-[#B7791F]/30',
     danger: 'bg-[#C43232]/10 text-[#C43232] border-[#C43232]/25',
     info: 'bg-[#2E6FBB]/10 text-[#2E6FBB] border-[#2E6FBB]/25',
-    gold: 'bg-[#C6A66B]/15 text-[#8C6F3B] border-[#C6A66B]/40',
+    gold: 'bg-[#C6A66A]/15 text-[#075C46] border-[#C6A66A]/40',
     neutral: 'bg-slate-100 text-slate-700 border-slate-200'
   };
 
   const dotColors = {
-    success: 'bg-[#16805D]',
+    success: 'bg-[#0F795C]',
     warning: 'bg-[#B7791F]',
     danger: 'bg-[#C43232]',
     info: 'bg-[#2E6FBB]',
-    gold: 'bg-[#C6A66B]',
+    gold: 'bg-[#C6A66A]',
     neutral: 'bg-slate-400'
   };
 

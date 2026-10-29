@@ -44,7 +44,7 @@ export default function AdminModule() {
       accessor: 'userName',
       cell: (row) => (
         <div>
-          <span className="font-bold text-[#101828] text-xs">{row.userName}</span>
+          <span className="font-bold text-[#17372F] text-xs">{row.userName}</span>
           <span className="block text-[11px] text-slate-500">{row.userRole}</span>
         </div>
       )
@@ -69,17 +69,17 @@ export default function AdminModule() {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">System Administration & Access Governance</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">System Administration & Access Governance</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             Role-based access matrix (RBAC), multi-branch setup, approval thresholds, and tamper-evident audit ledger.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => showToast('Saved system configuration update', 'success')}
-            className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors shadow-sm"
+            className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors shadow-sm"
           >
             Save Configuration
           </button>
@@ -87,11 +87,11 @@ export default function AdminModule() {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#E4E7EC] pb-2">
+      <div className="flex items-center gap-2 border-b border-[#E3E8DF] pb-2">
         <button
           onClick={() => setActiveTab('matrix')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'matrix' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'matrix' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Role Access Matrix (Section 11)
@@ -99,7 +99,7 @@ export default function AdminModule() {
         <button
           onClick={() => setActiveTab('company')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'company' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'company' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Company & Hub Settings
@@ -107,7 +107,7 @@ export default function AdminModule() {
         <button
           onClick={() => setActiveTab('audit')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'audit' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'audit' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Security Audit Trail ({auditLogs.length})
@@ -116,13 +116,13 @@ export default function AdminModule() {
 
       {/* Tab Contents */}
       {activeTab === 'matrix' && (
-        <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+        <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
             <div>
-              <h2 className="text-sm font-bold text-[#101828]">10-Role Permission Matrix & Isolation Guardrails</h2>
-              <p className="text-xs text-[#667085]">Least privilege security model (Wireframe Section 11)</p>
+              <h2 className="text-sm font-bold text-[#17372F]">10-Role Permission Matrix & Isolation Guardrails</h2>
+              <p className="text-xs text-[#7A8980]">Least privilege security model (Wireframe Section 11)</p>
             </div>
-            <span className="text-xs bg-[#FAF7F0] text-[#8C6F3B] font-bold px-2.5 py-1 rounded border border-[#C6A66B]/30">
+            <span className="text-xs bg-[#DDE9D9] text-[#075C46] font-bold px-2.5 py-1 rounded border border-[#C6A66A]/30">
               RBAC Verified
             </span>
           </div>
@@ -130,7 +130,7 @@ export default function AdminModule() {
           <div className="overflow-x-auto">
             <table className="w-full text-xs text-left">
               <thead>
-                <tr className="bg-[#FAF9F6] border-b border-[#E4E7EC] text-slate-700 font-semibold uppercase">
+                <tr className="bg-[#F7F5EC] border-b border-[#E3E8DF] text-slate-700 font-semibold uppercase">
                   <th className="py-2 px-3">Module / Capability</th>
                   <th className="py-2 px-2 text-center">Super Admin</th>
                   <th className="py-2 px-2 text-center">Business Owner</th>
@@ -144,10 +144,10 @@ export default function AdminModule() {
                   <th className="py-2 px-2 text-center bg-amber-50/60">Supplier Portal</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E4E7EC]">
+              <tbody className="divide-y divide-[#E3E8DF]">
                 {modulesList.map((mod, idx) => (
-                  <tr key={idx} className="hover:bg-[#FAF9F6]">
-                    <td className="py-2.5 px-3 font-semibold text-[#101828]">{mod}</td>
+                  <tr key={idx} className="hover:bg-[#F7F5EC]">
+                    <td className="py-2.5 px-3 font-semibold text-[#17372F]">{mod}</td>
                     <td className="py-2.5 px-2 text-center text-emerald-700 font-bold">Configure</td>
                     <td className="py-2.5 px-2 text-center text-blue-700">View All</td>
                     <td className="py-2.5 px-2 text-center">{mod.includes('Sales') || mod.includes('Quote') || mod.includes('Lead') ? 'Manage' : 'No'}</td>
@@ -172,46 +172,46 @@ export default function AdminModule() {
 
       {activeTab === 'company' && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm space-y-4">
-            <h3 className="font-bold text-[#101828] text-sm pb-2 border-b border-[#E4E7EC]">Operating Company Profile</h3>
+          <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm space-y-4">
+            <h3 className="font-bold text-[#17372F] text-sm pb-2 border-b border-[#E3E8DF]">Operating Company Profile</h3>
             <div className="space-y-3 text-xs">
               <div>
                 <label className="text-slate-500 block mb-0.5 font-medium">Company Name</label>
-                <input type="text" defaultValue="ChemTrade 360 Distribution Private Limited" className="w-full p-2 border border-[#E4E7EC] rounded-lg bg-slate-50 font-semibold" readOnly />
+                <input type="text" defaultValue="ChemTrade 360 Distribution Private Limited" className="w-full p-2 border border-[#E3E8DF] rounded-lg bg-slate-50 font-semibold" readOnly />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="text-slate-500 block mb-0.5 font-medium">GSTIN</label>
-                  <input type="text" defaultValue="24AAACD4490M1Z2" className="w-full p-2 border border-[#E4E7EC] rounded-lg bg-slate-50 font-mono" readOnly />
+                  <input type="text" defaultValue="24AAACD4490M1Z2" className="w-full p-2 border border-[#E3E8DF] rounded-lg bg-slate-50 font-mono" readOnly />
                 </div>
                 <div>
                   <label className="text-slate-500 block mb-0.5 font-medium">PAN</label>
-                  <input type="text" defaultValue="AAACD4490M" className="w-full p-2 border border-[#E4E7EC] rounded-lg bg-slate-50 font-mono" readOnly />
+                  <input type="text" defaultValue="AAACD4490M" className="w-full p-2 border border-[#E3E8DF] rounded-lg bg-slate-50 font-mono" readOnly />
                 </div>
               </div>
               <div>
                 <label className="text-slate-500 block mb-0.5 font-medium">Registered Office</label>
-                <input type="text" defaultValue="Plot 104, GIDC Dahej Industrial Zone, Bharuch, Gujarat 392130" className="w-full p-2 border border-[#E4E7EC] rounded-lg bg-slate-50" readOnly />
+                <input type="text" defaultValue="Plot 104, GIDC Dahej Industrial Zone, Bharuch, Gujarat 392130" className="w-full p-2 border border-[#E3E8DF] rounded-lg bg-slate-50" readOnly />
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm space-y-4">
-            <h3 className="font-bold text-[#101828] text-sm pb-2 border-b border-[#E4E7EC]">Approval & Commercial Safeguards</h3>
+          <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm space-y-4">
+            <h3 className="font-bold text-[#17372F] text-sm pb-2 border-b border-[#E3E8DF]">Approval & Commercial Safeguards</h3>
             <div className="space-y-3 text-xs">
-              <div className="p-3 rounded-lg bg-[#FAF9F6] border border-[#E4E7EC] flex items-center justify-between">
+              <div className="p-3 rounded-lg bg-[#F7F5EC] border border-[#E3E8DF] flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-[#101828]">Minimum Gross Margin Threshold</p>
+                  <p className="font-bold text-[#17372F]">Minimum Gross Margin Threshold</p>
                   <p className="text-[11px] text-slate-500">Requires Sales Manager sign-off if below</p>
                 </div>
-                <span className="font-mono font-bold text-sm text-[#101828] bg-white px-2.5 py-1 rounded border border-[#E4E7EC]">
+                <span className="font-mono font-bold text-sm text-[#17372F] bg-white px-2.5 py-1 rounded border border-[#E3E8DF]">
                   7.0%
                 </span>
               </div>
 
-              <div className="p-3 rounded-lg bg-[#FAF9F6] border border-[#E4E7EC] flex items-center justify-between">
+              <div className="p-3 rounded-lg bg-[#F7F5EC] border border-[#E3E8DF] flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-[#101828]">Auto-Lock Quarantine Stock</p>
+                  <p className="font-bold text-[#17372F]">Auto-Lock Quarantine Stock</p>
                   <p className="text-[11px] text-slate-500">Prevent allocation of unreleased lots</p>
                 </div>
                 <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
@@ -219,9 +219,9 @@ export default function AdminModule() {
                 </span>
               </div>
 
-              <div className="p-3 rounded-lg bg-[#FAF9F6] border border-[#E4E7EC] flex items-center justify-between">
+              <div className="p-3 rounded-lg bg-[#F7F5EC] border border-[#E3E8DF] flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-[#101828]">NIC E-Invoice Auto-IRN</p>
+                  <p className="font-bold text-[#17372F]">NIC E-Invoice Auto-IRN</p>
                   <p className="text-[11px] text-slate-500">Trigger on invoice status changed to Issued</p>
                 </div>
                 <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">

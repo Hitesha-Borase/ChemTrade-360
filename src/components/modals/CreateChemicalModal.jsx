@@ -51,11 +51,11 @@ export default function CreateChemicalModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#E4E7EC] max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#E3E8DF] max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
           <div className="flex items-center gap-2">
-            <FlaskConical className="w-5 h-5 text-[#C6A66B]" />
-            <h2 className="text-base font-bold text-[#101828]">Register Chemical Master Item</h2>
+            <FlaskConical className="w-5 h-5 text-[#C6A66A]" />
+            <h2 className="text-base font-bold text-[#17372F]">Register Chemical Master Item</h2>
           </div>
           <button onClick={closeModal} className="p-1 rounded-lg text-slate-400 hover:text-slate-600">
             <X className="w-5 h-5" />
@@ -70,7 +70,7 @@ export default function CreateChemicalModal() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Nitric Acid 68%"
-              className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-semibold"
+              className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-semibold"
               required
             />
           </div>
@@ -83,7 +83,7 @@ export default function CreateChemicalModal() {
                 value={chemicalFormula}
                 onChange={(e) => setChemicalFormula(e.target.value)}
                 placeholder="e.g. HNO3"
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono"
               />
             </div>
             <div>
@@ -93,7 +93,7 @@ export default function CreateChemicalModal() {
                 value={casNumber}
                 onChange={(e) => setCasNumber(e.target.value)}
                 placeholder="e.g. 7697-37-2"
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono font-bold"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono font-bold"
                 required
               />
             </div>
@@ -107,7 +107,7 @@ export default function CreateChemicalModal() {
                 value={hsnCode}
                 onChange={(e) => setHsnCode(e.target.value)}
                 placeholder="e.g. 28080000"
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono"
                 required
               />
             </div>
@@ -116,7 +116,7 @@ export default function CreateChemicalModal() {
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs"
               >
                 <option value="Alkali / Basic Chemicals">Alkali / Basic Chemicals</option>
                 <option value="Solvents & Alcohols">Solvents & Alcohols</option>
@@ -134,7 +134,7 @@ export default function CreateChemicalModal() {
                 type="text"
                 value={grade}
                 onChange={(e) => setGrade(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs"
               />
             </div>
             <div>
@@ -143,7 +143,7 @@ export default function CreateChemicalModal() {
                 type="text"
                 value={purity}
                 onChange={(e) => setPurity(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono"
               />
             </div>
             <div>
@@ -152,7 +152,7 @@ export default function CreateChemicalModal() {
                 type="number"
                 value={basePricePerUnit}
                 onChange={(e) => setBasePricePerUnit(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono"
               />
             </div>
           </div>
@@ -162,7 +162,7 @@ export default function CreateChemicalModal() {
             <select
               value={hazardClass}
               onChange={(e) => setHazardClass(e.target.value)}
-              className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-semibold"
+              className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-semibold"
             >
               <option value="Class 8: Corrosive">Class 8: Corrosive</option>
               <option value="Class 3: Flammable Liquid">Class 3: Flammable Liquid</option>
@@ -172,17 +172,17 @@ export default function CreateChemicalModal() {
             </select>
           </div>
 
-          <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E4E7EC]">
+          <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E3E8DF]">
             <button
               type="button"
               onClick={closeModal}
-              className="px-4 py-2 border border-[#E4E7EC] rounded-lg text-slate-600 hover:bg-slate-50"
+              className="px-4 py-2 border border-[#E3E8DF] rounded-lg text-slate-600 hover:bg-slate-50"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-[#101828] text-white rounded-lg font-bold hover:bg-[#101828]/90"
+              className="px-4 py-2 bg-[#075C46] text-white rounded-lg font-bold hover:bg-[#063F32]"
             >
               Save Chemical Master
             </button>

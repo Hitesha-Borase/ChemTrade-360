@@ -23,17 +23,17 @@ export default function LogisticsManagerDashboard() {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">Chemical Logistics & Dispatch Control</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">Chemical Logistics & Dispatch Control</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             Dedicated chemical tanker dispatch, Hazchem Tremcard compliance, GPS tracking, and Proof of Delivery (POD).
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => openModal('schedule_dispatch')}
-            className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors"
+            className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors"
           >
             + Schedule Tanker Dispatch
           </button>
@@ -73,23 +73,23 @@ export default function LogisticsManagerDashboard() {
       </div>
 
       {/* Dispatch Queue & Active Tanker Movement */}
-      <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm">
-        <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+      <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm">
+        <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
           <div>
-            <h2 className="text-sm font-bold text-[#101828]">Active Delivery Challans & Tanker Fleet Status</h2>
-            <p className="text-xs text-[#667085]">Statutory Requirements: Tremcard, E-Way Bill & Dedicated Driver License</p>
+            <h2 className="text-sm font-bold text-[#17372F]">Active Delivery Challans & Tanker Fleet Status</h2>
+            <p className="text-xs text-[#7A8980]">Statutory Requirements: Tremcard, E-Way Bill & Dedicated Driver License</p>
           </div>
-          <button onClick={() => setActiveNav('logistics')} className="text-xs text-[#C6A66B] font-semibold hover:underline flex items-center gap-1">
+          <button onClick={() => setActiveNav('logistics')} className="text-xs text-[#C6A66A] font-semibold hover:underline flex items-center gap-1">
             Dispatch Queue <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
 
-        <div className="divide-y divide-[#E4E7EC] mt-3">
+        <div className="divide-y divide-[#E3E8DF] mt-3">
           {dispatches.map((d) => (
             <div key={d.challanNo} className="py-3.5 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-[#101828] font-mono">{d.challanNo}</span>
+                  <span className="font-bold text-[#17372F] font-mono">{d.challanNo}</span>
                   <span className="text-slate-600 font-semibold">• {d.customer}</span>
                   <Badge status={d.status} size="xs" />
                 </div>
@@ -97,8 +97,8 @@ export default function LogisticsManagerDashboard() {
                   Chemical: <strong>{d.chemical}</strong> ({d.qty} {d.uom}) • Batch: <span className="font-mono">{d.batchNo}</span>
                 </p>
                 <div className="flex flex-wrap items-center gap-3 text-[11px] text-slate-500">
-                  <span className="flex items-center gap-1 font-semibold text-[#101828]">
-                    <Truck className="w-3.5 h-3.5 text-[#C6A66B]" /> {d.transporter} ({d.vehicleNo})
+                  <span className="flex items-center gap-1 font-semibold text-[#17372F]">
+                    <Truck className="w-3.5 h-3.5 text-[#C6A66A]" /> {d.transporter} ({d.vehicleNo})
                   </span>
                   <span>•</span>
                   <span>Driver: {d.driverName}</span>
@@ -117,14 +117,14 @@ export default function LogisticsManagerDashboard() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => showToast(`Generating Delivery Challan ${d.challanNo}`, 'info')}
-                  className="px-2.5 py-1 border border-[#E4E7EC] rounded hover:bg-[#FAF9F6] text-xs font-medium"
+                  className="px-2.5 py-1 border border-[#E3E8DF] rounded hover:bg-[#F7F5EC] text-xs font-medium"
                 >
                   Print Challan
                 </button>
                 {d.status !== 'Delivered' && (
                   <button
                     onClick={() => markDelivered(d.challanNo)}
-                    className="px-3 py-1 bg-[#16805D] text-white rounded font-semibold text-xs hover:bg-[#16805D]/90"
+                    className="px-3 py-1 bg-[#0F795C] text-white rounded font-semibold text-xs hover:bg-[#0F795C]/90"
                   >
                     Confirm POD
                   </button>

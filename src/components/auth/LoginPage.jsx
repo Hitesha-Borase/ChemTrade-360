@@ -79,40 +79,40 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F6F2] flex flex-col justify-between relative overflow-hidden select-none">
+    <div className="min-h-screen bg-[#F7F5EC] flex flex-col justify-between relative overflow-hidden select-none">
       {/* Decorative Background Elements */}
-      <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-[#101828] to-transparent pointer-events-none opacity-95" />
-      <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#C6A66B]/10 blur-3xl pointer-events-none" />
-      <div className="absolute top-48 -right-32 w-96 h-96 rounded-full bg-[#101828]/20 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-[#063F32] to-transparent pointer-events-none opacity-95" />
+      <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#C6A66A]/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-48 -right-32 w-96 h-96 rounded-full bg-[#075C46]/20 blur-3xl pointer-events-none" />
 
       {/* Top Header */}
       <header className="relative z-10 px-6 py-5 max-w-7xl mx-auto w-full flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#101828] to-[#1e293b] flex items-center justify-center shadow-lg border border-[#C6A66B]/40">
-            <span className="font-bold text-[#C6A66B] text-xl leading-none">⚗</span>
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#063F32] to-[#075C46] flex items-center justify-center shadow-lg border border-[#C6A66A]/40">
+            <span className="font-bold text-[#C6A66A] text-xl leading-none">⚗</span>
           </div>
           <div>
             <div className="flex items-center gap-2">
               <span className="font-extrabold text-white text-lg tracking-tight">ChemTrade</span>
-              <span className="text-[#C6A66B] font-bold text-xs px-1.5 py-0.2 rounded bg-[#FAF7F0]/10 border border-[#C6A66B]/40">360</span>
+              <span className="text-[#C6A66A] font-bold text-xs px-1.5 py-0.2 rounded bg-[#DDE9D9]/10 border border-[#C6A66A]/40">360</span>
             </div>
             <p className="text-[11px] text-slate-300">Chemical Trading CRM + ERP Platform</p>
           </div>
         </div>
 
         <div className="hidden sm:flex items-center gap-2 text-xs text-slate-300">
-          <ShieldCheck className="w-4 h-4 text-[#C6A66B]" />
+          <ShieldCheck className="w-4 h-4 text-[#C6A66A]" />
           <span>AES-256 Bit Encrypted Industrial Portal</span>
         </div>
       </header>
 
       {/* Main Authentication Box */}
       <main className="relative z-10 px-4 py-8 max-w-4xl mx-auto w-full flex flex-col items-center">
-        <div className="w-full bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#E4E7EC] overflow-hidden">
+        <div className="w-full bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#E3E8DF] overflow-hidden">
           {/* Top Banner inside card */}
-          <div className="bg-[#101828] text-white p-6 sm:p-8 border-b border-[#1e293b] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="bg-[#063F32] text-white p-6 sm:p-8 border-b border-[#042a22] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-bold text-[#C6A66B] uppercase tracking-wider bg-[#C6A66B]/15 px-2.5 py-1 rounded-full border border-[#C6A66B]/30 inline-block mb-2">
+              <span className="text-xs font-bold text-[#C6A66A] uppercase tracking-wider bg-[#C6A66A]/15 px-2.5 py-1 rounded-full border border-[#C6A66A]/30 inline-block mb-2">
                 Operational Security Sign-In
               </span>
               <h1 className="text-2xl font-bold tracking-tight text-white">Sign In to ChemTrade 360</h1>
@@ -122,7 +122,7 @@ export default function LoginPage() {
             </div>
 
             {/* Portal Switch Tabs */}
-            <div className="bg-[#1e293b] p-1 rounded-xl flex items-center gap-1 self-start sm:self-auto border border-slate-700">
+            <div className="bg-[#042a22] p-1 rounded-xl flex items-center gap-1 self-start sm:self-auto border border-[#0F795C]/30">
               <button
                 type="button"
                 onClick={() => {
@@ -131,7 +131,7 @@ export default function LoginPage() {
                 }}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                   activeTab === 'internal'
-                    ? 'bg-[#101828] text-white shadow-sm border border-[#C6A66B]/40'
+                    ? 'bg-[#075C46] text-white shadow-sm border border-[#0F795C]'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -145,7 +145,7 @@ export default function LoginPage() {
                 }}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1 ${
                   activeTab === 'external'
-                    ? 'bg-[#C6A66B] text-[#101828] shadow-sm font-bold'
+                    ? 'bg-[#C6A66A] text-[#17372F] shadow-sm font-bold'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -166,7 +166,7 @@ export default function LoginPage() {
                   <select
                     value={selectedRole}
                     onChange={(e) => handleRoleSelect(e.target.value)}
-                    className="w-full p-2.5 bg-[#FAF9F6] border border-[#E4E7EC] rounded-xl text-xs font-bold text-[#101828] focus:outline-none focus:ring-2 focus:ring-[#C6A66B]/30"
+                    className="w-full p-2.5 bg-[#F7F5EC] border border-[#E3E8DF] rounded-xl text-xs font-bold text-[#17372F] focus:outline-none focus:ring-2 focus:ring-[#075C46]/20"
                   >
                     <optgroup label="Internal ERP Dashboards">
                       {internalRoles.map(r => (
@@ -192,7 +192,7 @@ export default function LoginPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="e.g. s.mehta@chemtrade360.com"
-                      className="w-full pl-9 pr-4 py-2.5 bg-[#FAF9F6] border border-[#E4E7EC] rounded-xl text-xs font-mono font-medium text-[#101828] focus:outline-none focus:ring-2 focus:ring-[#C6A66B]/30"
+                      className="w-full pl-9 pr-4 py-2.5 bg-[#F7F5EC] border border-[#E3E8DF] rounded-xl text-xs font-mono font-medium text-[#17372F] focus:outline-none focus:ring-2 focus:ring-[#075C46]/20"
                       required
                     />
                   </div>
@@ -201,7 +201,7 @@ export default function LoginPage() {
                 <div>
                   <div className="flex items-center justify-between mb-1">
                     <label className="font-semibold text-slate-700">Account Password</label>
-                    <a href="#reset" onClick={(e) => { e.preventDefault(); alert('Demo password reset notification sent.'); }} className="text-[11px] text-[#C6A66B] hover:underline font-medium">
+                    <a href="#reset" onClick={(e) => { e.preventDefault(); alert('Demo password reset notification sent.'); }} className="text-[11px] text-[#C6A66A] hover:underline font-medium">
                       Forgot Password?
                     </a>
                   </div>
@@ -211,7 +211,7 @@ export default function LoginPage() {
                       type={showPassword ? 'text' : 'password'}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full pl-9 pr-10 py-2.5 bg-[#FAF9F6] border border-[#E4E7EC] rounded-xl text-xs font-mono text-[#101828] focus:outline-none focus:ring-2 focus:ring-[#C6A66B]/30"
+                      className="w-full pl-9 pr-10 py-2.5 bg-[#F7F5EC] border border-[#E3E8DF] rounded-xl text-xs font-mono text-[#17372F] focus:outline-none focus:ring-2 focus:ring-[#075C46]/20"
                       required
                     />
                     <button
@@ -230,7 +230,7 @@ export default function LoginPage() {
                       type="checkbox"
                       checked={rememberMe}
                       onChange={(e) => setRememberMe(e.target.checked)}
-                      className="rounded border-[#E4E7EC] text-[#101828] focus:ring-[#C6A66B]"
+                      className="rounded border-[#E3E8DF] text-[#17372F] focus:ring-[#C6A66A]"
                     />
                     <span>Remember terminal session</span>
                   </label>
@@ -242,21 +242,21 @@ export default function LoginPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3 px-4 bg-[#101828] hover:bg-[#101828]/90 text-white font-bold rounded-xl text-xs transition-all shadow-md flex items-center justify-center gap-2 group"
+                  className="w-full py-3 px-4 bg-[#075C46] hover:bg-[#063F32] text-white font-bold rounded-xl text-xs transition-all shadow-md flex items-center justify-center gap-2 group"
                 >
                   {isLoading ? (
                     <span>Authenticating Credentials...</span>
                   ) : (
                     <>
                       <span>Sign In as {ROLE_DEFINITIONS.find(r => r.id === selectedRole)?.name}</span>
-                      <ArrowRight className="w-4 h-4 text-[#C6A66B] group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-4 h-4 text-[#C6A66A] group-hover:translate-x-1 transition-transform" />
                     </>
                   )}
                 </button>
               </form>
 
-              <div className="p-3 rounded-xl bg-[#FAF7F0] border border-[#C6A66B]/30 text-[11px] text-[#8C6F3B] flex items-start gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#C6A66B] flex-shrink-0 mt-0.5" />
+              <div className="p-3 rounded-xl bg-[#DDE9D9] border border-[#C6A66A]/30 text-[11px] text-[#075C46] flex items-start gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#C6A66A] flex-shrink-0 mt-0.5" />
                 <span>
                   <strong>Least Privilege Security:</strong> External Customer and Supplier accounts are strictly isolated. Internal gross margins and supplier costs are masked in customer views.
                 </span>
@@ -264,11 +264,11 @@ export default function LoginPage() {
             </div>
 
             {/* Right Column: 1-Click Fast Demo Login Pills (5 cols) */}
-            <div className="lg:col-span-5 bg-[#FAF9F6] p-5 rounded-xl border border-[#E4E7EC] flex flex-col justify-between">
+            <div className="lg:col-span-5 bg-[#F7F5EC] p-5 rounded-xl border border-[#E3E8DF] flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-1.5 pb-2 border-b border-[#E4E7EC] mb-3">
-                  <Sparkles className="w-3.5 h-3.5 text-[#C6A66B]" />
-                  <span className="text-xs font-bold text-[#101828] uppercase tracking-wider">
+                <div className="flex items-center gap-1.5 pb-2 border-b border-[#E3E8DF] mb-3">
+                  <Sparkles className="w-3.5 h-3.5 text-[#C6A66A]" />
+                  <span className="text-xs font-bold text-[#17372F] uppercase tracking-wider">
                     1-Click Fast Login Personas
                   </span>
                 </div>
@@ -284,8 +284,8 @@ export default function LoginPage() {
                       onClick={() => handleQuickLogin(acc.roleId)}
                       className={`w-full text-left p-2.5 rounded-lg border transition-all text-xs flex items-center justify-between group ${
                         selectedRole === acc.roleId
-                          ? 'bg-[#101828] text-white border-[#101828] shadow-sm'
-                          : 'bg-white border-[#E4E7EC] hover:border-[#C6A66B] text-slate-800'
+                          ? 'bg-[#075C46] text-white border-[#075C46] shadow-sm'
+                          : 'bg-white border-[#E3E8DF] hover:border-[#C6A66A] text-slate-800'
                       }`}
                     >
                       <div>
@@ -295,19 +295,19 @@ export default function LoginPage() {
                             ({acc.name})
                           </span>
                         </div>
-                        <div className={`text-[10px] truncate max-w-[190px] ${selectedRole === acc.roleId ? 'text-[#C6A66B]' : 'text-slate-400'}`}>
+                        <div className={`text-[10px] truncate max-w-[190px] ${selectedRole === acc.roleId ? 'text-[#C6A66A]' : 'text-slate-400'}`}>
                           {acc.desc}
                         </div>
                       </div>
                       <ArrowRight className={`w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity ${
-                        selectedRole === acc.roleId ? 'text-[#C6A66B] opacity-100' : 'text-slate-400'
+                        selectedRole === acc.roleId ? 'text-[#C6A66A] opacity-100' : 'text-slate-400'
                       }`} />
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#E4E7EC] mt-3 text-[10px] text-slate-400 text-center">
+              <div className="pt-3 border-t border-[#E3E8DF] mt-3 text-[10px] text-slate-400 text-center">
                 ChemTrade 360 Enterprise ERP • Version 1.0.0
               </div>
             </div>
@@ -316,7 +316,7 @@ export default function LoginPage() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 py-4 px-6 text-center text-xs text-slate-500 border-t border-[#E4E7EC] bg-white/60 backdrop-blur-sm">
+      <footer className="relative z-10 py-4 px-6 text-center text-xs text-slate-500 border-t border-[#E3E8DF] bg-white/60 backdrop-blur-sm">
         <p>© 2026 ChemTrade 360 Distribution Private Limited. All rights reserved. Complies with PESO Bulk Storage & NCB Precursor Regulations.</p>
       </footer>
     </div>

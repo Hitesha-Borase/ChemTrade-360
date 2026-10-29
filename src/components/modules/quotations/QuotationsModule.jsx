@@ -40,7 +40,7 @@ export default function QuotationsModule() {
       accessor: 'id',
       cell: (row) => (
         <div>
-          <div className="font-bold text-[#101828] text-sm flex items-center gap-1.5">
+          <div className="font-bold text-[#17372F] text-sm flex items-center gap-1.5">
             <span>{row.id}</span>
             <span className="text-[10px] text-slate-400 font-mono">({row.rfqRef})</span>
           </div>
@@ -68,7 +68,7 @@ export default function QuotationsModule() {
       accessor: 'grandTotal',
       cell: (row) => (
         <div>
-          <div className="font-mono font-bold text-sm text-[#101828]">
+          <div className="font-mono font-bold text-sm text-[#17372F]">
             ₹{row.grandTotal.toLocaleString('en-IN')}
           </div>
           <div className="text-[10px] text-slate-500">
@@ -84,7 +84,7 @@ export default function QuotationsModule() {
       cell: (row) => (
         <div>
           <span className={`font-mono font-bold text-xs ${
-            row.grossMarginPercent < 7 ? 'text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200' : 'text-[#16805D]'
+            row.grossMarginPercent < 7 ? 'text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200' : 'text-[#0F795C]'
           }`}>
             {row.grossMarginPercent}%
           </span>
@@ -106,16 +106,16 @@ export default function QuotationsModule() {
         <div className="flex items-center gap-1.5 flex-wrap">
           <button
             onClick={() => openModal('view_quote_pdf', row)}
-            className="p-1.5 rounded border border-[#E4E7EC] hover:bg-[#FAF9F6] text-slate-700"
+            className="p-1.5 rounded border border-[#E3E8DF] hover:bg-[#F7F5EC] text-slate-700"
             title="Preview Printable PDF Quotation"
           >
-            <Download className="w-3.5 h-3.5 text-[#C6A66B]" />
+            <Download className="w-3.5 h-3.5 text-[#C6A66A]" />
           </button>
 
           {row.status === 'Pending Approval' && isManagerOrAdmin && (
             <button
               onClick={() => approveQuotation(row.id)}
-              className="px-2.5 py-1 text-xs bg-[#16805D] text-white rounded font-semibold hover:bg-[#16805D]/90"
+              className="px-2.5 py-1 text-xs bg-[#0F795C] text-white rounded font-semibold hover:bg-[#0F795C]/90"
             >
               Approve
             </button>
@@ -124,7 +124,7 @@ export default function QuotationsModule() {
           {row.status === 'Approved' && (
             <button
               onClick={() => convertQuoteToSalesOrder(row.id)}
-              className="px-2.5 py-1 text-xs bg-[#101828] text-white rounded font-medium hover:bg-[#101828]/90"
+              className="px-2.5 py-1 text-xs bg-[#075C46] text-white rounded font-medium hover:bg-[#063F32]"
             >
               Convert to Order
             </button>
@@ -137,19 +137,19 @@ export default function QuotationsModule() {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">Commercial Quotations & RFQs</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">Commercial Quotations & RFQs</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             Dynamic quotation builder, automated GST & freight calculation, margin authorization, and PDF generation.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => openModal('create_quote')}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors shadow-sm"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors shadow-sm"
           >
-            <Plus className="w-3.5 h-3.5 text-[#C6A66B]" />
+            <Plus className="w-3.5 h-3.5 text-[#C6A66A]" />
             <span>Create New Quotation</span>
           </button>
         </div>

@@ -7,41 +7,65 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: {
-          50: '#F0F3F9',
-          100: '#E2E7F2',
-          200: '#C5D0E6',
-          700: '#1e293b',
-          800: '#151f33',
-          900: '#101828',
-          950: '#0a0f1a'
+        // Reference Color Palette
+        forest: {
+          950: '#042a22',
+          900: '#063F32', // Deep Forest Green
+          800: '#075C46', // Dark Emerald
+          700: '#0F795C', // Jade Green
+          600: '#148C6B',
+          500: '#1E9E7C',
+          200: '#B6D7CA',
+          100: '#DDE9D9', // Soft Sage Green
+          50: '#F0F5EE',
+        },
+        ivory: {
+          50: '#FFFFFF',
+          100: '#FAF8F2',
+          200: '#F7F5EC', // Warm Ivory
+          300: '#ECE9DC',
+        },
+        sage: {
+          50: '#F4F7F2',
+          100: '#DDE9D9', // Soft Sage Green
+          200: '#C7D9C2',
+          300: '#A9C2A3',
         },
         gold: {
+          accent: '#C6A66A', // Champagne Gold
           50: '#FAF7F0',
           100: '#F4EDE0',
-          200: '#E8DBC0',
-          300: '#DCC9A0',
-          400: '#D1B880',
-          500: '#C6A66B',
+          500: '#C6A66A',
           600: '#B08E4F',
-          700: '#8C6F3B',
-          800: '#695128',
-          900: '#463518'
+          700: '#8C6F3B'
+        },
+        darkText: '#17372F', // Dark Text
+        mutedText: '#7A8980', // Muted Gray-Green
+        softBorder: '#E3E8DF', // Soft Border
+        // Backward-compatible mappings
+        navy: {
+          50: '#F0F5EE',
+          100: '#DDE9D9',
+          200: '#B6D7CA',
+          700: '#0F795C',
+          800: '#075C46',
+          900: '#063F32',
+          950: '#042a22'
         },
         warm: {
           50: '#FFFFFF',
-          100: '#FAF9F6',
-          200: '#F7F6F2',
-          300: '#EEECE4',
-          400: '#E3DFD4'
+          100: '#FAF8F2',
+          200: '#F7F5EC',
+          300: '#ECE9DC',
+          400: '#E3E8DF'
         },
         slate: {
-          text: '#667085',
-          light: '#98A2B3',
-          border: '#E4E7EC'
+          text: '#7A8980',
+          light: '#A0ACA4',
+          border: '#E3E8DF'
         },
         brand: {
-          success: '#16805D',
+          success: '#0F795C',
           warning: '#B7791F',
           danger: '#C43232',
           info: '#2E6FBB'
@@ -51,9 +75,9 @@ export default {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       boxShadow: {
-        'glass': '0 8px 32px 0 rgba(16, 24, 40, 0.08)',
-        'glass-hover': '0 12px 40px 0 rgba(16, 24, 40, 0.12)',
-        'subtle': '0 1px 3px 0 rgba(16, 24, 40, 0.05), 0 1px 2px -1px rgba(16, 24, 40, 0.05)'
+        'glass': '0 8px 32px 0 rgba(6, 63, 50, 0.08)',
+        'glass-hover': '0 12px 40px 0 rgba(6, 63, 50, 0.12)',
+        'subtle': '0 1px 3px 0 rgba(6, 63, 50, 0.05), 0 1px 2px -1px rgba(6, 63, 50, 0.05)'
       },
       backdropBlur: {
         'glass': '12px'
@@ -62,4 +86,3 @@ export default {
   },
   plugins: [],
 }
-

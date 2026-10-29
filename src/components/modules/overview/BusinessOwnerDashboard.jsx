@@ -24,22 +24,22 @@ export default function BusinessOwnerDashboard() {
   return (
     <div className="space-y-6">
       {/* Top Banner & Date Filter */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">Executive Business Overview</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">Executive Business Overview</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             Consolidated trading performance, gross margin profitability, risk alerts, and pending approvals.
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <select className="text-xs bg-white border border-[#E4E7EC] rounded-lg px-3 py-1.5 font-medium text-[#101828]">
+          <select className="text-xs bg-white border border-[#E3E8DF] rounded-lg px-3 py-1.5 font-medium text-[#17372F]">
             <option>Current Financial Quarter (Q3 2026-27)</option>
             <option>This Month (October 2026)</option>
             <option>Year to Date (FY 2026-27)</option>
           </select>
           <button
             onClick={() => setActiveNav('reports')}
-            className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors"
+            className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors"
           >
             Full Analytics
           </button>
@@ -91,41 +91,41 @@ export default function BusinessOwnerDashboard() {
         {/* Left 2 Cols: Sales & Purchase Performance & Pending Approvals */}
         <div className="lg:col-span-2 space-y-6">
           {/* Pending Business Exceptions & Approvals */}
-          <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm">
-            <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+          <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
               <div className="flex items-center gap-2">
                 <AlertTriangle className="w-4 h-4 text-[#B7791F]" />
-                <h2 className="text-sm font-bold text-[#101828]">Pending Approvals & Business Exceptions</h2>
+                <h2 className="text-sm font-bold text-[#17372F]">Pending Approvals & Business Exceptions</h2>
               </div>
               <span className="text-xs bg-amber-50 text-amber-800 font-semibold px-2.5 py-0.5 rounded-full border border-amber-200">
                 {pendingQuotes.length + quarantinedBatches.length} Requiring Decision
               </span>
             </div>
 
-            <div className="divide-y divide-[#E4E7EC] mt-3">
+            <div className="divide-y divide-[#E3E8DF] mt-3">
               {pendingQuotes.map(q => (
                 <div key={q.id} className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-bold text-[#101828]">{q.id}</span>
-                      <span className="text-[#667085]">• {q.customerName}</span>
+                      <span className="font-bold text-[#17372F]">{q.id}</span>
+                      <span className="text-[#7A8980]">• {q.customerName}</span>
                       <Badge status="Pending Approval" />
                     </div>
                     <p className="text-slate-600 mt-1">
-                      Grand Total: <strong className="text-[#101828]">₹{q.grandTotal.toLocaleString('en-IN')}</strong> | Internal Margin: <span className="text-amber-700 font-semibold">{q.grossMarginPercent}%</span> (Triggered due to &lt;7% policy)
+                      Grand Total: <strong className="text-[#17372F]">₹{q.grandTotal.toLocaleString('en-IN')}</strong> | Internal Margin: <span className="text-amber-700 font-semibold">{q.grossMarginPercent}%</span> (Triggered due to &lt;7% policy)
                     </p>
                     <p className="text-[11px] text-slate-500 italic mt-0.5">"{q.approvalNote}"</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => approveQuotation(q.id)}
-                      className="px-3 py-1.5 bg-[#16805D] text-white rounded-lg font-semibold hover:bg-[#16805D]/90 transition-colors"
+                      className="px-3 py-1.5 bg-[#0F795C] text-white rounded-lg font-semibold hover:bg-[#0F795C]/90 transition-colors"
                     >
                       Approve Price
                     </button>
                     <button
                       onClick={() => openModal('view_quote_pdf', q)}
-                      className="px-2.5 py-1.5 border border-[#E4E7EC] text-[#101828] rounded-lg hover:bg-[#FAF9F6]"
+                      className="px-2.5 py-1.5 border border-[#E3E8DF] text-[#17372F] rounded-lg hover:bg-[#F7F5EC]"
                     >
                       View
                     </button>
@@ -138,7 +138,7 @@ export default function BusinessOwnerDashboard() {
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="font-bold text-[#C43232]">{b.batchNo}</span>
-                      <span className="text-[#667085]">• {b.chemicalName}</span>
+                      <span className="text-[#7A8980]">• {b.chemicalName}</span>
                       <Badge status="Quarantined" />
                     </div>
                     <p className="text-slate-600 mt-1">
@@ -158,10 +158,10 @@ export default function BusinessOwnerDashboard() {
           </div>
 
           {/* Top Chemical Products Performance */}
-          <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm">
-            <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
-              <h2 className="text-sm font-bold text-[#101828]">Top Chemical Trading Products</h2>
-              <button onClick={() => setActiveNav('catalog')} className="text-xs text-[#C6A66B] font-semibold hover:underline flex items-center gap-1">
+          <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
+              <h2 className="text-sm font-bold text-[#17372F]">Top Chemical Trading Products</h2>
+              <button onClick={() => setActiveNav('catalog')} className="text-xs text-[#C6A66A] font-semibold hover:underline flex items-center gap-1">
                 View Catalog <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -169,7 +169,7 @@ export default function BusinessOwnerDashboard() {
             <div className="mt-4 overflow-x-auto">
               <table className="w-full text-xs text-left">
                 <thead>
-                  <tr className="border-b border-[#E4E7EC] text-slate-500 font-semibold uppercase">
+                  <tr className="border-b border-[#E3E8DF] text-slate-500 font-semibold uppercase">
                     <th className="pb-2">Chemical Name</th>
                     <th className="pb-2">CAS No.</th>
                     <th className="pb-2">Current Stock</th>
@@ -177,30 +177,30 @@ export default function BusinessOwnerDashboard() {
                     <th className="pb-2">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#E4E7EC]">
+                <tbody className="divide-y divide-[#E3E8DF]">
                   <tr>
-                    <td className="py-2.5 font-bold text-[#101828]">Caustic Soda Lye (48%)</td>
+                    <td className="py-2.5 font-bold text-[#17372F]">Caustic Soda Lye (48%)</td>
                     <td className="py-2.5 font-mono text-slate-600">1310-73-2</td>
                     <td className="py-2.5 font-semibold">340.5 MT</td>
                     <td className="py-2.5 font-mono">₹34,500/MT</td>
                     <td className="py-2.5"><Badge status="Active" /></td>
                   </tr>
                   <tr>
-                    <td className="py-2.5 font-bold text-[#101828]">Methanol Pure (99.85%)</td>
+                    <td className="py-2.5 font-bold text-[#17372F]">Methanol Pure (99.85%)</td>
                     <td className="py-2.5 font-mono text-slate-600">67-56-1</td>
                     <td className="py-2.5 font-semibold">185.0 MT</td>
                     <td className="py-2.5 font-mono">₹28,200/MT</td>
                     <td className="py-2.5"><Badge status="Active" /></td>
                   </tr>
                   <tr>
-                    <td className="py-2.5 font-bold text-[#101828]">Titanium Dioxide Rutile</td>
+                    <td className="py-2.5 font-bold text-[#17372F]">Titanium Dioxide Rutile</td>
                     <td className="py-2.5 font-mono text-slate-600">13463-67-7</td>
                     <td className="py-2.5 font-semibold">32.5 MT</td>
                     <td className="py-2.5 font-mono">₹242,000/MT</td>
                     <td className="py-2.5"><Badge status="Quarantine Warning" variant="warning" /></td>
                   </tr>
                   <tr>
-                    <td className="py-2.5 font-bold text-[#101828]">Isopropyl Alcohol (IPA)</td>
+                    <td className="py-2.5 font-bold text-[#17372F]">Isopropyl Alcohol (IPA)</td>
                     <td className="py-2.5 font-mono text-slate-600">67-63-0</td>
                     <td className="py-2.5 font-semibold">48.2 MT</td>
                     <td className="py-2.5 font-mono">₹98,500/MT</td>
@@ -215,15 +215,15 @@ export default function BusinessOwnerDashboard() {
         {/* Right Col: Top Key Accounts & Inventory Risk */}
         <div className="space-y-6">
           {/* Top Key Accounts */}
-          <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm">
-            <h2 className="text-sm font-bold text-[#101828] pb-3 border-b border-[#E4E7EC]">
+          <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm">
+            <h2 className="text-sm font-bold text-[#17372F] pb-3 border-b border-[#E3E8DF]">
               Key Enterprise Accounts
             </h2>
-            <div className="divide-y divide-[#E4E7EC] mt-3">
+            <div className="divide-y divide-[#E3E8DF] mt-3">
               {customers.slice(0, 4).map(c => (
                 <div key={c.id} className="py-2.5 text-xs">
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-[#101828]">{c.companyName}</span>
+                    <span className="font-bold text-[#17372F]">{c.companyName}</span>
                     <span className="font-mono text-slate-500 font-semibold">₹{(c.lifetimeSpend / 10000000).toFixed(2)} Cr</span>
                   </div>
                   <div className="flex items-center justify-between text-slate-500 mt-1">
@@ -231,7 +231,7 @@ export default function BusinessOwnerDashboard() {
                     {c.overdueAmount > 0 ? (
                       <span className="text-[#C43232] font-semibold">₹{c.overdueAmount.toLocaleString('en-IN')} Overdue</span>
                     ) : (
-                      <span className="text-[#16805D]">Current</span>
+                      <span className="text-[#0F795C]">Current</span>
                     )}
                   </div>
                 </div>
@@ -240,14 +240,14 @@ export default function BusinessOwnerDashboard() {
           </div>
 
           {/* Immediate Operational Checklist */}
-          <div className="glass-card-accent rounded-xl p-5 border border-[#C6A66B]/40 shadow-sm">
-            <div className="flex items-center gap-2 pb-3 border-b border-[#C6A66B]/30">
-              <ShieldAlert className="w-4 h-4 text-[#8C6F3B]" />
-              <h2 className="text-sm font-bold text-[#101828]">Risk & Governance Highlights</h2>
+          <div className="glass-card-accent rounded-xl p-5 border border-[#C6A66A]/40 shadow-sm">
+            <div className="flex items-center gap-2 pb-3 border-b border-[#C6A66A]/30">
+              <ShieldAlert className="w-4 h-4 text-[#075C46]" />
+              <h2 className="text-sm font-bold text-[#17372F]">Risk & Governance Highlights</h2>
             </div>
             <ul className="mt-3 space-y-2.5 text-xs text-slate-800">
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#16805D] mt-1.5 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0F795C] mt-1.5 flex-shrink-0" />
                 <span>GST E-Invoicing IRN API Status: <strong>Live & Synchronized</strong></span>
               </li>
               <li className="flex items-start gap-2">
@@ -255,7 +255,7 @@ export default function BusinessOwnerDashboard() {
                 <span>NCB Precursor Quota (Acetone/Toluene): <strong>63 days remaining</strong> for annual renewal.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#16805D] mt-1.5 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0F795C] mt-1.5 flex-shrink-0" />
                 <span>PESO Bulk Storage License valid through <strong>Dec 2027</strong>.</span>
               </li>
             </ul>

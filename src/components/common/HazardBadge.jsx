@@ -71,8 +71,8 @@ export default function HazardBadge({
   return (
     <div className="flex items-center gap-2 flex-wrap">
       {cas && (
-        <div className="inline-flex items-center gap-1 bg-[#101828]/5 hover:bg-[#101828]/10 text-[#101828] text-xs font-mono px-2 py-1 rounded border border-[#E4E7EC] transition-colors">
-          <span className="text-[#667085] text-[10px] uppercase font-sans font-bold">CAS</span>
+        <div className="inline-flex items-center gap-1 bg-[#075C46]/5 hover:bg-[#075C46]/10 text-[#17372F] text-xs font-mono px-2 py-1 rounded border border-[#E3E8DF] transition-colors">
+          <span className="text-[#7A8980] text-[10px] uppercase font-sans font-bold">CAS</span>
           <span className="font-semibold">{cas}</span>
           <button
             type="button"
@@ -93,7 +93,7 @@ export default function HazardBadge({
       )}
 
       {purity && (
-        <span className="inline-flex items-center text-xs font-medium text-[#16805D] bg-[#16805D]/10 px-2 py-1 rounded border border-[#16805D]/20">
+        <span className="inline-flex items-center text-xs font-medium text-[#0F795C] bg-[#0F795C]/10 px-2 py-1 rounded border border-[#0F795C]/20">
           {purity}
         </span>
       )}

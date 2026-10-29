@@ -24,7 +24,7 @@ export default function LogisticsModule() {
       accessor: 'challanNo',
       cell: (row) => (
         <div>
-          <div className="font-bold text-[#101828] text-sm font-mono">{row.challanNo}</div>
+          <div className="font-bold text-[#17372F] text-sm font-mono">{row.challanNo}</div>
           <div className="text-[10px] text-slate-400 font-mono">SO: {row.orderRef}</div>
           <div className="text-[10px] text-slate-500">Date: {row.dispatchDate}</div>
         </div>
@@ -37,7 +37,7 @@ export default function LogisticsModule() {
         <div>
           <span className="font-semibold text-slate-900 text-xs">{row.customer}</span>
           <div className="flex items-center gap-1 text-[11px] text-slate-500 mt-0.5">
-            <MapPin className="w-3 h-3 text-[#C6A66B]" />
+            <MapPin className="w-3 h-3 text-[#C6A66A]" />
             <span>{row.destination}</span>
           </div>
         </div>
@@ -48,7 +48,7 @@ export default function LogisticsModule() {
       accessor: 'chemical',
       cell: (row) => (
         <div className="text-xs">
-          <span className="font-bold text-[#101828]">{row.chemical}</span>
+          <span className="font-bold text-[#17372F]">{row.chemical}</span>
           <span className="font-mono text-slate-600 ml-1">({row.qty} {row.uom})</span>
           <span className="block text-[10px] text-emerald-800 font-mono">Lot: {row.batchNo}</span>
         </div>
@@ -60,7 +60,7 @@ export default function LogisticsModule() {
       cell: (row) => (
         <div className="text-xs space-y-0.5">
           <span className="font-semibold text-slate-800">{row.transporter}</span>
-          <span className="block font-mono text-[11px] text-[#101828] font-bold">Vehicle: {row.vehicleNo}</span>
+          <span className="block font-mono text-[11px] text-[#17372F] font-bold">Vehicle: {row.vehicleNo}</span>
           <span className="text-[10px] text-slate-500">{row.driverName}</span>
         </div>
       )
@@ -89,15 +89,15 @@ export default function LogisticsModule() {
         <div className="flex items-center gap-1.5">
           <button
             onClick={() => showToast(`Printing Delivery Challan ${row.challanNo}`, 'info')}
-            className="p-1.5 rounded border border-[#E4E7EC] hover:bg-[#FAF9F6] text-slate-700"
+            className="p-1.5 rounded border border-[#E3E8DF] hover:bg-[#F7F5EC] text-slate-700"
             title="Print Challan"
           >
-            <Printer className="w-3.5 h-3.5 text-[#C6A66B]" />
+            <Printer className="w-3.5 h-3.5 text-[#C6A66A]" />
           </button>
           {row.status !== 'Delivered' && (
             <button
               onClick={() => markDelivered(row.challanNo)}
-              className="px-2.5 py-1 text-xs bg-[#16805D] text-white rounded font-medium hover:bg-[#16805D]/90"
+              className="px-2.5 py-1 text-xs bg-[#0F795C] text-white rounded font-medium hover:bg-[#0F795C]/90"
             >
               Confirm POD
             </button>
@@ -116,30 +116,30 @@ export default function LogisticsModule() {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">Chemical Logistics & Dispatch Fleet</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">Chemical Logistics & Dispatch Fleet</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             Dedicated road tankers, Hazchem Tremcard documentation, live transit tracking, and signed Proof of Delivery (POD).
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => openModal('schedule_dispatch')}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors shadow-sm"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors shadow-sm"
           >
-            <Plus className="w-3.5 h-3.5 text-[#C6A66B]" />
+            <Plus className="w-3.5 h-3.5 text-[#C6A66A]" />
             <span>Schedule Tanker Dispatch</span>
           </button>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#E4E7EC] pb-2">
+      <div className="flex items-center gap-2 border-b border-[#E3E8DF] pb-2">
         <button
           onClick={() => setActiveTab('challans')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'challans' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'challans' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Delivery Challans & Dispatches ({dispatches.length})
@@ -147,7 +147,7 @@ export default function LogisticsModule() {
         <button
           onClick={() => setActiveTab('transporters')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'transporters' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'transporters' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Transporter Directory & Fleet (3)
@@ -166,9 +166,9 @@ export default function LogisticsModule() {
       {activeTab === 'transporters' && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {transportersList.map((tr, idx) => (
-            <div key={idx} className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm space-y-3">
-              <div className="flex items-center justify-between pb-2 border-b border-[#E4E7EC]">
-                <h3 className="font-bold text-[#101828] text-sm">{tr.name}</h3>
+            <div key={idx} className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm space-y-3">
+              <div className="flex items-center justify-between pb-2 border-b border-[#E3E8DF]">
+                <h3 className="font-bold text-[#17372F] text-sm">{tr.name}</h3>
                 <span className="text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
                   {tr.rating}
                 </span>
