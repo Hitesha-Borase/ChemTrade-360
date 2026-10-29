@@ -12,6 +12,7 @@ import {
   INITIAL_DISPATCHES,
   INITIAL_COMPLIANCE_DOCS,
   INITIAL_AUDIT_LOGS,
+  INITIAL_TRANSACTIONS,
   ROLE_DEFINITIONS
 } from '../data/mockData';
 
@@ -175,6 +176,7 @@ export function AppProvider({ children }) {
   const [dispatches, setDispatches] = useState(INITIAL_DISPATCHES);
   const [complianceDocs, setComplianceDocs] = useState(INITIAL_COMPLIANCE_DOCS);
   const [auditLogs, setAuditLogs] = useState(INITIAL_AUDIT_LOGS);
+  const [dailyTransactions, setDailyTransactions] = useState(INITIAL_TRANSACTIONS);
 
   // Notifications
   const [notifications, setNotifications] = useState([
@@ -393,6 +395,70 @@ export function AppProvider({ children }) {
     setDispatches(prev => prev.map(d => d.challanNo === challanNo ? { ...d, status: 'Delivered', podStatus: 'Verified POD Signed' } : d));
     logAudit(`Confirmed delivery for Challan ${challanNo}. POD uploaded.`);
     showToast(`Delivery completed for Challan ${challanNo}!`, 'success');
+  };
+
+  const addTransaction = (newTxn) => {
+    setDailyTransactions(prev => [newTxn, ...prev]);
+    logAudit(`Recorded ${newTxn.type}: ${newTxn.category} (₹${Number(newTxn.amount).toLocaleString('en-IN')})`);
+    showToast(`${newTxn.type} of ₹${Number(newTxn.amount).toLocaleString('en-IN')} recorded!`, 'success');
+  };
+
+  const updateSalesOrderStatus = (orderId, newStatus) => {
+    let orderToDispatch = null;
+    setSalesOrders(prev => prev.map(so => {
+      if (so.id === orderId) {
+        orderToDispatch = so;
+        return { ...so, status: newStatus };
+      }
+      return so;
+    }));
+
+    // Automatic Stock Deduction (Sales reduces stock)
+    if ((newStatus === 'In Transit' || newStatus === 'Ready to Dispatch') && orderToDispatch) {
+      if (orderToDispatch.items && orderToDispatch.items.length > 0) {
+        orderToDispatch.items.forEach(item => {
+          const qtyToDeduct = Number(item.qty) || 0;
+          setBatches(prevBatches => prevBatches.map(b => {
+            if (b.batchNo === item.batchNo || b.chemicalName?.toLowerCase() === item.chemicalName?.toLowerCase()) {
+              const newAvail = Math.max(0, Number(((b.availableQty || 0) - qtyToDeduct).toFixed(1)));
+              return { ...b, availableQty: newAvail };
+            }
+            return b;
+          }));
+          setChemicals(prevChems => prevChems.map(c => {
+            if (c.name?.toLowerCase().includes(item.chemicalName?.toLowerCase()) || item.chemicalName?.toLowerCase().includes(c.name?.toLowerCase())) {
+              const newStock = Math.max(0, Number(((c.currentStock || 0) - qtyToDeduct).toFixed(1)));
+              return { ...c, currentStock: newStock };
+            }
+            return c;
+          }));
+        });
+      }
+      logAudit(`Order ${orderId} dispatched: Automatically reduced chemical inventory stock.`);
+      showToast(`Order ${orderId} dispatched! Inventory stock automatically reduced.`, 'success');
+    } else {
+      logAudit(`Updated Sales Order ${orderId} status to ${newStatus}`);
+      showToast(`Order ${orderId} marked as ${newStatus}!`, 'info');
+    }
+  };
+
+  const addBatch = (newBatch) => {
+    setBatches(prev => [newBatch, ...prev]);
+    const addedQty = Number(newBatch.availableQty) || 0;
+    setChemicals(prev => prev.map(c => {
+      if (c.name?.toLowerCase().includes(newBatch.chemicalName?.toLowerCase()) || newBatch.chemicalName?.toLowerCase().includes(c.name?.toLowerCase())) {
+        return { ...c, currentStock: Number(((c.currentStock || 0) + addedQty).toFixed(1)) };
+      }
+      return c;
+    }));
+    logAudit(`Inwarded batch ${newBatch.batchNo} for ${newBatch.chemicalName} (+${addedQty} MT)`);
+    showToast(`Batch ${newBatch.batchNo} added to inventory! Stock updated (+${addedQty} MT).`, 'success');
+  };
+
+  const updateQuotationStatus = (quoteId, newStatus) => {
+    setQuotations(prev => prev.map(q => q.id === quoteId ? { ...q, status: newStatus } : q));
+    logAudit(`Updated Quotation ${quoteId} status to ${newStatus}`);
+    showToast(`Quotation ${quoteId} status set to ${newStatus}`, 'info');
   };
 
   const roleMeta = ROLE_DEFINITIONS.find(r => r.id === currentRole) || ROLE_DEFINITIONS[0];

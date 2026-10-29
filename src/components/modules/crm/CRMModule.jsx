@@ -13,7 +13,8 @@ import {
   CheckCircle2,
   Calendar,
   DollarSign,
-  MessageSquare
+  MessageSquare,
+  History
 } from 'lucide-react';
 
 export default function CRMModule() {
@@ -130,8 +131,14 @@ export default function CRMModule() {
       header: 'Customer / Company',
       accessor: 'companyName',
       cell: (row) => (
-        <div>
-          <div className="font-bold text-[#17372F]">{row.companyName}</div>
+        <div 
+          onClick={() => openModal('customer_history', row)}
+          className="cursor-pointer group"
+          title="Click to view Customer Purchase History & Dossier"
+        >
+          <div className="font-bold text-[#17372F] group-hover:text-[#075C46] group-hover:underline flex items-center gap-1.5">
+            <span>{row.companyName}</span>
+          </div>
           <div className="text-[11px] text-[#7A8980] font-mono">{row.id} • {row.city}, {row.state}</div>
         </div>
       )
@@ -184,11 +191,19 @@ export default function CRMModule() {
       cell: (row) => (
         <div className="flex items-center gap-1.5 whitespace-nowrap">
           <button
+            onClick={() => openModal('customer_history', row)}
+            className="px-2.5 py-1 text-xs border border-[#E3E8DF] hover:bg-slate-50 text-slate-700 rounded-lg font-semibold flex items-center gap-1 shadow-2xs active:scale-95 transition-all"
+            title="View complete purchase & invoice history"
+          >
+            <History className="w-3.5 h-3.5 text-[#075C46]" />
+            <span>History</span>
+          </button>
+          <button
             onClick={() => openModal('create_quote', { customerName: row.companyName })}
             className="px-2.5 py-1 text-xs bg-[#075C46] text-white rounded-lg font-semibold hover:bg-[#063F32] shadow-xs active:scale-95 transition-all"
             title="Create formal quote for customer"
           >
-            Create Quote
+            Quote
           </button>
           <button
             onClick={() => {

@@ -11,7 +11,8 @@ import {
   Clock,
   ArrowRight,
   TrendingUp,
-  Download
+  Download,
+  MessageSquare
 } from 'lucide-react';
 
 export default function QuotationsModule() {
@@ -120,6 +121,16 @@ export default function QuotationsModule() {
             title="Preview Printable PDF Quotation"
           >
             <Download className="w-3.5 h-3.5 text-[#C6A66A]" />
+          </button>
+          <button
+            onClick={() => {
+              const msg = encodeURIComponent(`Chemical Quotation ${row.id} for ${row.customerName}:\nTotal Amount: ₹${row.grandTotal?.toLocaleString('en-IN')}\nValid Until: ${row.validUntil}\nChemTrade Distribution.`);
+              window.open(`https://wa.me/?text=${msg}`, '_blank');
+            }}
+            className="p-1.5 rounded-lg border border-[#E3E8DF] hover:bg-emerald-50 hover:border-emerald-300 text-emerald-700 shadow-2xs active:scale-95 transition-all"
+            title="Share Quotation Offer on WhatsApp"
+          >
+            <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
           </button>
 
           {row.status === 'Pending Approval' && isManagerOrAdmin && (

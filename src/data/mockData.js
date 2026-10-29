@@ -1160,3 +1160,62 @@ export const ROLE_DEFINITIONS = [
     ]
   }
 ];
+
+
+export const INITIAL_TRANSACTIONS = [
+  {
+    id: 'TXN-2026-101',
+    date: '2026-10-29',
+    type: 'Income',
+    category: 'Customer Advance Payment',
+    description: 'Advance payment received from Asian Paints Ltd for SO-2026-0451',
+    mode: 'RTGS / Bank',
+    referenceNo: 'RTGS/HDFC/992817',
+    amount: 500000,
+    recordedBy: 'Sunil Mehta'
+  },
+  {
+    id: 'TXN-2026-102',
+    date: '2026-10-29',
+    type: 'Expense',
+    category: 'Tanker Freight & Diesel',
+    description: 'ChemiCarrier Bulk Tankers freight advance for Taloja dispatch',
+    mode: 'Online Transfer',
+    referenceNo: 'IMPS/394821',
+    amount: 32000,
+    recordedBy: 'Vikram Mehta'
+  },
+  {
+    id: 'TXN-2026-103',
+    date: '2026-10-28',
+    type: 'Expense',
+    category: 'Lab Testing & QC Fees',
+    description: 'SGS India sample purity and moisture testing charges (BAT-2026-TD-05)',
+    mode: 'UPI / Card',
+    referenceNo: 'UPI/9823412',
+    amount: 8500,
+    recordedBy: 'Dinesh Patel'
+  },
+  {
+    id: 'TXN-2026-104',
+    date: '2026-10-28',
+    type: 'Income',
+    category: 'Customer Bill Clearance',
+    description: 'Full payment received from Sun Pharma for INV-2026-0689',
+    mode: 'NEFT / Bank',
+    referenceNo: 'NEFT/ICIC/881203',
+    amount: 850000,
+    recordedBy: 'Sunil Mehta'
+  },
+  {
+    id: 'TXN-2026-105',
+    date: '2026-10-27',
+    type: 'Expense',
+    category: 'Terminal Unloading & Handling',
+    description: 'Drum shifting and palletizing labor charges at Bhiwandi Depot',
+    mode: 'Cash',
+    referenceNo: 'VOUCHER-088',
+    amount: 6200,
+    recordedBy: 'Dinesh Patel'
+  }
+];

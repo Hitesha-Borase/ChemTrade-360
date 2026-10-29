@@ -10,6 +10,7 @@ import QuarantineReviewModal from './QuarantineReviewModal';
 import InvoiceModal from './InvoiceModal';
 import ViewCOAModal from './ViewCOAModal';
 import ViewSDSModal from './ViewSDSModal';
+import CustomerHistoryModal from './CustomerHistoryModal';
 
 export default function ModalManager() {
   const { activeModal } = useApp();
@@ -37,6 +38,8 @@ export default function ModalManager() {
       return <ViewCOAModal />;
     case 'view_sds':
       return <ViewSDSModal />;
+    case 'customer_history':
+      return <CustomerHistoryModal />;
     default:
       return null;
   }
