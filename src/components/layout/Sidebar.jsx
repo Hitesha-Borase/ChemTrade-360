@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import {
   LayoutDashboard,
@@ -7,69 +7,35 @@ import {
   FileSpreadsheet,
   ShoppingBag,
   Boxes,
-  Truck,
+  PackageCheck,
   Receipt,
-  FileCheck2,
   BarChart3,
-  Bot,
   Settings,
   ChevronLeft,
   ChevronRight,
-  ShieldCheck,
   Building2,
-  PackageCheck,
-  Compass,
   LogOut
 } from 'lucide-react';
 
 export default function Sidebar({ collapsed, setCollapsed }) {
   const { activeNav, setActiveNav, currentRole, roleMeta, logout } = useApp();
 
-  // Internal Navigation Items (Section 3 of wireframe)
-  const internalNavItems = [
-    { id: 'overview', label: 'Overview', icon: LayoutDashboard, badge: null },
-    { id: 'crm', label: 'CRM & Accounts', icon: Users, badge: '4 Leads' },
-    { id: 'catalog', label: 'Chemical Catalog', icon: FlaskConical, badge: null },
+  // Simple 10 Core Business Modules
+  const navItems = [
+    { id: 'overview', label: 'Dashboard', icon: LayoutDashboard, badge: null },
+    { id: 'crm', label: 'Customers', icon: Users, badge: '4 Leads' },
+    { id: 'catalog', label: 'Chemicals', icon: FlaskConical, badge: null },
     { id: 'quotations', label: 'Quotations', icon: FileSpreadsheet, badge: '1 Approval' },
     { id: 'sales', label: 'Sales Orders', icon: ShoppingBag, badge: null },
-    { id: 'inventory', label: 'Inventory & Batches', icon: Boxes, badge: '1 Alert' },
-    { id: 'procurement', label: 'Procurement & POs', icon: PackageCheck, badge: null },
-    { id: 'finance', label: 'Finance & GST', icon: Receipt, badge: 'Overdue' },
-    { id: 'logistics', label: 'Logistics & Dispatch', icon: Truck, badge: null },
-    { id: 'quality', label: 'Quality & Compliance', icon: FileCheck2, badge: 'Quarantine' },
-    { id: 'reports', label: 'Reports & Analytics', icon: BarChart3, badge: null },
-    { id: 'ai', label: 'AI & Automation', icon: Bot, badge: 'Smart' },
-    { id: 'admin', label: 'Administration', icon: Settings, badge: null }
+    { id: 'inventory', label: 'Inventory', icon: Boxes, badge: '1 Alert' },
+    { id: 'procurement', label: 'Purchases', icon: PackageCheck, badge: null },
+    { id: 'finance', label: 'Billing', icon: Receipt, badge: 'Overdue' },
+    { id: 'reports', label: 'Reports', icon: BarChart3, badge: null },
+    { id: 'admin', label: 'Settings', icon: Settings, badge: null }
   ];
-
-  // External Portal Navigation Items
-  const customerPortalItems = [
-    { id: 'customer_portal', label: 'Customer Portal', icon: LayoutDashboard, badge: 'Active' },
-    { id: 'quotations', label: 'Quotations & RFQs', icon: FileSpreadsheet, badge: null },
-    { id: 'sales', label: 'My Sales Orders', icon: ShoppingBag, badge: null },
-    { id: 'finance', label: 'Invoices & Ledger', icon: Receipt, badge: null },
-    { id: 'quality', label: 'Approved SDS / COA', icon: FileCheck2, badge: null }
-  ];
-
-  const supplierPortalItems = [
-    { id: 'supplier_portal', label: 'Supplier Portal', icon: LayoutDashboard, badge: 'Active' },
-    { id: 'procurement', label: 'RFQs & Quotes', icon: PackageCheck, badge: null },
-    { id: 'sales', label: 'Purchase Orders', icon: ShoppingBag, badge: null },
-    { id: 'logistics', label: 'Dispatch & GRN', icon: Truck, badge: null },
-    { id: 'quality', label: 'COA Uploads', icon: FileCheck2, badge: null }
-  ];
-
-  const isCustomerPortal = currentRole === 'customer_portal';
-  const isSupplierPortal = currentRole === 'supplier_portal';
-
-  let currentNavList = internalNavItems;
-  if (isCustomerPortal) currentNavList = customerPortalItems;
-  if (isSupplierPortal) currentNavList = supplierPortalItems;
 
   // Role-based navigation: ONLY show menus that this role is permitted to access!
-  // Disallowed menus are completely hidden (never rendered as blurred or dimmed).
-  const visibleNavList = currentNavList.filter((item) => {
-    if (isCustomerPortal || isSupplierPortal) return true;
+  const visibleNavList = navItems.filter((item) => {
     return roleMeta?.allowedNav ? roleMeta.allowedNav.includes(item.id) : true;
   });
 
@@ -91,7 +57,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
           <div className="flex items-center gap-2 overflow-hidden">
             <span className="w-2 h-2 rounded-full bg-[#0F795C]" />
             <span className="text-[11px] font-semibold text-[#DDE9D9] tracking-wider uppercase">
-              {isCustomerPortal ? 'Customer Portal' : isSupplierPortal ? 'Supplier Portal' : roleMeta.name}
+              {roleMeta?.name || 'ChemTrade 360'}
             </span>
           </div>
         )}
@@ -184,4 +150,3 @@ export default function Sidebar({ collapsed, setCollapsed }) {
     </aside>
   );
 }
-

@@ -1038,84 +1038,93 @@ export const INITIAL_AUDIT_LOGS = [
 
 export const ROLE_DEFINITIONS = [
   {
-    id: 'super_admin',
-    name: 'Super Admin',
+    id: 'admin',
+    name: 'Admin',
     type: 'internal',
     defaultPath: 'overview',
-    description: 'System setup, users, roles, permissions, company configuration, audit visibility',
-    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'inventory', 'procurement', 'finance', 'logistics', 'quality', 'reports', 'ai', 'admin']
+    description: 'Full system management, users, settings, chemicals, orders, inventory and billing',
+    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'inventory', 'procurement', 'finance', 'reports', 'admin']
   },
   {
-    id: 'business_owner',
-    name: 'Business Owner',
+    id: 'sales_staff',
+    name: 'Sales Staff',
     type: 'internal',
     defaultPath: 'overview',
-    description: 'Business-wide revenue, margin, outstanding, sales, purchasing, inventory & performance',
-    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'inventory', 'procurement', 'finance', 'logistics', 'quality', 'reports', 'ai', 'admin']
+    description: 'Customer inquiries, quotations, sales orders and sales reports',
+    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'reports']
+  },
+  {
+    id: 'inventory_staff',
+    name: 'Inventory Staff',
+    type: 'internal',
+    defaultPath: 'overview',
+    description: 'Chemical stock, batch tracking, stock in/out, purchases and stock alerts',
+    allowedNav: ['overview', 'catalog', 'inventory', 'procurement', 'reports']
+  },
+  // Compatibility aliases for previously saved sessions
+  {
+    id: 'business_owner',
+    name: 'Admin',
+    type: 'internal',
+    defaultPath: 'overview',
+    description: 'Full system management, users, settings, chemicals, orders, inventory and billing',
+    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'inventory', 'procurement', 'finance', 'reports', 'admin']
+  },
+  {
+    id: 'super_admin',
+    name: 'Admin',
+    type: 'internal',
+    defaultPath: 'overview',
+    description: 'Full system management, users, settings, chemicals, orders, inventory and billing',
+    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'inventory', 'procurement', 'finance', 'reports', 'admin']
   },
   {
     id: 'sales_manager',
-    name: 'Sales Manager',
+    name: 'Sales Staff',
     type: 'internal',
     defaultPath: 'overview',
-    description: 'Team pipeline, quotations, approvals, targets and sales conversion',
-    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'inventory', 'reports', 'ai']
+    description: 'Customer inquiries, quotations, sales orders and sales reports',
+    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'reports']
   },
   {
     id: 'sales_executive',
-    name: 'Sales Executive',
+    name: 'Sales Staff',
     type: 'internal',
     defaultPath: 'overview',
-    description: 'Assigned leads, customer requirements, follow-ups, quotations and orders',
-    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'inventory', 'ai']
+    description: 'Customer inquiries, quotations, sales orders and sales reports',
+    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'reports']
   },
   {
     id: 'purchase_manager',
-    name: 'Purchase Manager',
+    name: 'Inventory Staff',
     type: 'internal',
     defaultPath: 'overview',
-    description: 'Suppliers, RFQs, quote comparisons, purchase orders, GRNs and purchasing costs',
-    allowedNav: ['overview', 'catalog', 'procurement', 'inventory', 'quality', 'reports', 'ai']
+    description: 'Chemical stock, batch tracking, stock in/out, purchases and stock alerts',
+    allowedNav: ['overview', 'catalog', 'inventory', 'procurement', 'reports']
   },
   {
     id: 'warehouse_manager',
-    name: 'Warehouse Manager',
+    name: 'Inventory Staff',
     type: 'internal',
     defaultPath: 'overview',
-    description: 'Stock, batches, warehouse movements, reservations, expiry, quarantine and dispatch readiness',
-    allowedNav: ['overview', 'catalog', 'inventory', 'logistics', 'quality']
+    description: 'Chemical stock, batch tracking, stock in/out, purchases and stock alerts',
+    allowedNav: ['overview', 'catalog', 'inventory', 'procurement', 'reports']
   },
   {
     id: 'accountant',
-    name: 'Accountant',
+    name: 'Admin',
     type: 'internal',
     defaultPath: 'overview',
-    description: 'Invoices, receivables, payables, receipts, tax documents and accounting reports',
-    allowedNav: ['overview', 'finance', 'sales', 'procurement', 'reports']
+    description: 'Full system management, users, settings, chemicals, orders, inventory and billing',
+    allowedNav: ['overview', 'crm', 'catalog', 'quotations', 'sales', 'inventory', 'procurement', 'finance', 'reports', 'admin']
   },
   {
     id: 'logistics_manager',
-    name: 'Logistics Manager',
+    name: 'Inventory Staff',
     type: 'internal',
     defaultPath: 'overview',
-    description: 'Dispatch planning, transporters, vehicles, delivery documents, shipments and proof of delivery',
-    allowedNav: ['overview', 'logistics', 'sales', 'inventory', 'quality']
-  },
-  {
-    id: 'customer_portal',
-    name: 'Customer Portal',
-    type: 'external',
-    defaultPath: 'customer_portal',
-    description: "Customer's own RFQs, quotations, orders, invoices, payment status & approved documents",
-    allowedNav: ['customer_portal']
-  },
-  {
-    id: 'supplier_portal',
-    name: 'Supplier Portal',
-    type: 'external',
-    defaultPath: 'supplier_portal',
-    description: "Supplier's own RFQs, submitted quotations, purchase orders, delivery updates & GRN status",
-    allowedNav: ['supplier_portal']
+    description: 'Chemical stock, batch tracking, stock in/out, purchases and stock alerts',
+    allowedNav: ['overview', 'catalog', 'inventory', 'procurement', 'reports']
   }
 ];
 

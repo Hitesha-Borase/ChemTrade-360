@@ -59,7 +59,7 @@ export function AppProvider({ children }) {
           setCurrentView('login');
         }
       } else if (h === '' || h.startsWith('#hero') || h.startsWith('#features') || h.startsWith('#showcase') || h.startsWith('#calculator') || h.startsWith('#pricing') || h.startsWith('#contact')) {
-        setCurrentView('landing');
+        setCurrentView('login');
       }
     };
     window.addEventListener('hashchange', handleHash);
@@ -68,7 +68,7 @@ export function AppProvider({ children }) {
 
   // Roles & Navigation
   const [currentRole, setCurrentRole] = useState(() => {
-    return localStorage.getItem('ct360_role') || 'business_owner';
+    return localStorage.getItem('ct360_role') || 'admin';
   });
 
   const [currentUser, setCurrentUser] = useState(() => {
@@ -78,7 +78,7 @@ export function AppProvider({ children }) {
     }
     return {
       name: 'Sunil Mehta',
-      email: 's.mehta@chemtrade360.com',
+      email: 'admin@chemtrade360.com',
       designation: 'Managing Director',
       hub: 'Dahej Terminal & Corporate HQ',
       avatar: 'SM'
@@ -115,11 +115,14 @@ export function AppProvider({ children }) {
     { id: 4, text: 'NIC E-Invoice IRN successfully generated for Asian Paints order', type: 'success', time: '3h ago', unread: false }
   ]);
 
-  const login = (roleId = 'business_owner', customEmail = null) => {
+  const login = (roleId = 'admin', customEmail = null) => {
     const roleMetaObj = ROLE_DEFINITIONS.find(r => r.id === roleId) || ROLE_DEFINITIONS[1];
     
     // Role-specific persona
     const personas = {
+      admin: { name: 'Sunil Mehta', email: 'admin@chemtrade360.com', designation: 'Managing Director & Partner', hub: 'Dahej Terminal & HQ', avatar: 'SM' },
+      sales_staff: { name: 'Vikram Mehta', email: 'sales@chemtrade360.com', designation: 'Sales Head', hub: 'Mumbai Commercial Office', avatar: 'VM' },
+      inventory_staff: { name: 'Dinesh Patel', email: 'inventory@chemtrade360.com', designation: 'Inventory & Warehouse Manager', hub: 'Dahej Bulk Storage Bay', avatar: 'DP' },
       super_admin: { name: 'Vikram Singhania', email: 'admin@chemtrade360.com', designation: 'Enterprise Administrator', hub: 'Corporate IT & Security', avatar: 'VS' },
       business_owner: { name: 'Sunil Mehta', email: 's.mehta@chemtrade360.com', designation: 'Managing Director & Partner', hub: 'Dahej Terminal & HQ', avatar: 'SM' },
       sales_manager: { name: 'Vikram Mehta', email: 'v.mehta@chemtrade360.com', designation: 'Head of Sales & Distribution', hub: 'Mumbai Commercial Office', avatar: 'VM' },

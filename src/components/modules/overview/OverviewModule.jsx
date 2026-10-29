@@ -1,35 +1,34 @@
 import React from 'react';
 import { useApp } from '../../../context/AppContext';
 import BusinessOwnerDashboard from './BusinessOwnerDashboard';
-import SuperAdminDashboard from './SuperAdminDashboard';
 import SalesManagerDashboard from './SalesManagerDashboard';
-import SalesExecutiveDashboard from './SalesExecutiveDashboard';
-import PurchaseManagerDashboard from './PurchaseManagerDashboard';
 import WarehouseManagerDashboard from './WarehouseManagerDashboard';
-import AccountantDashboard from './AccountantDashboard';
-import LogisticsManagerDashboard from './LogisticsManagerDashboard';
 
 export default function OverviewModule() {
   const { currentRole } = useApp();
 
   const renderDashboard = () => {
     switch (currentRole) {
-      case 'super_admin':
-        return <SuperAdminDashboard />;
+      // 1. Admin Dashboard (Full business, revenue, customers, suppliers, inventory alerts)
+      case 'admin':
       case 'business_owner':
-        return <BusinessOwnerDashboard />;
-      case 'sales_manager':
-        return <SalesManagerDashboard />;
-      case 'sales_executive':
-        return <SalesExecutiveDashboard />;
-      case 'purchase_manager':
-        return <PurchaseManagerDashboard />;
-      case 'warehouse_manager':
-        return <WarehouseManagerDashboard />;
+      case 'super_admin':
       case 'accountant':
-        return <AccountantDashboard />;
+        return <BusinessOwnerDashboard />;
+
+      // 2. Sales Staff Dashboard (Inquiries, customer follow-up, quotations, sales orders)
+      case 'sales_staff':
+      case 'sales_manager':
+      case 'sales_executive':
+        return <SalesManagerDashboard />;
+
+      // 3. Inventory Staff Dashboard (Chemical stock, stock-in GRN, available stock, alerts)
+      case 'inventory_staff':
+      case 'warehouse_manager':
+      case 'purchase_manager':
       case 'logistics_manager':
-        return <LogisticsManagerDashboard />;
+        return <WarehouseManagerDashboard />;
+
       default:
         return <BusinessOwnerDashboard />;
     }
@@ -41,4 +40,3 @@ export default function OverviewModule() {
     </div>
   );
 }
-

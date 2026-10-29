@@ -8,7 +8,7 @@ import ModalManager from './components/modals/ModalManager';
 // Landing Page
 import LandingPage from './components/landing/LandingPage';
 
-// Modules
+// 10 Core Business Modules
 import OverviewModule from './components/modules/overview/OverviewModule';
 import CRMModule from './components/modules/crm/CRMModule';
 import ChemicalCatalogModule from './components/modules/catalog/ChemicalCatalogModule';
@@ -17,32 +17,17 @@ import SalesModule from './components/modules/sales/SalesModule';
 import InventoryModule from './components/modules/inventory/InventoryModule';
 import ProcurementModule from './components/modules/procurement/ProcurementModule';
 import FinanceModule from './components/modules/finance/FinanceModule';
-import LogisticsModule from './components/modules/logistics/LogisticsModule';
-import QualityComplianceModule from './components/modules/quality/QualityComplianceModule';
 import ReportsModule from './components/modules/reports/ReportsModule';
-import AIAutomationModule from './components/modules/ai/AIAutomationModule';
 import AdminModule from './components/modules/admin/AdminModule';
-
-// Portals
-import CustomerPortal from './components/portals/CustomerPortal';
-import SupplierPortal from './components/portals/SupplierPortal';
 
 // Authentication
 import LoginPage from './components/auth/LoginPage';
 
 function MainLayout() {
-  const { activeNav, currentRole } = useApp();
+  const { activeNav } = useApp();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const renderActiveModule = () => {
-    // If currently in an external portal perspective
-    if (currentRole === 'customer_portal' && activeNav === 'customer_portal') {
-      return <CustomerPortal />;
-    }
-    if (currentRole === 'supplier_portal' && activeNav === 'supplier_portal') {
-      return <SupplierPortal />;
-    }
-
     switch (activeNav) {
       case 'overview':
         return <OverviewModule />;
@@ -60,20 +45,10 @@ function MainLayout() {
         return <ProcurementModule />;
       case 'finance':
         return <FinanceModule />;
-      case 'logistics':
-        return <LogisticsModule />;
-      case 'quality':
-        return <QualityComplianceModule />;
       case 'reports':
         return <ReportsModule />;
-      case 'ai':
-        return <AIAutomationModule />;
       case 'admin':
         return <AdminModule />;
-      case 'customer_portal':
-        return <CustomerPortal />;
-      case 'supplier_portal':
-        return <SupplierPortal />;
       default:
         return <OverviewModule />;
     }
