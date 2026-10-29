@@ -69,12 +69,12 @@ export default function Sidebar({ collapsed, setCollapsed }) {
 
   return (
     <aside
-      className={`relative z-30 flex flex-col bg-[#063F32] text-white transition-all duration-300 ease-in-out border-r border-[#042a22] select-none ${
+      className={`relative z-30 flex flex-col h-full flex-shrink-0 bg-[#063F32] text-white transition-all duration-300 ease-in-out border-r border-[#042a22] select-none ${
         collapsed ? 'w-16' : 'w-64'
       }`}
     >
       {/* Sidebar Header / Brand Strip */}
-      <div className="p-4 flex items-center justify-between border-b border-[#042a22]">
+      <div className="p-4 flex items-center justify-between border-b border-[#042a22] flex-shrink-0">
         {!collapsed && (
           <div className="flex items-center gap-2 overflow-hidden">
             <span className="w-2 h-2 rounded-full bg-[#0F795C]" />
@@ -141,19 +141,24 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       </div>
 
       {/* Logout Action in Sidebar */}
-      <div className="p-2 border-t border-[#042a22]">
+      <div className="p-2 border-t border-[#042a22] flex-shrink-0">
         <button
           onClick={logout}
-          title="Sign Out"
-          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold text-red-300 hover:text-red-200 hover:bg-red-900/30 transition-colors"
+          title="Sign Out of ChemTrade 360"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-red-300 hover:text-white hover:bg-red-950/60 border border-transparent hover:border-red-900/40 transition-all group"
         >
-          <LogOut className="w-4 h-4 flex-shrink-0 text-red-300" />
-          {!collapsed && <span>Log Out Session</span>}
+          <LogOut className="w-4 h-4 flex-shrink-0 text-red-400 group-hover:text-red-300 transition-colors" />
+          {!collapsed && (
+            <div className="flex-1 flex items-center justify-between">
+              <span>Sign Out</span>
+              <span className="text-[10px] text-red-400/80 uppercase tracking-wider font-semibold">Exit</span>
+            </div>
+          )}
         </button>
       </div>
 
       {/* Sidebar Footer with Division / Branch */}
-      <div className="p-3 border-t border-[#042a22] bg-[#042a22]/80">
+      <div className="p-3 border-t border-[#042a22] bg-[#042a22]/80 flex-shrink-0">
         {!collapsed ? (
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-[#075C46] flex items-center justify-center text-[#C6A66A] text-xs font-bold">

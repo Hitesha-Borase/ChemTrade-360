@@ -15,7 +15,6 @@ import {
   AlertTriangle,
   CheckCircle2,
   HelpCircle,
-  LogOut,
   Building2
 } from 'lucide-react';
 
@@ -24,7 +23,6 @@ export default function Topbar() {
     currentRole,
     roleMeta,
     currentUser,
-    logout,
     switchRole,
     searchQuery,
     setSearchQuery,
@@ -284,7 +282,7 @@ export default function Topbar() {
               className="flex items-center gap-2 pl-1 pr-1.5 py-1 rounded-xl hover:bg-white/80 transition-all border border-transparent hover:border-[#E3E8DF]"
               title="User Account & Security"
             >
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#101828] to-[#1e293b] text-[#C6A66A] flex items-center justify-center font-bold text-xs border border-[#C6A66A]/40 shadow-sm">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#063F32] to-[#075C46] text-[#C6A66A] flex items-center justify-center font-bold text-xs border border-[#C6A66A]/40 shadow-sm">
                 {currentUser?.avatar || 'CT'}
               </div>
               <div className="hidden xl:block text-left">
@@ -314,7 +312,7 @@ export default function Topbar() {
                       </span>
                     </div>
                   </div>
-                  <div className="mt-2 pt-2 border-t border-slate-200 text-[10px] text-slate-500">
+                  <div className="mt-2 pt-2 border-t border-[#E3E8DF] text-[10px] text-slate-500">
                     <div>Role: <strong className="text-[#17372F]">{roleMeta.name}</strong></div>
                     <div>Terminal: <span className="text-slate-700">{currentUser?.hub || 'Dahej Hub'}</span></div>
                   </div>
@@ -332,37 +330,10 @@ export default function Topbar() {
                     <User className="w-3.5 h-3.5 text-[#C6A66A]" />
                     <span>Switch Role Perspective</span>
                   </button>
-
-                  <div className="h-px bg-[#E4E7EC] my-1" />
-
-                  {/* Prominent Red Logout Button */}
-                  <button
-                    onClick={() => {
-                      setProfileMenuOpen(false);
-                      logout();
-                    }}
-                    className="w-full text-left px-3 py-2.5 rounded-lg bg-red-50 hover:bg-red-100 text-[#C43232] font-bold flex items-center justify-between transition-colors border border-red-200"
-                  >
-                    <div className="flex items-center gap-2">
-                      <LogOut className="w-4 h-4 text-[#C43232]" />
-                      <span>Log Out of Session</span>
-                    </div>
-                    <span className="text-[10px] text-red-500 font-normal">Sign out</span>
-                  </button>
                 </div>
               </div>
             )}
           </div>
-
-          {/* Direct One-Click Logout Header Button */}
-          <button
-            onClick={logout}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 hover:bg-red-100 border border-red-200 text-[#C43232] text-xs font-bold transition-all shadow-subtle group"
-            title="Sign Out of ChemTrade 360"
-          >
-            <LogOut className="w-3.5 h-3.5 text-[#C43232] group-hover:-translate-x-0.5 transition-transform" />
-            <span className="hidden sm:inline">Logout</span>
-          </button>
         </div>
       </div>
     </header>

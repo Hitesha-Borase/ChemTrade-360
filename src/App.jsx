@@ -78,16 +78,20 @@ function MainLayout() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F5EC] flex flex-col antialiased selection:bg-[#075C46]/20">
+    <div className="h-screen bg-[#F7F5EC] flex flex-col overflow-hidden antialiased selection:bg-[#075C46]/20">
       {/* Top Application Bar */}
-      <Topbar />
+      <div className="flex-shrink-0">
+        <Topbar />
+      </div>
 
       {/* Role & Access Perspective Ribbon */}
-      <RoleBanner />
+      <div className="flex-shrink-0">
+        <RoleBanner />
+      </div>
 
       {/* Main Workspace Body */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Navigation Sidebar */}
+      <div className="flex-1 min-h-0 flex overflow-hidden">
+        {/* Navigation Sidebar (Static) */}
         <Sidebar collapsed={sidebarCollapsed} setCollapsed={setSidebarCollapsed} />
 
         {/* Content Viewport */}
