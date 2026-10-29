@@ -32,11 +32,11 @@ export default function SupplierPortal() {
   return (
     <div className="space-y-6">
       {/* Supplier Banner */}
-      <div className="bg-gradient-to-r from-[#101828] via-[#1a2942] to-[#101828] rounded-2xl p-6 text-white border border-[#C6A66B]/30 shadow-lg">
+      <div className="bg-gradient-to-r from-[#101828] via-[#1a2942] to-[#101828] rounded-2xl p-6 text-white border border-[#C6A66A]/30 shadow-lg">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs bg-[#C6A66B]/20 text-[#C6A66B] px-2.5 py-0.5 rounded-full font-bold border border-[#C6A66B]/30">
+              <span className="text-xs bg-[#C6A66A]/20 text-[#C6A66A] px-2.5 py-0.5 rounded-full font-bold border border-[#C6A66A]/30">
                 Supplier Extranet Portal
               </span>
               <span className="text-xs text-slate-400">Vendor Code: SUPP-001 (Chlor-Alkali)</span>
@@ -48,7 +48,7 @@ export default function SupplierPortal() {
           </div>
           <button
             onClick={() => setQuoteSubmitOpen(true)}
-            className="flex items-center gap-2 px-4 py-2.5 bg-[#C6A66B] hover:bg-[#B08E4F] text-[#101828] text-xs font-bold rounded-xl transition-all shadow-md self-start md:self-auto"
+            className="flex items-center gap-2 px-4 py-2.5 bg-[#C6A66A] hover:bg-[#B08E4F] text-[#17372F] text-xs font-bold rounded-xl transition-all shadow-md self-start md:self-auto"
           >
             <Send className="w-4 h-4" />
             <span>Submit Sourcing Offer</span>
@@ -89,21 +89,21 @@ export default function SupplierPortal() {
       </div>
 
       {/* Assigned Sourcing RFQs */}
-      <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm">
-        <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+      <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm">
+        <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
           <div>
-            <h2 className="text-sm font-bold text-[#101828]">Assigned Sourcing RFQs Requiring Response</h2>
-            <p className="text-xs text-[#667085]">Strict Privacy: Your submitted prices are strictly sealed and confidential.</p>
+            <h2 className="text-sm font-bold text-[#17372F]">Assigned Sourcing RFQs Requiring Response</h2>
+            <p className="text-xs text-[#7A8980]">Strict Privacy: Your submitted prices are strictly sealed and confidential.</p>
           </div>
           <span className="text-xs text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full font-semibold border border-amber-200">
             Due in 2 Days
           </span>
         </div>
 
-        <div className="mt-4 p-4 rounded-xl bg-[#FAF9F6] border border-[#E4E7EC] flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="mt-4 p-4 rounded-xl bg-[#F7F5EC] border border-[#E3E8DF] flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="font-bold text-sm text-[#101828]">RFQ-PR-2026-092</span>
+              <span className="font-bold text-sm text-[#17372F]">RFQ-PR-2026-092</span>
               <Badge status="Active Sourcing" size="xs" />
             </div>
             <p className="text-xs text-slate-700">
@@ -116,7 +116,7 @@ export default function SupplierPortal() {
 
           <button
             onClick={() => setQuoteSubmitOpen(true)}
-            className="px-4 py-2 bg-[#101828] text-white text-xs font-bold rounded-lg hover:bg-[#101828]/90 transition-colors self-start md:self-auto"
+            className="px-4 py-2 bg-[#075C46] text-white text-xs font-bold rounded-lg hover:bg-[#063F32] transition-colors self-start md:self-auto"
           >
             Submit Commercial Quotation
           </button>
@@ -124,17 +124,17 @@ export default function SupplierPortal() {
       </div>
 
       {/* Active Confirmed Purchase Orders */}
-      <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm">
-        <h2 className="text-sm font-bold text-[#101828] pb-3 border-b border-[#E4E7EC]">
+      <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm">
+        <h2 className="text-sm font-bold text-[#17372F] pb-3 border-b border-[#E3E8DF]">
           Active Purchase Orders & Inbound GRN Status
         </h2>
 
-        <div className="divide-y divide-[#E4E7EC] mt-3">
+        <div className="divide-y divide-[#E3E8DF] mt-3">
           {supplierPos.map(po => (
             <div key={po.id} className="py-3.5 text-xs flex flex-col md:flex-row md:items-center justify-between gap-3">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-sm text-[#101828] font-mono">{po.id}</span>
+                  <span className="font-bold text-sm text-[#17372F] font-mono">{po.id}</span>
                   <Badge status={po.status} size="xs" />
                 </div>
                 <p className="text-slate-700">
@@ -152,14 +152,14 @@ export default function SupplierPortal() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => showToast('Attaching Manufacturer Certified COA...', 'info')}
-                  className="flex items-center gap-1.5 px-3 py-1.5 border border-[#E4E7EC] rounded-lg text-slate-700 hover:bg-[#FAF9F6] font-medium"
+                  className="flex items-center gap-1.5 px-3 py-1.5 border border-[#E3E8DF] rounded-lg text-slate-700 hover:bg-[#F7F5EC] font-medium"
                 >
-                  <UploadCloud className="w-3.5 h-3.5 text-[#C6A66B]" />
+                  <UploadCloud className="w-3.5 h-3.5 text-[#C6A66A]" />
                   <span>Upload COA</span>
                 </button>
                 <button
                   onClick={() => showToast('Dispatch update recorded for ChemTrade Dahej Hub', 'success')}
-                  className="px-3 py-1.5 bg-[#16805D] text-white rounded-lg font-bold hover:bg-[#16805D]/90"
+                  className="px-3 py-1.5 bg-[#0F795C] text-white rounded-lg font-bold hover:bg-[#0F795C]/90"
                 >
                   Update Tanker Dispatch
                 </button>
@@ -172,8 +172,8 @@ export default function SupplierPortal() {
       {/* Quote Submission Modal */}
       {quoteSubmitOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-[#E4E7EC]">
-            <h3 className="text-base font-bold text-[#101828] mb-1">Submit Sourcing Quotation</h3>
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-[#E3E8DF]">
+            <h3 className="text-base font-bold text-[#17372F] mb-1">Submit Sourcing Quotation</h3>
             <p className="text-xs text-slate-500 mb-4">Against RFQ-PR-2026-092: 100 MT Caustic Soda Lye</p>
 
             <form onSubmit={handleSendQuote} className="space-y-4 text-xs">
@@ -183,7 +183,7 @@ export default function SupplierPortal() {
                   type="number"
                   value={offeredRate}
                   onChange={(e) => setOfferedRate(e.target.value)}
-                  className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono font-bold"
+                  className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono font-bold"
                   required
                 />
               </div>
@@ -193,7 +193,7 @@ export default function SupplierPortal() {
                 <select
                   value={creditDays}
                   onChange={(e) => setCreditDays(e.target.value)}
-                  className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs"
+                  className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs"
                 >
                   <option value="15">15 Days from GRN Date</option>
                   <option value="30">30 Days Net</option>
@@ -206,7 +206,7 @@ export default function SupplierPortal() {
                 <input
                   type="text"
                   defaultValue="3 Working Days via Pipeline / Tanker"
-                  className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs"
+                  className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs"
                 />
               </div>
 
@@ -214,13 +214,13 @@ export default function SupplierPortal() {
                 <button
                   type="button"
                   onClick={() => setQuoteSubmitOpen(false)}
-                  className="px-4 py-2 border border-[#E4E7EC] rounded-lg text-slate-600 hover:bg-slate-50"
+                  className="px-4 py-2 border border-[#E3E8DF] rounded-lg text-slate-600 hover:bg-slate-50"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-[#101828] text-white rounded-lg font-bold hover:bg-[#101828]/90"
+                  className="px-4 py-2 bg-[#075C46] text-white rounded-lg font-bold hover:bg-[#063F32]"
                 >
                   Submit Sealed Offer
                 </button>

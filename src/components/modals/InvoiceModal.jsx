@@ -44,11 +44,11 @@ export default function InvoiceModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#E4E7EC]">
-        <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#E3E8DF]">
+        <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
           <div className="flex items-center gap-2">
-            <Receipt className="w-5 h-5 text-[#C6A66B]" />
-            <h2 className="text-base font-bold text-[#101828]">Generate GST Tax Invoice & Push e-Invoice</h2>
+            <Receipt className="w-5 h-5 text-[#C6A66A]" />
+            <h2 className="text-base font-bold text-[#17372F]">Generate GST Tax Invoice & Push e-Invoice</h2>
           </div>
           <button onClick={closeModal} className="p-1 rounded-lg text-slate-400 hover:text-slate-600">
             <X className="w-5 h-5" />
@@ -68,7 +68,7 @@ export default function InvoiceModal() {
                   setBaseAmount(String(matched.totalValue));
                 }
               }}
-              className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono font-bold"
+              className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono font-bold"
             >
               {salesOrders.map(so => (
                 <option key={so.id} value={so.id}>{so.id} — {so.customerName} (₹{so.totalValue.toLocaleString('en-IN')})</option>
@@ -82,7 +82,7 @@ export default function InvoiceModal() {
               type="text"
               value={customerName}
               readOnly
-              className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs bg-slate-50 font-semibold"
+              className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs bg-slate-50 font-semibold"
             />
           </div>
 
@@ -93,7 +93,7 @@ export default function InvoiceModal() {
                 type="number"
                 value={baseAmount}
                 onChange={(e) => setBaseAmount(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono font-bold"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono font-bold"
                 required
               />
             </div>
@@ -103,13 +103,13 @@ export default function InvoiceModal() {
                 type="date"
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono"
                 required
               />
             </div>
           </div>
 
-          <div className="p-3 bg-[#FAF9F6] rounded-xl border border-[#E4E7EC] space-y-1.5 font-mono">
+          <div className="p-3 bg-[#F7F5EC] rounded-xl border border-[#E3E8DF] space-y-1.5 font-mono">
             <div className="flex justify-between text-slate-600">
               <span>Taxable Value:</span>
               <span className="font-bold">₹{Number(baseAmount).toLocaleString('en-IN')}</span>
@@ -118,7 +118,7 @@ export default function InvoiceModal() {
               <span>GST Tax (18%):</span>
               <span className="font-bold">₹{gstAmount.toLocaleString('en-IN')}</span>
             </div>
-            <div className="flex justify-between text-sm font-bold text-[#101828] pt-1 border-t border-[#E4E7EC]">
+            <div className="flex justify-between text-sm font-bold text-[#17372F] pt-1 border-t border-[#E3E8DF]">
               <span>Grand Total:</span>
               <span>₹{grandTotal.toLocaleString('en-IN')}</span>
             </div>
@@ -129,17 +129,17 @@ export default function InvoiceModal() {
             <span>NIC E-Invoice QR code & IRN hash will be generated upon confirmation.</span>
           </div>
 
-          <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E4E7EC]">
+          <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E3E8DF]">
             <button
               type="button"
               onClick={closeModal}
-              className="px-4 py-2 border border-[#E4E7EC] rounded-lg text-slate-600 hover:bg-slate-50"
+              className="px-4 py-2 border border-[#E3E8DF] rounded-lg text-slate-600 hover:bg-slate-50"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-[#101828] text-white rounded-lg font-bold hover:bg-[#101828]/90"
+              className="px-4 py-2 bg-[#075C46] text-white rounded-lg font-bold hover:bg-[#063F32]"
             >
               Issue GST Tax Invoice
             </button>

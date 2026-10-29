@@ -30,7 +30,7 @@ export default function InventoryModule() {
       accessor: 'batchNo',
       cell: (row) => (
         <div>
-          <div className="font-bold text-[#101828] font-mono text-sm">{row.batchNo}</div>
+          <div className="font-bold text-[#17372F] font-mono text-sm">{row.batchNo}</div>
           <div className="text-[10px] text-slate-500">Recvd: {row.receivedDate}</div>
         </div>
       )
@@ -40,7 +40,7 @@ export default function InventoryModule() {
       accessor: 'chemicalName',
       cell: (row) => (
         <div>
-          <span className="font-bold text-[#101828]">{row.chemicalName}</span>
+          <span className="font-bold text-[#17372F]">{row.chemicalName}</span>
           <span className="block text-[11px] text-slate-500">Supplier: {row.supplier}</span>
         </div>
       )
@@ -51,7 +51,7 @@ export default function InventoryModule() {
       cell: (row) => (
         <div className="text-xs">
           <div className="flex items-center gap-1 font-medium text-slate-800">
-            <Warehouse className="w-3.5 h-3.5 text-[#C6A66B]" />
+            <Warehouse className="w-3.5 h-3.5 text-[#C6A66A]" />
             <span>{row.warehouse}</span>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function InventoryModule() {
       accessor: 'initialQty',
       cell: (row) => (
         <div>
-          <span className="font-mono font-bold text-sm text-[#101828]">{row.availableQty} {row.uom}</span>
+          <span className="font-mono font-bold text-sm text-[#17372F]">{row.availableQty} {row.uom}</span>
           <span className="block text-[10px] text-slate-500">
             Total: {row.initialQty} | Res: {row.reservedQty}
           </span>
@@ -101,7 +101,7 @@ export default function InventoryModule() {
           ) : (
             <button
               onClick={() => showToast(`Viewing COA document for ${row.batchNo}`, 'info')}
-              className="px-2 py-1 border border-[#E4E7EC] rounded hover:bg-[#FAF9F6] text-xs font-medium text-slate-700"
+              className="px-2 py-1 border border-[#E3E8DF] rounded hover:bg-[#F7F5EC] text-xs font-medium text-slate-700"
             >
               COA Doc
             </button>
@@ -121,30 +121,30 @@ export default function InventoryModule() {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">Inventory & Batch Traceability</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">Inventory & Batch Traceability</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             FEFO/FIFO allocation control, warehouse locations, lot genealogy, quarantine holds, and chemical segregation.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => openModal('create_grn')}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors shadow-sm"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors shadow-sm"
           >
-            <ArrowDownToLine className="w-3.5 h-3.5 text-[#C6A66B]" />
+            <ArrowDownToLine className="w-3.5 h-3.5 text-[#C6A66A]" />
             <span>Receive Stock (GRN)</span>
           </button>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#E4E7EC] pb-2">
+      <div className="flex items-center gap-2 border-b border-[#E3E8DF] pb-2">
         <button
           onClick={() => setActiveTab('batches')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'batches' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'batches' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Batch & Lot Register ({batches.length})
@@ -152,7 +152,7 @@ export default function InventoryModule() {
         <button
           onClick={() => setActiveTab('warehouses')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'warehouses' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'warehouses' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Warehouses & Tank Terminals (4)
@@ -160,7 +160,7 @@ export default function InventoryModule() {
         <button
           onClick={() => setActiveTab('quarantine')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'quarantine' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'quarantine' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Quarantined & Non-Saleable Stock (1)
@@ -187,11 +187,11 @@ export default function InventoryModule() {
       {activeTab === 'warehouses' && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {warehousesList.map((wh, idx) => (
-            <div key={idx} className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm space-y-3">
-              <div className="flex items-center justify-between pb-2 border-b border-[#E4E7EC]">
+            <div key={idx} className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm space-y-3">
+              <div className="flex items-center justify-between pb-2 border-b border-[#E3E8DF]">
                 <div className="flex items-center gap-2">
-                  <Warehouse className="w-4 h-4 text-[#C6A66B]" />
-                  <h3 className="font-bold text-[#101828] text-sm">{wh.name}</h3>
+                  <Warehouse className="w-4 h-4 text-[#C6A66A]" />
+                  <h3 className="font-bold text-[#17372F] text-sm">{wh.name}</h3>
                 </div>
                 <span className="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                   {wh.occupancy} Full
@@ -201,7 +201,7 @@ export default function InventoryModule() {
               <div className="flex items-center justify-between text-xs text-slate-500 font-mono">
                 <span>Total Capacity: <strong>{wh.capacity}</strong></span>
               </div>
-              <div className="p-2.5 rounded bg-[#FAF9F6] border border-[#E4E7EC] text-xs">
+              <div className="p-2.5 rounded bg-[#F7F5EC] border border-[#E3E8DF] text-xs">
                 <span className="text-[10px] font-bold text-slate-500 uppercase block">Hazard & Compatibility Segregation:</span>
                 <span className="text-slate-700 font-medium">{wh.hazards}</span>
               </div>
@@ -211,7 +211,7 @@ export default function InventoryModule() {
       )}
 
       {activeTab === 'quarantine' && (
-        <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm space-y-4">
+        <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm space-y-4">
           <div className="flex items-center gap-2 text-red-700 font-bold text-sm">
             <ShieldAlert className="w-5 h-5" />
             <span>Quarantine & Quality Hold Safeguard</span>
@@ -220,7 +220,7 @@ export default function InventoryModule() {
             In accordance with Chemical ERP Rule 472: Quarantined lots are hard-locked from sales quotation allocation and dispatch picking until certified quality release by laboratory QC.
           </p>
 
-          <div className="divide-y divide-[#E4E7EC]">
+          <div className="divide-y divide-[#E3E8DF]">
             {batches.filter(b => b.qualityStatus === 'Quarantined').map(b => (
               <div key={b.batchNo} className="py-4 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs">
                 <div>

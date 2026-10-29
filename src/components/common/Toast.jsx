@@ -8,14 +8,14 @@ export default function Toast() {
   if (toasts.length === 0) return null;
 
   const icons = {
-    success: <CheckCircle2 className="w-5 h-5 text-[#16805D]" />,
+    success: <CheckCircle2 className="w-5 h-5 text-[#0F795C]" />,
     danger: <AlertCircle className="w-5 h-5 text-[#C43232]" />,
     warning: <AlertTriangle className="w-5 h-5 text-[#B7791F]" />,
     info: <Info className="w-5 h-5 text-[#2E6FBB]" />
   };
 
   const borders = {
-    success: 'border-l-4 border-l-[#16805D]',
+    success: 'border-l-4 border-l-[#0F795C]',
     danger: 'border-l-4 border-l-[#C43232]',
     warning: 'border-l-4 border-l-[#B7791F]',
     info: 'border-l-4 border-l-[#2E6FBB]'
@@ -26,12 +26,12 @@ export default function Toast() {
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className={`pointer-events-auto flex items-start gap-3 p-4 bg-white/95 backdrop-blur-md rounded-lg shadow-xl border border-[#E4E7EC] ${borders[toast.type] || borders.info} transition-all duration-300 animate-slide-in`}
+          className={`pointer-events-auto flex items-start gap-3 p-4 bg-white/95 backdrop-blur-md rounded-lg shadow-xl border border-[#E3E8DF] ${borders[toast.type] || borders.info} transition-all duration-300 animate-slide-in`}
         >
           <div className="flex-shrink-0 mt-0.5">
             {icons[toast.type] || icons.info}
           </div>
-          <div className="flex-1 text-xs font-medium text-[#101828] leading-relaxed">
+          <div className="flex-1 text-xs font-medium text-[#17372F] leading-relaxed">
             {toast.message}
           </div>
           <button

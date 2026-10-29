@@ -40,10 +40,10 @@ export default function SuperAdminDashboard() {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">Super Admin Governance Console</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">Super Admin Governance Console</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             System configuration, multi-tenant parameters, integration status, and security audit log.
           </p>
         </div>
@@ -51,16 +51,16 @@ export default function SuperAdminDashboard() {
           <button
             onClick={handleTestAll}
             disabled={testingIntegration}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-[#E4E7EC] hover:bg-[#FAF9F6] text-[#101828] transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-[#E3E8DF] hover:bg-[#F7F5EC] text-[#17372F] transition-colors"
           >
-            <RefreshCw className={`w-3.5 h-3.5 text-[#667085] ${testingIntegration ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`w-3.5 h-3.5 text-[#7A8980] ${testingIntegration ? 'animate-spin' : ''}`} />
             <span>{testingIntegration ? 'Testing...' : 'Test Integrations'}</span>
           </button>
           <button
             onClick={() => showToast('Opening system user invite dialogue', 'info')}
-            className="flex items-center gap-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors"
+            className="flex items-center gap-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors"
           >
-            <Plus className="w-3.5 h-3.5 text-[#C6A66B]" />
+            <Plus className="w-3.5 h-3.5 text-[#C6A66A]" />
             <span>Invite User</span>
           </button>
         </div>
@@ -109,23 +109,23 @@ export default function SuperAdminDashboard() {
       {/* 2-Column Section: Integrations Status & Live Audit Trail */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Integration Status Panel */}
-        <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm">
-          <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+        <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
             <div>
-              <h2 className="text-sm font-bold text-[#101828]">System & Integration Status</h2>
-              <p className="text-[11px] text-[#667085]">Explicit connector health check (Rule 12)</p>
+              <h2 className="text-sm font-bold text-[#17372F]">System & Integration Status</h2>
+              <p className="text-[11px] text-[#7A8980]">Explicit connector health check (Rule 12)</p>
             </div>
             <span className="text-[10px] bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded border border-emerald-200">
               Live & Monitored
             </span>
           </div>
 
-          <div className="divide-y divide-[#E4E7EC] mt-3">
+          <div className="divide-y divide-[#E3E8DF] mt-3">
             {integrations.map((item, idx) => (
               <div key={idx} className="py-3 flex items-center justify-between text-xs">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#101828]">{item.name}</span>
+                    <span className="font-bold text-[#17372F]">{item.name}</span>
                     <Badge status={item.status} size="xs" />
                   </div>
                   <div className="flex items-center gap-2 text-slate-500 text-[11px] mt-0.5">
@@ -138,7 +138,7 @@ export default function SuperAdminDashboard() {
                 </div>
                 <button
                   onClick={() => showToast(`Pinging ${item.name}... Response OK.`, 'success')}
-                  className="p-1.5 rounded border border-[#E4E7EC] hover:bg-slate-50 text-slate-600"
+                  className="p-1.5 rounded border border-[#E3E8DF] hover:bg-slate-50 text-slate-600"
                   title="Ping Connection"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
@@ -149,22 +149,22 @@ export default function SuperAdminDashboard() {
         </div>
 
         {/* Recent Audit Events */}
-        <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm">
-          <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+        <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
             <div>
-              <h2 className="text-sm font-bold text-[#101828]">Immutable Security Audit Log</h2>
-              <p className="text-[11px] text-[#667085]">Every financial, stock, & permission change logged</p>
+              <h2 className="text-sm font-bold text-[#17372F]">Immutable Security Audit Log</h2>
+              <p className="text-[11px] text-[#7A8980]">Every financial, stock, & permission change logged</p>
             </div>
-            <span className="text-[10px] bg-[#FAF7F0] text-[#8C6F3B] font-bold px-2 py-0.5 rounded border border-[#C6A66B]/40">
+            <span className="text-[10px] bg-[#DDE9D9] text-[#075C46] font-bold px-2 py-0.5 rounded border border-[#C6A66A]/40">
               Tamper-evident
             </span>
           </div>
 
-          <div className="divide-y divide-[#E4E7EC] mt-3 max-h-[360px] overflow-y-auto">
+          <div className="divide-y divide-[#E3E8DF] mt-3 max-h-[360px] overflow-y-auto">
             {auditLogs.map((log) => (
               <div key={log.id} className="py-2.5 text-xs">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-[#101828]">{log.userName} ({log.userRole})</span>
+                  <span className="font-bold text-[#17372F]">{log.userName} ({log.userRole})</span>
                   <span className="font-mono text-[10px] text-slate-400">{log.timestamp}</span>
                 </div>
                 <p className="text-slate-700 mt-1 leading-snug">{log.action}</p>

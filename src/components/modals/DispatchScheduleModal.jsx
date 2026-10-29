@@ -46,11 +46,11 @@ export default function DispatchScheduleModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#E4E7EC] max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#E3E8DF] max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
           <div className="flex items-center gap-2">
-            <Truck className="w-5 h-5 text-[#C6A66B]" />
-            <h2 className="text-base font-bold text-[#101828]">Schedule Tanker Dispatch & Challan</h2>
+            <Truck className="w-5 h-5 text-[#C6A66A]" />
+            <h2 className="text-base font-bold text-[#17372F]">Schedule Tanker Dispatch & Challan</h2>
           </div>
           <button onClick={closeModal} className="p-1 rounded-lg text-slate-400 hover:text-slate-600">
             <X className="w-5 h-5" />
@@ -74,7 +74,7 @@ export default function DispatchScheduleModal() {
                   }
                 }
               }}
-              className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono font-bold"
+              className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono font-bold"
             >
               {salesOrders.map(so => (
                 <option key={so.id} value={so.id}>{so.id} — {so.customerName}</option>
@@ -89,7 +89,7 @@ export default function DispatchScheduleModal() {
                 type="text"
                 value={customer}
                 onChange={(e) => setCustomer(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs bg-slate-50 font-semibold"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs bg-slate-50 font-semibold"
                 readOnly
               />
             </div>
@@ -99,7 +99,7 @@ export default function DispatchScheduleModal() {
                 type="text"
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs"
                 required
               />
             </div>
@@ -112,7 +112,7 @@ export default function DispatchScheduleModal() {
                 type="text"
                 value={chemical}
                 onChange={(e) => setChemical(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs bg-slate-50 font-semibold"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs bg-slate-50 font-semibold"
                 readOnly
               />
             </div>
@@ -122,7 +122,7 @@ export default function DispatchScheduleModal() {
                 type="number"
                 value={qty}
                 onChange={(e) => setQty(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono font-bold"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono font-bold"
                 required
               />
             </div>
@@ -134,7 +134,7 @@ export default function DispatchScheduleModal() {
               <select
                 value={batchNo}
                 onChange={(e) => setBatchNo(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono"
               >
                 {batches.filter(b => b.qualityStatus === 'Approved').map(b => (
                   <option key={b.batchNo} value={b.batchNo}>{b.batchNo} ({b.availableQty} MT avail)</option>
@@ -146,7 +146,7 @@ export default function DispatchScheduleModal() {
               <select
                 value={transporter}
                 onChange={(e) => setTransporter(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-medium"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-medium"
               >
                 <option value="ChemiCarrier Bulk Tankers">ChemiCarrier Bulk Tankers</option>
                 <option value="V-Trans SafeChemicals Logistics">V-Trans SafeChemicals Logistics</option>
@@ -163,7 +163,7 @@ export default function DispatchScheduleModal() {
                 value={vehicleNo}
                 onChange={(e) => setVehicleNo(e.target.value)}
                 placeholder="e.g. GJ-16-Z-8890"
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono font-bold uppercase"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono font-bold uppercase"
                 required
               />
             </div>
@@ -174,7 +174,7 @@ export default function DispatchScheduleModal() {
                 value={driverName}
                 onChange={(e) => setDriverName(e.target.value)}
                 placeholder="e.g. Ramesh Yadav (+91 94280 12891)"
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs"
                 required
               />
             </div>
@@ -185,17 +185,17 @@ export default function DispatchScheduleModal() {
             <span>Hazchem Tremcard & E-Way Bill <strong>{eWayBill}</strong> automatically paired to delivery challan.</span>
           </div>
 
-          <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E4E7EC]">
+          <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E3E8DF]">
             <button
               type="button"
               onClick={closeModal}
-              className="px-4 py-2 border border-[#E4E7EC] rounded-lg text-slate-600 hover:bg-slate-50"
+              className="px-4 py-2 border border-[#E3E8DF] rounded-lg text-slate-600 hover:bg-slate-50"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-[#101828] text-white rounded-lg font-bold hover:bg-[#101828]/90"
+              className="px-4 py-2 bg-[#075C46] text-white rounded-lg font-bold hover:bg-[#063F32]"
             >
               Generate Delivery Challan
             </button>

@@ -40,11 +40,11 @@ export default function CreateLeadModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#E4E7EC]">
-        <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#E3E8DF]">
+        <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
           <div className="flex items-center gap-2">
-            <UserPlus className="w-5 h-5 text-[#C6A66B]" />
-            <h2 className="text-base font-bold text-[#101828]">Register Chemical Lead / Inquiry</h2>
+            <UserPlus className="w-5 h-5 text-[#C6A66A]" />
+            <h2 className="text-base font-bold text-[#17372F]">Register Chemical Lead / Inquiry</h2>
           </div>
           <button onClick={closeModal} className="p-1 rounded-lg text-slate-400 hover:text-slate-600">
             <X className="w-5 h-5" />
@@ -59,7 +59,7 @@ export default function CreateLeadModal() {
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
               placeholder="e.g. Gujarat Dyestuffs Ltd"
-              className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-semibold"
+              className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-semibold"
               required
             />
           </div>
@@ -72,7 +72,7 @@ export default function CreateLeadModal() {
                 value={contactPerson}
                 onChange={(e) => setContactPerson(e.target.value)}
                 placeholder="e.g. Ramesh Shah"
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs"
                 required
               />
             </div>
@@ -83,7 +83,7 @@ export default function CreateLeadModal() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+91 98XXX XXXXX"
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono"
                 required
               />
             </div>
@@ -97,7 +97,7 @@ export default function CreateLeadModal() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="procurement@company.com"
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs"
                 required
               />
             </div>
@@ -106,7 +106,7 @@ export default function CreateLeadModal() {
               <select
                 value={source}
                 onChange={(e) => setSource(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs"
               >
                 <option value="Direct RFQ Portal">Direct RFQ Portal</option>
                 <option value="Phone Call Inquiry">Phone Call Inquiry</option>
@@ -122,7 +122,7 @@ export default function CreateLeadModal() {
               <select
                 value={chemicalNeeded}
                 onChange={(e) => setChemicalNeeded(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-semibold"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-semibold"
               >
                 {chemicals.map(c => (
                   <option key={c.id} value={c.name}>{c.name} ({c.grade})</option>
@@ -135,7 +135,7 @@ export default function CreateLeadModal() {
                 type="number"
                 value={estimatedQty}
                 onChange={(e) => setEstimatedQty(e.target.value)}
-                className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono"
                 required
               />
             </div>
@@ -147,7 +147,7 @@ export default function CreateLeadModal() {
               type="number"
               value={targetPrice}
               onChange={(e) => setTargetPrice(e.target.value)}
-              className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs font-mono"
+              className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs font-mono"
             />
           </div>
 
@@ -158,21 +158,21 @@ export default function CreateLeadModal() {
               onChange={(e) => setNotes(e.target.value)}
               placeholder="e.g. Dedicated SS tanker required, urgent delivery needed..."
               rows={2}
-              className="w-full p-2.5 border border-[#E4E7EC] rounded-lg text-xs"
+              className="w-full p-2.5 border border-[#E3E8DF] rounded-lg text-xs"
             />
           </div>
 
-          <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E4E7EC]">
+          <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E3E8DF]">
             <button
               type="button"
               onClick={closeModal}
-              className="px-4 py-2 border border-[#E4E7EC] rounded-lg text-slate-600 hover:bg-slate-50"
+              className="px-4 py-2 border border-[#E3E8DF] rounded-lg text-slate-600 hover:bg-slate-50"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-[#101828] text-white rounded-lg font-bold hover:bg-[#101828]/90"
+              className="px-4 py-2 bg-[#075C46] text-white rounded-lg font-bold hover:bg-[#063F32]"
             >
               Register Lead
             </button>

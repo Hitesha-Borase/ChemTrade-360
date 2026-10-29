@@ -23,23 +23,23 @@ export default function SalesExecutiveDashboard() {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">My Sales Desk</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">My Sales Desk</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             Personal lead pipeline, daily customer follow-ups, quotation drafting, and client orders.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => openModal('create_lead')}
-            className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-[#E4E7EC] hover:bg-[#FAF9F6] text-[#101828] transition-colors"
+            className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-[#E3E8DF] hover:bg-[#F7F5EC] text-[#17372F] transition-colors"
           >
             + Add Lead
           </button>
           <button
             onClick={() => openModal('create_quote')}
-            className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors"
+            className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors"
           >
             + New Quotation
           </button>
@@ -81,18 +81,18 @@ export default function SalesExecutiveDashboard() {
       {/* Tasks Due Today & Active Leads */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Follow-up Tasks */}
-        <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm">
-          <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
-            <h2 className="text-sm font-bold text-[#101828]">Today's Follow-up Calendar</h2>
-            <span className="text-xs font-semibold text-[#16805D] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+        <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
+            <h2 className="text-sm font-bold text-[#17372F]">Today's Follow-up Calendar</h2>
+            <span className="text-xs font-semibold text-[#0F795C] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
               2 Scheduled
             </span>
           </div>
 
-          <div className="divide-y divide-[#E4E7EC] mt-3 space-y-2">
+          <div className="divide-y divide-[#E3E8DF] mt-3 space-y-2">
             <div className="py-2.5 text-xs space-y-1">
               <div className="flex items-center justify-between">
-                <span className="font-bold text-[#101828]">Kansai Nerolac Paints (Manish Verma)</span>
+                <span className="font-bold text-[#17372F]">Kansai Nerolac Paints (Manish Verma)</span>
                 <span className="text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded">2:30 PM Today</span>
               </div>
               <p className="text-slate-600">Product: Titanium Dioxide Rutile (25 MT) • Discussing R-996 technical equivalent</p>
@@ -105,7 +105,7 @@ export default function SalesExecutiveDashboard() {
 
             <div className="py-2.5 text-xs space-y-1">
               <div className="flex items-center justify-between">
-                <span className="font-bold text-[#101828]">Cipla Laboratories (Dr. Archana Rao)</span>
+                <span className="font-bold text-[#17372F]">Cipla Laboratories (Dr. Archana Rao)</span>
                 <span className="text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded">4:00 PM Today</span>
               </div>
               <p className="text-slate-600">Product: Isopropyl Alcohol (IPA 99.9%) Pharma Grade (18 MT)</p>
@@ -119,20 +119,20 @@ export default function SalesExecutiveDashboard() {
         </div>
 
         {/* Recent Quotes Created */}
-        <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm">
-          <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
-            <h2 className="text-sm font-bold text-[#101828]">My Active Quotations</h2>
-            <button onClick={() => setActiveNav('quotations')} className="text-xs text-[#C6A66B] font-semibold hover:underline flex items-center gap-1">
+        <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
+            <h2 className="text-sm font-bold text-[#17372F]">My Active Quotations</h2>
+            <button onClick={() => setActiveNav('quotations')} className="text-xs text-[#C6A66A] font-semibold hover:underline flex items-center gap-1">
               All Quotes <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
-          <div className="divide-y divide-[#E4E7EC] mt-3">
+          <div className="divide-y divide-[#E3E8DF] mt-3">
             {myQuotes.map(q => (
               <div key={q.id} className="py-3 text-xs flex items-center justify-between">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#101828]">{q.id}</span>
+                    <span className="font-bold text-[#17372F]">{q.id}</span>
                     <span className="text-slate-500">• {q.customerName}</span>
                     <Badge status={q.status} size="xs" />
                   </div>
@@ -142,7 +142,7 @@ export default function SalesExecutiveDashboard() {
                 </div>
                 <button
                   onClick={() => openModal('view_quote_pdf', q)}
-                  className="px-2.5 py-1 text-xs border border-[#E4E7EC] rounded-lg hover:bg-[#FAF9F6] font-medium"
+                  className="px-2.5 py-1 text-xs border border-[#E3E8DF] rounded-lg hover:bg-[#F7F5EC] font-medium"
                 >
                   View PDF
                 </button>

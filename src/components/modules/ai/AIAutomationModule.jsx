@@ -64,15 +64,15 @@ Asian Paints Ltd`
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
           <div className="flex items-center gap-2">
-            <span className="p-1 rounded bg-[#C6A66B]/20 text-[#C6A66B]">
+            <span className="p-1 rounded bg-[#C6A66A]/20 text-[#C6A66A]">
               <Sparkles className="w-4 h-4" />
             </span>
-            <h1 className="text-xl font-bold text-[#101828]">AI & Automation Operations Suite</h1>
+            <h1 className="text-xl font-bold text-[#17372F]">AI & Automation Operations Suite</h1>
           </div>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <p className="text-xs text-[#7A8980] mt-0.5">
             Smart RFQ/PO document parsing, intelligent price suggestion, demand forecasting, and payment reminder drafting.
           </p>
         </div>
@@ -85,13 +85,13 @@ Asian Paints Ltd`
       {/* Grid: RFQ Parser & Demand Forecasting */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Left: Interactive RFQ Document Extractor */}
-        <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-2 border-b border-[#E4E7EC]">
+        <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm space-y-4">
+          <div className="flex items-center justify-between pb-2 border-b border-[#E3E8DF]">
             <div className="flex items-center gap-2">
-              <Bot className="w-4 h-4 text-[#C6A66B]" />
-              <h2 className="text-sm font-bold text-[#101828]">RFQ & PO Document Text Extractor</h2>
+              <Bot className="w-4 h-4 text-[#C6A66A]" />
+              <h2 className="text-sm font-bold text-[#17372F]">RFQ & PO Document Text Extractor</h2>
             </div>
-            <span className="text-[10px] bg-[#FAF7F0] text-[#8C6F3B] font-bold px-2 py-0.5 rounded border border-[#C6A66B]/40">
+            <span className="text-[10px] bg-[#DDE9D9] text-[#075C46] font-bold px-2 py-0.5 rounded border border-[#C6A66A]/40">
               NLP Parser Active
             </span>
           </div>
@@ -104,7 +104,7 @@ Asian Paints Ltd`
             value={sampleRfqText}
             onChange={(e) => setSampleRfqText(e.target.value)}
             rows={6}
-            className="w-full p-3 text-xs font-mono bg-[#FAF9F6] border border-[#E4E7EC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C6A66B]/30 text-[#101828]"
+            className="w-full p-3 text-xs font-mono bg-[#F7F5EC] border border-[#E3E8DF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#075C46]/20 text-[#17372F]"
           />
 
           <div className="flex items-center justify-between">
@@ -112,9 +112,9 @@ Asian Paints Ltd`
             <button
               onClick={handleExtract}
               disabled={isExtracting}
-              className="flex items-center gap-1.5 px-4 py-2 bg-[#101828] text-white text-xs font-bold rounded-lg hover:bg-[#101828]/90 transition-all shadow-sm"
+              className="flex items-center gap-1.5 px-4 py-2 bg-[#075C46] text-white text-xs font-bold rounded-lg hover:bg-[#063F32] transition-all shadow-sm"
             >
-              <Sparkles className={`w-3.5 h-3.5 text-[#C6A66B] ${isExtracting ? 'animate-spin' : ''}`} />
+              <Sparkles className={`w-3.5 h-3.5 text-[#C6A66A] ${isExtracting ? 'animate-spin' : ''}`} />
               <span>{isExtracting ? 'Extracting Entities...' : 'Run Extraction'}</span>
             </button>
           </div>
@@ -143,7 +143,7 @@ Asian Paints Ltd`
               <div className="pt-2 border-t border-emerald-200/60 flex justify-end">
                 <button
                   onClick={handleCreateQuoteFromAI}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#16805D] text-white text-xs font-bold rounded-lg hover:bg-[#16805D]/90 transition-all shadow-sm"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0F795C] text-white text-xs font-bold rounded-lg hover:bg-[#0F795C]/90 transition-all shadow-sm"
                 >
                   <span>Build Quotation with AI Prefill</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -156,11 +156,11 @@ Asian Paints Ltd`
         {/* Right: Demand Forecast & Automated Payment Reminder Drafts */}
         <div className="space-y-6">
           {/* Demand Forecast */}
-          <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-[#E4E7EC]">
+          <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm space-y-3">
+            <div className="flex items-center justify-between pb-2 border-b border-[#E3E8DF]">
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-[#16805D]" />
-                <h2 className="text-sm font-bold text-[#101828]">Demand Forecasting & Sourcing Alerts</h2>
+                <TrendingUp className="w-4 h-4 text-[#0F795C]" />
+                <h2 className="text-sm font-bold text-[#17372F]">Demand Forecasting & Sourcing Alerts</h2>
               </div>
               <span className="text-[10px] bg-blue-50 text-blue-800 font-bold px-2 py-0.5 rounded border border-blue-200">
                 Predictive AI
@@ -168,9 +168,9 @@ Asian Paints Ltd`
             </div>
 
             <div className="space-y-2.5 text-xs">
-              <div className="p-3 rounded-lg bg-[#FAF9F6] border border-[#E4E7EC] space-y-1">
+              <div className="p-3 rounded-lg bg-[#F7F5EC] border border-[#E3E8DF] space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-[#101828]">Isopropyl Alcohol (IPA 99.9%)</span>
+                  <span className="font-bold text-[#17372F]">Isopropyl Alcohol (IPA 99.9%)</span>
                   <span className="text-amber-800 font-bold">Reorder Needed in 8 Days</span>
                 </div>
                 <p className="text-slate-600">
@@ -179,9 +179,9 @@ Asian Paints Ltd`
                 <p className="text-[11px] text-slate-500 font-mono">Suggested PO: 40 MT from Deepak Phenolics at ~₹91,000/MT</p>
               </div>
 
-              <div className="p-3 rounded-lg bg-[#FAF9F6] border border-[#E4E7EC] space-y-1">
+              <div className="p-3 rounded-lg bg-[#F7F5EC] border border-[#E3E8DF] space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-[#101828]">Caustic Soda Lye (48%)</span>
+                  <span className="font-bold text-[#17372F]">Caustic Soda Lye (48%)</span>
                   <span className="text-emerald-800 font-bold">Stock Optimum</span>
                 </div>
                 <p className="text-slate-600">
@@ -192,13 +192,13 @@ Asian Paints Ltd`
           </div>
 
           {/* AI Payment Reminder Drafting */}
-          <div className="bg-white rounded-xl border border-[#E4E7EC] p-5 shadow-sm space-y-3">
-            <h2 className="text-sm font-bold text-[#101828] pb-2 border-b border-[#E4E7EC]">
+          <div className="bg-white rounded-xl border border-[#E3E8DF] p-5 shadow-sm space-y-3">
+            <h2 className="text-sm font-bold text-[#17372F] pb-2 border-b border-[#E3E8DF]">
               AI Payment Follow-up Draft
             </h2>
             <div className="p-3 rounded-lg bg-amber-50/50 border border-amber-200 text-xs space-y-1.5">
               <div className="flex items-center justify-between">
-                <span className="font-bold text-[#101828]">UPL Agro-Solutions (Invoice INV-2026-0675)</span>
+                <span className="font-bold text-[#17372F]">UPL Agro-Solutions (Invoice INV-2026-0675)</span>
                 <span className="text-[10px] text-red-700 font-bold">₹3.10 L Overdue (32 Days)</span>
               </div>
               <p className="text-slate-700 italic text-[11px] bg-white p-2.5 rounded border border-amber-200">
@@ -207,7 +207,7 @@ Asian Paints Ltd`
               <div className="flex justify-end pt-1">
                 <button
                   onClick={() => showToast('Copied payment reminder to clipboard & opened WhatsApp gateway', 'success')}
-                  className="px-3 py-1 bg-[#101828] text-white text-xs font-semibold rounded hover:bg-[#101828]/90"
+                  className="px-3 py-1 bg-[#075C46] text-white text-xs font-semibold rounded hover:bg-[#063F32]"
                 >
                   Send Reminder
                 </button>

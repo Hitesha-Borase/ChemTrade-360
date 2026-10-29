@@ -12,17 +12,17 @@ export default function RoleBanner() {
     <div className={`px-4 sm:px-6 py-2.5 border-b text-xs flex flex-col md:flex-row md:items-center justify-between gap-3 ${
       isExternal
         ? 'bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200 text-amber-950'
-        : 'bg-[#FAF7F0] border-[#E4E7EC] text-[#101828]'
+        : 'bg-[#F7F5EC] border-[#E3E8DF] text-[#17372F]'
     }`}>
       <div className="flex items-center gap-2.5">
-        <div className={`p-1 rounded-md ${isExternal ? 'bg-amber-200 text-amber-900' : 'bg-[#101828] text-[#C6A66B]'}`}>
+        <div className={`p-1 rounded-md ${isExternal ? 'bg-amber-200 text-amber-900' : 'bg-[#075C46] text-[#C6A66A]'}`}>
           {isExternal ? <Lock className="w-3.5 h-3.5" /> : <Shield className="w-3.5 h-3.5" />}
         </div>
         <div>
           <span className="font-bold">
             {roleMeta.name} Perspective Active:
           </span>{' '}
-          <span className="text-[#667085] hidden sm:inline">
+          <span className="text-[#7A8980] hidden sm:inline">
             {roleMeta.description}
           </span>
           {isExternal && (
@@ -34,12 +34,12 @@ export default function RoleBanner() {
       </div>
 
       <div className="flex items-center gap-2 self-end md:self-auto">
-        <span className="text-[11px] text-[#667085] font-medium hidden lg:inline">Quick Test:</span>
+        <span className="text-[11px] text-[#7A8980] font-medium hidden lg:inline">Quick Test:</span>
         <div className="flex items-center gap-1.5 flex-wrap">
           <button
             onClick={() => switchRole('business_owner')}
             className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-colors ${
-              currentRole === 'business_owner' ? 'bg-[#101828] text-white' : 'bg-white border border-[#E4E7EC] text-slate-700 hover:bg-slate-50'
+              currentRole === 'business_owner' ? 'bg-[#075C46] text-white' : 'bg-white border border-[#E3E8DF] text-[#17372F] hover:bg-[#F7F5EC]'
             }`}
           >
             Owner
@@ -47,7 +47,7 @@ export default function RoleBanner() {
           <button
             onClick={() => switchRole('sales_manager')}
             className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-colors ${
-              currentRole === 'sales_manager' ? 'bg-[#101828] text-white' : 'bg-white border border-[#E4E7EC] text-slate-700 hover:bg-slate-50'
+              currentRole === 'sales_manager' ? 'bg-[#075C46] text-white' : 'bg-white border border-[#E3E8DF] text-[#17372F] hover:bg-[#F7F5EC]'
             }`}
           >
             Sales Mgr
@@ -55,7 +55,7 @@ export default function RoleBanner() {
           <button
             onClick={() => switchRole('warehouse_manager')}
             className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-colors ${
-              currentRole === 'warehouse_manager' ? 'bg-[#101828] text-white' : 'bg-white border border-[#E4E7EC] text-slate-700 hover:bg-slate-50'
+              currentRole === 'warehouse_manager' ? 'bg-[#075C46] text-white' : 'bg-white border border-[#E3E8DF] text-[#17372F] hover:bg-[#F7F5EC]'
             }`}
           >
             Warehouse

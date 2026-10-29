@@ -73,45 +73,45 @@ export default function Topbar() {
         {/* Brand & Perspective Switcher */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-[#101828] flex items-center justify-center shadow-md border border-[#C6A66B]/30">
-              <span className="font-bold text-[#C6A66B] text-lg leading-none">⚗</span>
+            <div className="w-9 h-9 rounded-xl bg-[#075C46] flex items-center justify-center shadow-md border border-[#C6A66A]/30">
+              <span className="font-bold text-[#C6A66A] text-lg leading-none">⚗</span>
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-[#101828] text-base tracking-tight">ChemTrade</span>
-                <span className="text-[#C6A66B] font-bold text-xs px-1.5 py-0.2 rounded bg-[#FAF7F0] border border-[#C6A66B]/40">360</span>
+                <span className="font-extrabold text-[#17372F] text-base tracking-tight">ChemTrade</span>
+                <span className="text-[#C6A66A] font-bold text-xs px-1.5 py-0.2 rounded bg-[#DDE9D9] border border-[#C6A66A]/40">360</span>
               </div>
-              <p className="text-[10px] text-[#667085] hidden sm:block font-medium">B2B Chemical Trading CRM + ERP</p>
+              <p className="text-[10px] text-[#7A8980] hidden sm:block font-medium">B2B Chemical Trading CRM + ERP</p>
             </div>
           </div>
 
-          <div className="h-6 w-px bg-[#E4E7EC] hidden md:block mx-1" />
+          <div className="h-6 w-px bg-[#E3E8DF] hidden md:block mx-1" />
 
           {/* Role Perspective Dropdown */}
           <div className="relative" ref={roleMenuRef}>
             <button
               onClick={() => setRoleMenuOpen(!roleMenuOpen)}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-[#E4E7EC] hover:border-[#C6A66B] text-xs transition-all shadow-subtle group"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-[#E3E8DF] hover:border-[#C6A66A] text-xs transition-all shadow-subtle group"
             >
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#C6A66B] animate-pulse" />
-                <span className="text-[#667085] hidden lg:inline">Active Role:</span>
-                <span className="font-bold text-[#101828]">{roleMeta.name}</span>
+                <span className="w-2 h-2 rounded-full bg-[#C6A66A] animate-pulse" />
+                <span className="text-[#7A8980] hidden lg:inline">Active Role:</span>
+                <span className="font-bold text-[#17372F]">{roleMeta.name}</span>
               </div>
-              <ChevronDown className="w-3.5 h-3.5 text-[#667085] group-hover:text-[#101828] transition-transform" />
+              <ChevronDown className="w-3.5 h-3.5 text-[#7A8980] group-hover:text-[#17372F] transition-transform" />
             </button>
 
             {roleMenuOpen && (
               <div className="absolute left-0 mt-2 w-72 glass-dropdown rounded-xl py-2 z-50 animate-in fade-in slide-in-from-top-2">
-                <div className="px-3 py-1.5 border-b border-[#E4E7EC]">
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-[#667085]">
+                <div className="px-3 py-1.5 border-b border-[#E3E8DF]">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-[#7A8980]">
                     Switch Perspective (10 Roles)
                   </p>
                   <p className="text-[10px] text-slate-500">Live preview of all wireframe experiences</p>
                 </div>
 
                 <div className="max-h-80 overflow-y-auto py-1">
-                  <div className="px-3 py-1 text-[10px] font-bold text-[#667085] uppercase">Internal Dashboards (8)</div>
+                  <div className="px-3 py-1 text-[10px] font-bold text-[#7A8980] uppercase">Internal Dashboards (8)</div>
                   {internalRoles.map((role) => (
                     <button
                       key={role.id}
@@ -119,19 +119,19 @@ export default function Topbar() {
                         switchRole(role.id);
                         setRoleMenuOpen(false);
                       }}
-                      className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between hover:bg-[#FAF9F6] transition-colors ${
-                        currentRole === role.id ? 'bg-[#FAF7F0] text-[#101828] font-bold border-l-2 border-[#C6A66B]' : 'text-slate-700'
+                      className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between hover:bg-[#F7F5EC] transition-colors ${
+                        currentRole === role.id ? 'bg-[#DDE9D9] text-[#17372F] font-bold border-l-2 border-[#C6A66A]' : 'text-slate-700'
                       }`}
                     >
                       <div>
                         <div>{role.name}</div>
                         <div className="text-[10px] text-slate-400 font-normal truncate max-w-[210px]">{role.description}</div>
                       </div>
-                      {currentRole === role.id && <span className="text-[10px] text-[#C6A66B] font-semibold">Active</span>}
+                      {currentRole === role.id && <span className="text-[10px] text-[#C6A66A] font-semibold">Active</span>}
                     </button>
                   ))}
 
-                  <div className="px-3 pt-2 pb-1 text-[10px] font-bold text-[#667085] uppercase border-t border-[#E4E7EC] mt-1">
+                  <div className="px-3 pt-2 pb-1 text-[10px] font-bold text-[#7A8980] uppercase border-t border-[#E3E8DF] mt-1">
                     External Portals (2)
                   </div>
                   {externalPortals.map((role) => (
@@ -141,8 +141,8 @@ export default function Topbar() {
                         switchRole(role.id);
                         setRoleMenuOpen(false);
                       }}
-                      className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between hover:bg-[#FAF9F6] transition-colors ${
-                        currentRole === role.id ? 'bg-[#FAF7F0] text-[#101828] font-bold border-l-2 border-[#C6A66B]' : 'text-slate-700'
+                      className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between hover:bg-[#F7F5EC] transition-colors ${
+                        currentRole === role.id ? 'bg-[#DDE9D9] text-[#17372F] font-bold border-l-2 border-[#C6A66A]' : 'text-slate-700'
                       }`}
                     >
                       <div className="flex items-center gap-1.5">
@@ -152,7 +152,7 @@ export default function Topbar() {
                           <div className="text-[10px] text-slate-400 font-normal truncate max-w-[200px]">{role.description}</div>
                         </div>
                       </div>
-                      {currentRole === role.id && <span className="text-[10px] text-[#C6A66B] font-semibold">Active</span>}
+                      {currentRole === role.id && <span className="text-[10px] text-[#C6A66A] font-semibold">Active</span>}
                     </button>
                   ))}
                 </div>
@@ -164,13 +164,13 @@ export default function Topbar() {
         {/* Global Search Bar */}
         <div className="flex-1 max-w-md hidden md:block">
           <div className="relative">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#667085]" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#7A8980]" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search chemicals, CAS no., RFQs, batches, customers..."
-              className="w-full pl-9 pr-4 py-1.5 text-xs bg-white/80 border border-[#E4E7EC] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C6A66B]/30 focus:border-[#C6A66B] text-[#101828] placeholder-slate-400"
+              className="w-full pl-9 pr-4 py-1.5 text-xs bg-white/80 border border-[#E3E8DF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#075C46]/20 focus:border-[#075C46] text-[#17372F] placeholder-slate-400"
             />
           </div>
         </div>
@@ -181,9 +181,9 @@ export default function Topbar() {
           <div className="relative" ref={createMenuRef}>
             <button
               onClick={() => setCreateMenuOpen(!createMenuOpen)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#101828] hover:bg-[#101828]/90 text-white text-xs font-semibold shadow-sm transition-all"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#075C46] hover:bg-[#063F32] text-white text-xs font-semibold shadow-sm transition-all"
             >
-              <Plus className="w-3.5 h-3.5 text-[#C6A66B]" />
+              <Plus className="w-3.5 h-3.5 text-[#C6A66A]" />
               <span className="hidden sm:inline">Quick Action</span>
               <ChevronDown className="w-3 h-3 text-slate-400" />
             </button>
@@ -195,9 +195,9 @@ export default function Topbar() {
                     openModal('create_quote');
                     setCreateMenuOpen(false);
                   }}
-                  className="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-[#FAF9F6] flex items-center gap-2"
+                  className="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-[#F7F5EC] flex items-center gap-2"
                 >
-                  <FileText className="w-3.5 h-3.5 text-[#C6A66B]" />
+                  <FileText className="w-3.5 h-3.5 text-[#C6A66A]" />
                   <span>Build Chemical Quotation</span>
                 </button>
                 <button
@@ -205,7 +205,7 @@ export default function Topbar() {
                     openModal('create_lead');
                     setCreateMenuOpen(false);
                   }}
-                  className="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-[#FAF9F6] flex items-center gap-2"
+                  className="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-[#F7F5EC] flex items-center gap-2"
                 >
                   <User className="w-3.5 h-3.5 text-[#2E6FBB]" />
                   <span>Add Lead / Customer RFQ</span>
@@ -215,9 +215,9 @@ export default function Topbar() {
                     openModal('create_chemical');
                     setCreateMenuOpen(false);
                   }}
-                  className="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-[#FAF9F6] flex items-center gap-2"
+                  className="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-[#F7F5EC] flex items-center gap-2"
                 >
-                  <Layers className="w-3.5 h-3.5 text-[#16805D]" />
+                  <Layers className="w-3.5 h-3.5 text-[#0F795C]" />
                   <span>New Chemical Master (CAS/HSN)</span>
                 </button>
                 <button
@@ -225,7 +225,7 @@ export default function Topbar() {
                     openModal('schedule_dispatch');
                     setCreateMenuOpen(false);
                   }}
-                  className="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-[#FAF9F6] flex items-center gap-2"
+                  className="w-full px-3 py-2 text-left text-xs text-slate-700 hover:bg-[#F7F5EC] flex items-center gap-2"
                 >
                   <Shield className="w-3.5 h-3.5 text-amber-600" />
                   <span>Schedule Tanker / Dispatch</span>
@@ -238,7 +238,7 @@ export default function Topbar() {
           <div className="relative" ref={notifMenuRef}>
             <button
               onClick={() => setNotifMenuOpen(!notifMenuOpen)}
-              className="relative p-2 rounded-lg bg-white border border-[#E4E7EC] hover:bg-[#FAF9F6] text-[#667085] hover:text-[#101828] transition-colors"
+              className="relative p-2 rounded-lg bg-white border border-[#E3E8DF] hover:bg-[#F7F5EC] text-[#7A8980] hover:text-[#17372F] transition-colors"
               title="Operational Alerts"
             >
               <Bell className="w-4 h-4" />
@@ -251,13 +251,13 @@ export default function Topbar() {
 
             {notifMenuOpen && (
               <div className="absolute right-0 mt-2 w-80 glass-dropdown rounded-xl p-3 z-50 animate-in fade-in shadow-xl">
-                <div className="flex items-center justify-between pb-2 border-b border-[#E4E7EC]">
-                  <p className="text-xs font-bold text-[#101828]">System & Operational Alerts</p>
-                  <span className="text-[10px] bg-[#FAF7F0] text-[#8C6F3B] font-semibold px-2 py-0.5 rounded border border-[#C6A66B]/30">
+                <div className="flex items-center justify-between pb-2 border-b border-[#E3E8DF]">
+                  <p className="text-xs font-bold text-[#17372F]">System & Operational Alerts</p>
+                  <span className="text-[10px] bg-[#DDE9D9] text-[#075C46] font-semibold px-2 py-0.5 rounded border border-[#C6A66A]/30">
                     {unreadCount} Active
                   </span>
                 </div>
-                <div className="divide-y divide-[#E4E7EC] max-h-72 overflow-y-auto mt-1">
+                <div className="divide-y divide-[#E3E8DF] max-h-72 overflow-y-auto mt-1">
                   {notifications.map((n) => (
                     <div key={n.id} className="py-2.5 text-xs">
                       <div className="flex items-start gap-2">
@@ -281,33 +281,33 @@ export default function Topbar() {
           <div className="relative" ref={profileMenuRef}>
             <button
               onClick={() => setProfileMenuOpen(!profileMenuOpen)}
-              className="flex items-center gap-2 pl-1 pr-1.5 py-1 rounded-xl hover:bg-white/80 transition-all border border-transparent hover:border-[#E4E7EC]"
+              className="flex items-center gap-2 pl-1 pr-1.5 py-1 rounded-xl hover:bg-white/80 transition-all border border-transparent hover:border-[#E3E8DF]"
               title="User Account & Security"
             >
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#101828] to-[#1e293b] text-[#C6A66B] flex items-center justify-center font-bold text-xs border border-[#C6A66B]/40 shadow-sm">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#101828] to-[#1e293b] text-[#C6A66A] flex items-center justify-center font-bold text-xs border border-[#C6A66A]/40 shadow-sm">
                 {currentUser?.avatar || 'CT'}
               </div>
               <div className="hidden xl:block text-left">
-                <p className="text-xs font-semibold text-[#101828] leading-tight truncate max-w-[130px]">
+                <p className="text-xs font-semibold text-[#17372F] leading-tight truncate max-w-[130px]">
                   {currentUser?.name || 'Authorized Staff'}
                 </p>
-                <p className="text-[10px] text-[#667085] truncate max-w-[130px]">
+                <p className="text-[10px] text-[#7A8980] truncate max-w-[130px]">
                   {roleMeta.name}
                 </p>
               </div>
-              <ChevronDown className="w-3.5 h-3.5 text-[#667085] hidden xl:block" />
+              <ChevronDown className="w-3.5 h-3.5 text-[#7A8980] hidden xl:block" />
             </button>
 
             {profileMenuOpen && (
               <div className="absolute right-0 mt-2 w-72 glass-dropdown rounded-2xl p-3 z-50 animate-in fade-in shadow-2xl">
                 {/* Profile Header */}
-                <div className="p-3 bg-[#FAF9F6] rounded-xl border border-[#E4E7EC] mb-2">
+                <div className="p-3 bg-[#F7F5EC] rounded-xl border border-[#E3E8DF] mb-2">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#101828] text-[#C6A66B] font-bold text-sm flex items-center justify-center border border-[#C6A66B]/40 shadow-sm">
+                    <div className="w-10 h-10 rounded-full bg-[#075C46] text-[#C6A66A] font-bold text-sm flex items-center justify-center border border-[#C6A66A]/40 shadow-sm">
                       {currentUser?.avatar || 'CT'}
                     </div>
                     <div className="overflow-hidden">
-                      <p className="text-xs font-bold text-[#101828] truncate">{currentUser?.name}</p>
+                      <p className="text-xs font-bold text-[#17372F] truncate">{currentUser?.name}</p>
                       <p className="text-[11px] text-slate-500 font-mono truncate">{currentUser?.email}</p>
                       <span className="inline-block text-[10px] bg-emerald-50 text-emerald-800 font-semibold px-2 py-0.2 rounded-full border border-emerald-200 mt-1">
                         Active Terminal Session
@@ -315,7 +315,7 @@ export default function Topbar() {
                     </div>
                   </div>
                   <div className="mt-2 pt-2 border-t border-slate-200 text-[10px] text-slate-500">
-                    <div>Role: <strong className="text-[#101828]">{roleMeta.name}</strong></div>
+                    <div>Role: <strong className="text-[#17372F]">{roleMeta.name}</strong></div>
                     <div>Terminal: <span className="text-slate-700">{currentUser?.hub || 'Dahej Hub'}</span></div>
                   </div>
                 </div>
@@ -327,9 +327,9 @@ export default function Topbar() {
                       setProfileMenuOpen(false);
                       setRoleMenuOpen(true);
                     }}
-                    className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#FAF9F6] text-slate-700 flex items-center gap-2 transition-colors"
+                    className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#F7F5EC] text-slate-700 flex items-center gap-2 transition-colors"
                   >
-                    <User className="w-3.5 h-3.5 text-[#C6A66B]" />
+                    <User className="w-3.5 h-3.5 text-[#C6A66A]" />
                     <span>Switch Role Perspective</span>
                   </button>
 

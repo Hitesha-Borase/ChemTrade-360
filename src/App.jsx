@@ -78,7 +78,7 @@ function MainLayout() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F6F2] flex flex-col antialiased selection:bg-[#C6A66B]/20">
+    <div className="min-h-screen bg-[#F7F5EC] flex flex-col antialiased selection:bg-[#075C46]/20">
       {/* Top Application Bar */}
       <Topbar />
 
@@ -108,7 +108,7 @@ function AppContent() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#F7F6F2]">
+      <div className="min-h-screen bg-[#F7F5EC]">
         <LoginPage />
         <Toast />
       </div>

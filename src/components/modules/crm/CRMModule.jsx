@@ -31,8 +31,8 @@ export default function CRMModule() {
       accessor: 'companyName',
       cell: (row) => (
         <div>
-          <div className="font-bold text-[#101828]">{row.companyName}</div>
-          <div className="text-[11px] text-[#667085] font-mono">{row.id} • {row.contactPerson}</div>
+          <div className="font-bold text-[#17372F]">{row.companyName}</div>
+          <div className="text-[11px] text-[#7A8980] font-mono">{row.id} • {row.contactPerson}</div>
         </div>
       )
     },
@@ -41,7 +41,7 @@ export default function CRMModule() {
       accessor: 'chemicalNeeded',
       cell: (row) => (
         <div>
-          <span className="font-semibold text-[#101828]">{row.chemicalNeeded}</span>
+          <span className="font-semibold text-[#17372F]">{row.chemicalNeeded}</span>
           <span className="block text-[11px] text-slate-500 font-mono">Qty: {row.estimatedQty} {row.uom}</span>
         </div>
       )
@@ -50,7 +50,7 @@ export default function CRMModule() {
       header: 'Target Price',
       accessor: 'targetPrice',
       cell: (row) => (
-        <span className="font-mono font-bold text-[#101828]">
+        <span className="font-mono font-bold text-[#17372F]">
           ₹{row.targetPrice.toLocaleString('en-IN')}/{row.uom}
         </span>
       )
@@ -81,7 +81,7 @@ export default function CRMModule() {
         <div className="flex items-center gap-1.5">
           <button
             onClick={() => openModal('create_quote', { customerName: row.companyName, chemicalNeeded: row.chemicalNeeded })}
-            className="px-2.5 py-1 text-xs bg-[#101828] text-white rounded font-medium hover:bg-[#101828]/90"
+            className="px-2.5 py-1 text-xs bg-[#075C46] text-white rounded font-medium hover:bg-[#063F32]"
           >
             Draft Quote
           </button>
@@ -96,8 +96,8 @@ export default function CRMModule() {
       accessor: 'companyName',
       cell: (row) => (
         <div>
-          <div className="font-bold text-[#101828]">{row.companyName}</div>
-          <div className="text-[11px] text-[#667085] font-mono">{row.id} • {row.city}, {row.state}</div>
+          <div className="font-bold text-[#17372F]">{row.companyName}</div>
+          <div className="text-[11px] text-[#7A8980] font-mono">{row.id} • {row.city}, {row.state}</div>
         </div>
       )
     },
@@ -116,7 +116,7 @@ export default function CRMModule() {
       accessor: 'creditLimit',
       cell: (row) => (
         <div>
-          <span className="font-mono font-bold text-[#101828]">₹{(row.creditLimit / 100000).toFixed(1)} L</span>
+          <span className="font-mono font-bold text-[#17372F]">₹{(row.creditLimit / 100000).toFixed(1)} L</span>
           <span className="block text-[11px] text-slate-500">{row.creditDays} Days Credit</span>
         </div>
       )
@@ -126,7 +126,7 @@ export default function CRMModule() {
       accessor: 'outstandingBalance',
       cell: (row) => (
         <div>
-          <span className="font-mono font-bold text-[#101828]">₹{row.outstandingBalance.toLocaleString('en-IN')}</span>
+          <span className="font-mono font-bold text-[#17372F]">₹{row.outstandingBalance.toLocaleString('en-IN')}</span>
           {row.overdueAmount > 0 && (
             <span className="block text-[10px] text-[#C43232] font-semibold">Overdue: ₹{row.overdueAmount.toLocaleString('en-IN')}</span>
           )}
@@ -150,30 +150,30 @@ export default function CRMModule() {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E4E7EC]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#E3E8DF]">
         <div>
-          <h1 className="text-xl font-bold text-[#101828]">CRM & Customer Accounts</h1>
-          <p className="text-xs text-[#667085] mt-0.5">
+          <h1 className="text-xl font-bold text-[#17372F]">CRM & Customer Accounts</h1>
+          <p className="text-xs text-[#7A8980] mt-0.5">
             Capture chemical inquiries, manage enterprise customer dossiers, credit limits, and quotation pipelines.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => openModal('create_lead')}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#101828] text-white hover:bg-[#101828]/90 transition-colors shadow-sm"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-[#075C46] text-white hover:bg-[#063F32] transition-colors shadow-sm"
           >
-            <Plus className="w-3.5 h-3.5 text-[#C6A66B]" />
+            <Plus className="w-3.5 h-3.5 text-[#C6A66A]" />
             <span>Add Lead / Customer RFQ</span>
           </button>
         </div>
       </div>
 
       {/* Segmented View Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#E4E7EC] pb-2">
+      <div className="flex items-center gap-2 border-b border-[#E3E8DF] pb-2">
         <button
           onClick={() => setActiveTab('leads')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'leads' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'leads' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Leads & Inquiries ({leads.length})
@@ -181,7 +181,7 @@ export default function CRMModule() {
         <button
           onClick={() => setActiveTab('kanban')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'kanban' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'kanban' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Pipeline Kanban
@@ -189,7 +189,7 @@ export default function CRMModule() {
         <button
           onClick={() => setActiveTab('customers')}
           className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-            activeTab === 'customers' ? 'bg-[#101828] text-white' : 'text-slate-600 hover:bg-[#FAF9F6]'
+            activeTab === 'customers' ? 'bg-[#075C46] text-white' : 'text-slate-600 hover:bg-[#F7F5EC]'
           }`}
         >
           Customer Directory ({customers.length})
@@ -219,19 +219,19 @@ export default function CRMModule() {
           {stagesList.map((stage) => {
             const stageLeads = leads.filter(l => l.stage === stage);
             return (
-              <div key={stage} className="bg-white rounded-xl border border-[#E4E7EC] p-3 shadow-sm min-w-[240px]">
-                <div className="flex items-center justify-between pb-2 border-b border-[#E4E7EC] mb-3">
-                  <span className="text-xs font-bold text-[#101828]">{stage}</span>
-                  <span className="w-5 h-5 rounded-full bg-[#FAF9F6] border border-[#E4E7EC] text-slate-700 text-[10px] font-bold flex items-center justify-center">
+              <div key={stage} className="bg-white rounded-xl border border-[#E3E8DF] p-3 shadow-sm min-w-[240px]">
+                <div className="flex items-center justify-between pb-2 border-b border-[#E3E8DF] mb-3">
+                  <span className="text-xs font-bold text-[#17372F]">{stage}</span>
+                  <span className="w-5 h-5 rounded-full bg-[#F7F5EC] border border-[#E3E8DF] text-slate-700 text-[10px] font-bold flex items-center justify-center">
                     {stageLeads.length}
                   </span>
                 </div>
 
                 <div className="space-y-3">
                   {stageLeads.map((l) => (
-                    <div key={l.id} className="p-3 rounded-lg bg-[#FAF9F6] border border-[#E4E7EC] hover:border-[#C6A66B] transition-all text-xs space-y-2">
+                    <div key={l.id} className="p-3 rounded-lg bg-[#F7F5EC] border border-[#E3E8DF] hover:border-[#C6A66A] transition-all text-xs space-y-2">
                       <div className="flex items-start justify-between">
-                        <span className="font-bold text-[#101828]">{l.companyName}</span>
+                        <span className="font-bold text-[#17372F]">{l.companyName}</span>
                         <span className="text-[10px] font-mono text-slate-400">{l.id}</span>
                       </div>
                       <p className="text-slate-600 font-medium">{l.chemicalNeeded} ({l.estimatedQty} {l.uom})</p>
@@ -243,7 +243,7 @@ export default function CRMModule() {
                         <select
                           value={l.stage}
                           onChange={(e) => updateLeadStage(l.id, e.target.value)}
-                          className="w-full text-[10px] bg-white border border-[#E4E7EC] rounded px-1.5 py-1 text-slate-700 focus:outline-none"
+                          className="w-full text-[10px] bg-white border border-[#E3E8DF] rounded px-1.5 py-1 text-slate-700 focus:outline-none"
                         >
                           {stagesList.map(s => <option key={s} value={s}>{s}</option>)}
                         </select>

@@ -142,11 +142,11 @@ export default function CreateQuotationModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
-      <div className="bg-white rounded-2xl max-w-4xl w-full p-6 shadow-2xl border border-[#E4E7EC] my-8 max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between pb-3 border-b border-[#E4E7EC]">
+      <div className="bg-white rounded-2xl max-w-4xl w-full p-6 shadow-2xl border border-[#E3E8DF] my-8 max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between pb-3 border-b border-[#E3E8DF]">
           <div>
-            <h2 className="text-lg font-bold text-[#101828]">Commercial Chemical Quotation Builder</h2>
-            <p className="text-xs text-[#667085]">Wireframe Section 6.4: Interactive pricing, margin controls & FEFO lot allocation</p>
+            <h2 className="text-lg font-bold text-[#17372F]">Commercial Chemical Quotation Builder</h2>
+            <p className="text-xs text-[#7A8980]">Wireframe Section 6.4: Interactive pricing, margin controls & FEFO lot allocation</p>
           </div>
           <button onClick={closeModal} className="p-1 rounded-lg text-slate-400 hover:text-slate-600">
             <X className="w-5 h-5" />
@@ -155,13 +155,13 @@ export default function CreateQuotationModal() {
 
         <form onSubmit={handleSubmit} className="mt-4 space-y-5 text-xs">
           {/* Header Fields */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-[#FAF9F6] p-4 rounded-xl border border-[#E4E7EC]">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-[#F7F5EC] p-4 rounded-xl border border-[#E3E8DF]">
             <div>
               <label className="block font-semibold text-slate-700 mb-1">Customer Account</label>
               <select
                 value={selectedCustomerId}
                 onChange={(e) => setSelectedCustomerId(e.target.value)}
-                className="w-full p-2 bg-white border border-[#E4E7EC] rounded-lg text-xs font-medium"
+                className="w-full p-2 bg-white border border-[#E3E8DF] rounded-lg text-xs font-medium"
               >
                 {customers.map(c => (
                   <option key={c.id} value={c.id}>{c.companyName} ({c.city})</option>
@@ -175,7 +175,7 @@ export default function CreateQuotationModal() {
                 type="text"
                 value={rfqRef}
                 onChange={(e) => setRfqRef(e.target.value)}
-                className="w-full p-2 bg-white border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2 bg-white border border-[#E3E8DF] rounded-lg text-xs font-mono"
                 required
               />
             </div>
@@ -186,7 +186,7 @@ export default function CreateQuotationModal() {
                 type="date"
                 value={validUntil}
                 onChange={(e) => setValidUntil(e.target.value)}
-                className="w-full p-2 bg-white border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2 bg-white border border-[#E3E8DF] rounded-lg text-xs font-mono"
                 required
               />
             </div>
@@ -196,7 +196,7 @@ export default function CreateQuotationModal() {
               <select
                 value={paymentTerms}
                 onChange={(e) => setPaymentTerms(e.target.value)}
-                className="w-full p-2 bg-white border border-[#E4E7EC] rounded-lg text-xs"
+                className="w-full p-2 bg-white border border-[#E3E8DF] rounded-lg text-xs"
               >
                 <option value="45 Days from Invoice Date">45 Days from Invoice Date</option>
                 <option value="30 Days Net">30 Days Net</option>
@@ -211,7 +211,7 @@ export default function CreateQuotationModal() {
                 type="text"
                 value={deliveryTerms}
                 onChange={(e) => setDeliveryTerms(e.target.value)}
-                className="w-full p-2 bg-white border border-[#E4E7EC] rounded-lg text-xs"
+                className="w-full p-2 bg-white border border-[#E3E8DF] rounded-lg text-xs"
               />
             </div>
 
@@ -221,7 +221,7 @@ export default function CreateQuotationModal() {
                 type="number"
                 value={freightCharges}
                 onChange={(e) => setFreightCharges(Number(e.target.value))}
-                className="w-full p-2 bg-white border border-[#E4E7EC] rounded-lg text-xs font-mono"
+                className="w-full p-2 bg-white border border-[#E3E8DF] rounded-lg text-xs font-mono"
               />
             </div>
           </div>
@@ -229,11 +229,11 @@ export default function CreateQuotationModal() {
           {/* Dynamic Line Items */}
           <div>
             <div className="flex items-center justify-between pb-2">
-              <h3 className="font-bold text-[#101828] text-sm">Chemical Commodities & Pricing</h3>
+              <h3 className="font-bold text-[#17372F] text-sm">Chemical Commodities & Pricing</h3>
               <button
                 type="button"
                 onClick={addItem}
-                className="flex items-center gap-1 text-xs font-semibold text-[#101828] hover:text-[#C6A66B]"
+                className="flex items-center gap-1 text-xs font-semibold text-[#17372F] hover:text-[#C6A66A]"
               >
                 <Plus className="w-4 h-4" /> Add Item
               </button>
@@ -241,14 +241,14 @@ export default function CreateQuotationModal() {
 
             <div className="space-y-3">
               {items.map((item, idx) => (
-                <div key={idx} className="p-3 rounded-xl border border-[#E4E7EC] bg-white shadow-subtle space-y-3">
+                <div key={idx} className="p-3 rounded-xl border border-[#E3E8DF] bg-white shadow-subtle space-y-3">
                   <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
                     <div className="sm:col-span-2">
                       <label className="block font-semibold text-slate-700 mb-1">Chemical Commodity</label>
                       <select
                         value={item.chemicalId}
                         onChange={(e) => handleChemicalChange(idx, e.target.value)}
-                        className="w-full p-2 border border-[#E4E7EC] rounded-lg text-xs font-semibold"
+                        className="w-full p-2 border border-[#E3E8DF] rounded-lg text-xs font-semibold"
                       >
                         {chemicals.map(c => (
                           <option key={c.id} value={c.id}>
@@ -265,7 +265,7 @@ export default function CreateQuotationModal() {
                         step="0.1"
                         value={item.qty}
                         onChange={(e) => handleItemFieldChange(idx, 'qty', e.target.value)}
-                        className="w-full p-2 border border-[#E4E7EC] rounded-lg text-xs font-mono font-bold"
+                        className="w-full p-2 border border-[#E3E8DF] rounded-lg text-xs font-mono font-bold"
                       />
                     </div>
 
@@ -275,13 +275,13 @@ export default function CreateQuotationModal() {
                         type="number"
                         value={item.quotedRate}
                         onChange={(e) => handleItemFieldChange(idx, 'quotedRate', e.target.value)}
-                        className="w-full p-2 border border-[#E4E7EC] rounded-lg text-xs font-mono font-bold text-[#101828]"
+                        className="w-full p-2 border border-[#E3E8DF] rounded-lg text-xs font-mono font-bold text-[#17372F]"
                       />
                     </div>
                   </div>
 
                   {/* Commercial Safeguards / Internal Staff Rates */}
-                  <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100 text-slate-600 bg-[#FAF9F6] p-2.5 rounded-lg">
+                  <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100 text-slate-600 bg-[#F7F5EC] p-2.5 rounded-lg">
                     <div className="flex items-center gap-4 flex-wrap">
                       <div>
                         <span className="text-[10px] text-slate-400 uppercase font-semibold block">Internal Cost Rate</span>
@@ -294,7 +294,7 @@ export default function CreateQuotationModal() {
                           step="0.5"
                           value={item.discountPercent}
                           onChange={(e) => handleItemFieldChange(idx, 'discountPercent', e.target.value)}
-                          className="w-16 p-1 bg-white border border-[#E4E7EC] rounded text-xs font-mono"
+                          className="w-16 p-1 bg-white border border-[#E3E8DF] rounded text-xs font-mono"
                         />
                       </div>
                       <div>
@@ -306,7 +306,7 @@ export default function CreateQuotationModal() {
                             updated[idx].allocatedBatch = e.target.value;
                             setItems(updated);
                           }}
-                          className="p-1 bg-white border border-[#E4E7EC] rounded text-xs font-mono"
+                          className="p-1 bg-white border border-[#E3E8DF] rounded text-xs font-mono"
                         >
                           <option value="Auto-FEFO">Auto-FEFO Allocation</option>
                           {batches.filter(b => b.qualityStatus === 'Approved').map(b => (
@@ -319,7 +319,7 @@ export default function CreateQuotationModal() {
                     <div className="flex items-center gap-3">
                       <div className="text-right">
                         <span className="text-[10px] text-slate-400 uppercase font-semibold block">Item Total (Ex-Tax)</span>
-                        <span className="font-mono font-bold text-sm text-[#101828]">
+                        <span className="font-mono font-bold text-sm text-[#17372F]">
                           ₹{(item.qty * item.quotedRate * (1 - item.discountPercent / 100)).toLocaleString('en-IN')}
                         </span>
                       </div>
@@ -340,12 +340,12 @@ export default function CreateQuotationModal() {
           </div>
 
           {/* Pricing Totals & Internal Margin Summary */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3 border-t border-[#E4E7EC]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3 border-t border-[#E3E8DF]">
             {/* Left: Internal Margin Analysis (Authorized Staff) */}
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-slate-700 flex items-center gap-1.5">
-                  <Calculator className="w-4 h-4 text-[#C6A66B]" /> Internal Staff Margin Calculation
+                  <Calculator className="w-4 h-4 text-[#C6A66A]" /> Internal Staff Margin Calculation
                 </span>
                 <span className={`font-mono font-bold px-2 py-0.5 rounded text-xs ${
                   requiresApproval ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'
@@ -360,7 +360,7 @@ export default function CreateQuotationModal() {
                 </div>
                 <div className="flex justify-between">
                   <span>Gross Profit Margin:</span>
-                  <span className="font-mono font-bold text-[#16805D]">₹{overallMargin.toLocaleString('en-IN')}</span>
+                  <span className="font-mono font-bold text-[#0F795C]">₹{overallMargin.toLocaleString('en-IN')}</span>
                 </div>
                 {requiresApproval && (
                   <div className="p-2 rounded bg-amber-50 border border-amber-200 text-amber-800 font-medium text-[11px] mt-2 flex items-start gap-1.5">
@@ -372,10 +372,10 @@ export default function CreateQuotationModal() {
             </div>
 
             {/* Right: Customer-Facing Totals */}
-            <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#E4E7EC] space-y-2">
+            <div className="p-4 rounded-xl bg-[#F7F5EC] border border-[#E3E8DF] space-y-2">
               <div className="flex justify-between text-slate-600">
                 <span>Commodities Subtotal:</span>
-                <span className="font-mono font-bold text-[#101828]">₹{subtotal.toLocaleString('en-IN')}</span>
+                <span className="font-mono font-bold text-[#17372F]">₹{subtotal.toLocaleString('en-IN')}</span>
               </div>
               <div className="flex justify-between text-slate-600">
                 <span>Freight Charges:</span>
@@ -385,25 +385,25 @@ export default function CreateQuotationModal() {
                 <span>GST Tax (18% IGST / CGST+SGST):</span>
                 <span className="font-mono">₹{totalTax.toLocaleString('en-IN')}</span>
               </div>
-              <div className="flex justify-between pt-2 border-t border-[#E4E7EC] text-base font-bold text-[#101828]">
+              <div className="flex justify-between pt-2 border-t border-[#E3E8DF] text-base font-bold text-[#17372F]">
                 <span>Grand Total (Payable):</span>
-                <span className="font-mono text-lg text-[#101828]">₹{grandTotal.toLocaleString('en-IN')}</span>
+                <span className="font-mono text-lg text-[#17372F]">₹{grandTotal.toLocaleString('en-IN')}</span>
               </div>
             </div>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#E4E7EC]">
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#E3E8DF]">
             <button
               type="button"
               onClick={closeModal}
-              className="px-4 py-2 border border-[#E4E7EC] rounded-xl text-slate-700 font-semibold hover:bg-slate-50 transition-colors"
+              className="px-4 py-2 border border-[#E3E8DF] rounded-xl text-slate-700 font-semibold hover:bg-slate-50 transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2 bg-[#101828] text-white font-bold rounded-xl hover:bg-[#101828]/90 transition-all shadow-md"
+              className="px-5 py-2 bg-[#075C46] text-white font-bold rounded-xl hover:bg-[#063F32] transition-all shadow-md"
             >
               {requiresApproval ? 'Submit for Sales Manager Approval' : 'Generate & Authorize Quotation'}
             </button>
