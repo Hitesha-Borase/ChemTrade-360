@@ -124,6 +124,18 @@ export function AppProvider({ children }) {
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
+  // Responsive Sidebar Open/Closed State (3-line hamburger menu toggle)
+  const [sidebarOpen, setSidebarOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth >= 1024;
+    }
+    return true;
+  });
+
+  const toggleSidebar = () => setSidebarOpen(prev => !prev);
+  const closeSidebar = () => setSidebarOpen(false);
+  const openSidebar = () => setSidebarOpen(true);
+
   // Roles & Navigation
   const [currentRole, setCurrentRole] = useState(() => {
     return localStorage.getItem('ct360_role') || 'admin';

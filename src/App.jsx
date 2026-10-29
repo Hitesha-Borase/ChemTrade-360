@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import Topbar from './components/layout/Topbar';
 import Sidebar from './components/layout/Sidebar';
@@ -25,7 +25,6 @@ import LoginPage from './components/auth/LoginPage';
 
 function MainLayout() {
   const { activeNav } = useApp();
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const renderActiveModule = () => {
     switch (activeNav) {
@@ -69,12 +68,12 @@ function MainLayout() {
       </div>
 
       {/* Main Workspace Body */}
-      <div className="flex-1 min-h-0 flex overflow-hidden">
-        {/* Navigation Sidebar (Static) */}
-        <Sidebar collapsed={sidebarCollapsed} setCollapsed={setSidebarCollapsed} />
+      <div className="flex-1 min-h-0 flex overflow-hidden relative">
+        {/* Navigation Sidebar (Drawer on mobile, Toggleable on desktop) */}
+        <Sidebar />
 
         {/* Content Viewport */}
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full">
+        <main className="flex-1 overflow-y-auto p-3 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full min-w-0">
           {renderActiveModule()}
         </main>
       </div>

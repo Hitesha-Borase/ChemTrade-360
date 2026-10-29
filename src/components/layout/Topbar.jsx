@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import {
+  Menu,
   Search,
   Bell,
   ChevronDown,
@@ -25,7 +26,8 @@ export default function Topbar() {
     setSearchQuery,
     notifications,
     openModal,
-    navigateToView
+    navigateToView,
+    toggleSidebar
   } = useApp();
 
   const [notifMenuOpen, setNotifMenuOpen] = useState(false);
@@ -59,9 +61,20 @@ export default function Topbar() {
     <header className="sticky top-0 z-40 glass-header px-4 sm:px-6 py-2.5 transition-all">
       <div className="flex items-center justify-between gap-4">
         {/* Brand & Perspective Switcher */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
+          {/* 3-Line Hamburger Menu Toggle Button */}
+          <button
+            type="button"
+            onClick={toggleSidebar}
+            className="p-1.5 -ml-1 rounded-lg text-[#075C46] hover:bg-[#E3E8DF]/70 transition-colors focus:outline-none"
+            title="Toggle Navigation Menu (3 Lines)"
+            aria-label="Toggle Navigation Menu"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-[#075C46] flex items-center justify-center shadow-md border border-[#C6A66A]/30">
+            <div className="w-9 h-9 rounded-xl bg-[#075C46] flex items-center justify-center shadow-md border border-[#C6A66A]/30 flex-shrink-0">
               <span className="font-bold text-[#C6A66A] text-lg leading-none">⚗</span>
             </div>
             <div>
